@@ -1,0 +1,133 @@
+
+
+:root {
+    /* --primary: #0cacc4;
+    --secondary: #103244;
+    --alt: #1579c6; */
+    --white: #fffafa;
+    --lightblack: #575656;
+    /* --grey: #6a6a6a;
+    --dark4: #090a0f;
+    --dark3: #1b2735; */
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+   
+}
+
+.form-box{
+    position: relative;
+    width: 550px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(2px);
+}
+
+h2{
+    font-size: 2.2em;
+    color: var(--lightblack);
+    text-align: center;
+}
+
+.input-email{
+    position: relative;
+    margin: 10px 0px 30px 0px;
+    width: 310px;
+    border-bottom: 2px solid var(--lightblack);
+}
+
+.input-password{
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid var(--lightblack);
+}
+
+.input-box ::placeholder{
+
+    color: var(--lightblack);
+    font-size: 1.1em;
+
+}
+
+
+.input-box input{
+    width: 85%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: var(--lightblack);
+}
+
+.input-box ion-icon{
+    position: absolute;
+    right: 8px;
+    color: var(--lightblack);
+    font-size: 1.5em;
+    top:  20px;
+}
+
+.button{
+    width: 100%;
+    height: 50px;
+    border-radius: 40px;
+    background: var(--white);
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.logo-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.logo{
+    width: 80px;
+    height: 80px;
+}
+
+.btn{
+    font-size: 1.2em;
+    display: inline-flex;
+    justify-content: center;
+    font-weight: 600;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: var(--white);
+    color: var(--lightblack);
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
