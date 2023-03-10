@@ -130,8 +130,143 @@ nav{
     display: block;
 }
 
+/********** Reservation Form Section ***********/
 
-/********** Second Section ***********/
+.form-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    /* padding: 20px; */
+}
+
+form, input, select, label { 
+    font-size: 1vw;
+    color: var(--darkcharcoal);
+    line-height: 22px;
+}
+
+legend {
+    padding-left: 8px;    
+    padding-right: 8px;
+    margin-left: 10px;
+    font-size: 1.5vw;
+    color: var(--darkcharcoal);
+}
+
+fieldset{
+    border-radius: 4px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+form {
+    width: 100%;
+    padding: 20px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 0 8px var(--lightblack); 
+}
+
+.columns {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.columns div {
+    width: 100%;
+    margin-left: 10px;
+}
+
+.item {
+    position: relative;
+    margin: 10px 0;
+}
+
+input, select {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-top: 5px;
+}
+
+::placeholder {
+
+    font-size: 0.9vw;
+
+}
+
+select{
+    width: 82%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+
+.item:hover p, .item:hover i, input:hover::placeholder {
+    color:  #006622;
+}
+
+
+.item input:hover, .item select:hover{
+    border: 1px solid transparent;
+    box-shadow: 0 0 3px 0  #006622;
+    color: #006622;
+}
+
+input[type="date"] {
+    padding: 8px;
+    width: 82%;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+
+.item i, input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    font-size: 20px;
+    color: var(--lightblack)c;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    right: 19%;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.item i {
+    right: 19%;
+    top: 40px;
+    z-index: 1;
+}
+
+.results{
+    line-height: 2;
+    margin-left: 10px;
+}
+
+
+/* .form-control:focus {
+    color: #475F7B;
+    background-color: #FFF;
+    border-color: #5A8DEE;
+    outline: 0;
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+} */
+
+
+
+/********** roomtype Section ***********/
 
 .sub-title{
     margin: 50px 0 20px;
@@ -150,24 +285,24 @@ nav{
     text-align: center;
 }
 
-.reservation{
+.roomtype{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 30px;
 }
 
-.reservation div img{
+.roomtype div img{
     width: 100%;
     border-radius: 10px;
     filter: grayscale(20%);
     opacity: 0.9;
 }
 
-.reservation div{
+.roomtype div{
     position: relative;
 }
 
-.reservation div span{
+.roomtype div span{
     position: absolute;
     top: 50%;
     left: 50%;
