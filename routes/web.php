@@ -14,10 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::view("bookings",'bookings');
-Route::view("home",'home');
-Route::view("login",'login');
+// Route::view("bookings",'bookings');
+Route::view('home', 'home');
+Route::view('clerk', 'clerk');
+Route::view('login', 'login');
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
+
+Route::group(['middleware' => 'auth:clerk'], function () {
+    Route::view('clerk', 'clerk');
+}); 
+
+Route::group(['middleware' => 'auth:admin'], function () {
+    Route::view('home', 'home');
+}); 
