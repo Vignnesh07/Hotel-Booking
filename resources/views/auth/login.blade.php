@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('loginContent')
 <section style="background-image: url('/assets/img/background.png');">
