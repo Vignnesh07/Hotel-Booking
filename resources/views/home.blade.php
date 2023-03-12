@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +42,12 @@
 
                 <div class="dropdown-content">
                     <a href="#"> Profile </a>
-                    <a href="login"> Logout </a>
+                    <a href="{{ route('logout') }}" 
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"> Logout </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
                 </div>
             </div>
 
