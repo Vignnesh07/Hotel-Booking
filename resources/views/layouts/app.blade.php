@@ -35,7 +35,7 @@
 
                 <div class="dropdown">
 
-                    <button class="dropbtn"> Li Jonn
+                    <button class="dropbtn"> {{ Auth::user()->name }}
                         <i class="fa-solid fa-caret-down"></i>
                     </button>
 
