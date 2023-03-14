@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::view("about",'about');
 Route::view("bookings",'bookings');
 Route::view("home",'home');
 Route::view("login",'login');
