@@ -15,34 +15,26 @@
                 <div class="columns">
 
                     <div class="item">
-                        <p> Room Type </p>
-                        <select>
+                        <label for="roomtype">Room Type</label>
+                        <select id="roomtype" onchange="filterRooms()">
                             <option value="" disabled selected>Select Room Type</option>
-                            <option value="1" >Single</option>
-                            <option value="2">Double</option>
-                            <option value="3">Triple</option>
-                            <option value="4" >Queen</option>
-                            <option value="5">King</option>
-                            <option value="6">Studio</option>
-                            <option value="7">Executive Suite</option>
-                            <option value="8">Presidential Suite</option>
+                            <option value="single" >Single</option>
+                            <option value="double">Double</option>
+                            <option value="triple">Triple</option>
+                            <option value="queen" >Queen</option>
+                            <option value="king">King</option>
+                            <option value="studio">Studio</option>
+                            <option value="executive">Executive Suite</option>
+                            <option value="presidential">Presidential Suite</option>
                         </select>
                     </div>
 
-                    <div class="item">
-                        <p> Room No </p>
-                        <select>
-                            <option value="" disabled selected>Select Room No</option>
-                            <option value="1" >SI001-SI010</option>
-                            <option value="2">DO001-DO010</option>
-                            <option value="3">TR001-TR005</option>
-                            <option value="4" >QU001-QU010</option>
-                            <option value="5">KI001-KI010</option>
-                            <option value="6">ST001-ST010</option>
-                            <option value="7">ES001-ES003</option>
-                            <option value="8">PS001-PS003</option>
-                        </select>
-                    </div>
+                        <div class="item">
+                            <label for="roomnumber">Room Number</label>
+                            <select id="roomnumber">
+
+                            </select>
+                        </div>
 
                 </div>
 
@@ -93,116 +85,92 @@
 
                 </div>
 
-                <div class="columns">
-                    
-                    <!--partially done-->
-                    <div class="item">
-                        <label for="phonenumber"> Phone Number </label>
-                        <input type="text" id="mobile_code" class="form-control" placeholder="Phone Number" name="phonenumber">
+                    <div class="columns">
+                        
+                        <div class="item">
+                            <label for="idcard"> ID Card Number </label>
+                            <input type="tel" id="idcard" placeholder="ID Card Number" name="idcard">
+                        </div>
+
+                        <div class="item">
+                            <label for="email">Email Address</label>
+                            <input id="email" type="email" placeholder="Email Address"   name="email" />
+                        </div>
+
                     </div>
 
-                    <div class="item">
-                        <label for="testing"> Testing </label>
-                        <input id="testing" type="testing" placeholder="Testing" name="testing" />
+                    <div class="columns">
+
+                        <div class="item">
+                            <label for="phone"> Phone Number </label>
+                            <input type="tel" id="phone" placeholder="Phone Number" name="phone">
+                        </div>
+
                     </div>
+
+                    <div class="columns">
+
+                        <div class="item special">
+                            <label for="residentialaddress"> Residential Address </label>
+                            <input type="text" id="residentialaddress" placeholder="Full Address" name="residentialaddress">
+                        </div>
 
                 </div>
 
-            </fieldset>
-        </form>
+                    <div class="columns">
+                        <div class="item">
+                            <label for="city">City</label>
+                            <input id="city" type="text" placeholder="City"   name="city" />
+                        </div>
+                        <div class="item">
+                            <label for="zipcode"> Zip Code </label>
+                            <input type="text" id="zipcode" placeholder="Zip Code" name="zipcode">
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <div class="btn-block">
+                    <button class="btn" type="submit">
+                        Book
+                    </button>
+                </div>
+
+
+            </form>
 
     </div>
 
 
+        <!--------------- Short About -------------->
+        <!-- <h2 class="sub-title">About Prestige Co. </h2> -->
+        <div class="short-about">
+            <h2> About Prestige Co. </h2>
+            <p>Prestige Co. is a luxury hotel chain known for providing exceptional 
+                service, elegant accommodations, and world-class amenities to its 
+                guests. With a strong focus on customer satisfaction, the company has 
+                built a reputation for delivering unparalleled experiences that leave 
+                a lasting impression. Prestige Co. is committed to innovation and staying at 
+                the forefront of the hospitality industry, consistently raising the bar for what 
+                guests can expect from a luxury hotel stay.
+            </p>
+        </div>
 
-    <!--------------- Ignore First section -------------->
-    <h2 class="sub-title">---Ignore Everthing below---</h2>
+        <!--------------- Footer -------------->
+        <div class="footer">
+            <a href="https://facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://youtube.com"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+            <hr>
+            <p>Copyright &copy; 2023, Prestige Co.</p>
+        </div>
 
-    <h2 class="sub-title">Well-Appointed Room In A <br> Vibrant City</h2>
-    <p class="sub-description">Prestige Co. offers 125 rooms and suites spread over 9 floors, with a taste of luxury, and views of the city.
-        <br>Each room has its own unique charm and comes with an oversized soaking tub, or relaxation pool, offering perfection for modern 
-        <br>travellers looking for a stylish urban getaway.</p>
+        </div>
 
-    <div class="roomtype">
-
-        <div>
-            <img class="room-img" src="assets/img/room_1.png">
-            <span>
-                <h3>Single</h3>
-            </span>
-        </div>
-        <div>
-            <img  class="room-img" src="assets/img/room_1.png">
-            <span>
-                <h3>Double</h3>
-            </span>
-        </div>
-        <div>
-            <img class="room-img" src="assets/img/room_1.png">
-            <span>
-                <h3>Triple</h3>
-            </span>
-        </div>
-        <div>
-            <img class="room-img" src="assets/img/room_1.png">
-            <span>
-                <h3>Queen</h3>
-            </span>
-        </div>
-        <div>
-            <img class="room-img" src="assets/img/room_1.png">
-            <span>
-                <h3>King</h3>
-            </span>
-        </div>
-        <div>
-            <img class="room-img" src="assets/img/room_1.png">
-            <span>
-                <h3>Studio</h3>
-            </span>
-        </div>
-        <div>
-            <img class="room-img" src="assets/img/room_1.png">
-            <span>
-                <h3>Executive Suite</h3>
-            </span>
-        </div>
-        <div>
-            <img class="room-img" src="assets/img/room_1.png">
-            <span>
-                <h3>Presidential Suite</h3>
-            </span>
-        </div>
 
     </div>
 
 
-    <!--------------- Customer's Feedback section -------------->
-    <h2 class="sub-title">Customer's Feedback</h2>
-    <div class="">
-        <div>
-            <img class="room-img" src="assets/img/room_1.png" style="width: 150px">
-            <h3>Presidential Suite</h3>
-        </div>
-    </div>
-
-
-    <!--------------- Short About -------------->
-    <h2 class="sub-title">Short About</h2>
-    <div class="">
-        <div>
-            <img class="room-img" src="assets/img/room_1.png" style="width: 150px">
-            <h3>Presidential Suite</h3>
-        </div>
-    </div>
-
-    <!--------------- Footer -------------->
-    <h2 class="sub-title">Footer</h2>
-    <div class="">
-        <div>
-            <img class="room-img" src="assets/img/room_1.png" style="width: 150px">
-            <h3>Presidential Suite</h3>
-        </div>
-    </div>
-</div>
 @endsection

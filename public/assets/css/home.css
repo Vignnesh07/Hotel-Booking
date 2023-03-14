@@ -134,6 +134,24 @@ nav{
     display: block;
 }
 
+/********** Seperate Section ***********/
+.sub-title{
+    margin: 60px 0 30px;
+    font-size: 2.8vw;
+    font-weight: 700;
+    color: var(--darkcharcoal);
+    text-align: center;
+    line-height: 1.35;
+}
+
+.sub-description{
+    margin: 10px 0 30px;
+    font-size: 1vw;
+    font-weight: 400;
+    color: var(--darkcharcoal);
+    text-align: center;
+}
+
 /********** Reservation Form Section ***********/
 
 .form-box {
@@ -141,7 +159,6 @@ nav{
     justify-content: center;
     align-items: center;
     height: inherit;
-    /* padding: 20px; */
 }
 
 form, input, select, label { 
@@ -174,19 +191,20 @@ form {
 
 .columns {
     display:flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
 
-.columns div {
-    width: 100%;
-    margin-left: 10px;
-}
-
 .item {
     position: relative;
     margin: 10px 0;
+    width: 50%;
+    margin-left: 10px;
+}
+
+.special{
+    width: 100%;
 }
 
 input, select {
@@ -208,7 +226,7 @@ input {
 }
 
 select{
-    width: 82%;
+    width: 86%;
     padding: 8px;
     margin-top: 5px;
 }
@@ -227,7 +245,7 @@ select{
 
 input[type="date"] {
     padding: 8px;
-    width: 82%;
+    width: 86%;
 }
 
 input[type="date"]::-webkit-inner-spin-button {
@@ -242,15 +260,15 @@ input[type="date"]::-webkit-inner-spin-button {
 }
 
 [type="date"]::-webkit-calendar-picker-indicator {
-    right: 19%;
+    right: 15%;
     z-index: 2;
     opacity: 0;
     cursor: pointer;
 }
 
 .item i {
-    right: 19%;
-    top: 40px;
+    right: 15%;
+    top: 38px;
     z-index: 1;
 }
 
@@ -260,58 +278,85 @@ input[type="date"]::-webkit-inner-spin-button {
 }
 
 
-/* .form-control:focus {
-    color: #475F7B;
-    background-color: #FFF;
-    border-color: #5A8DEE;
-    outline: 0;
-    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
-} */
-
-
-
-/********** roomtype Section ***********/
-
-.sub-title{
-    margin: 50px 0 20px;
-    font-size: 2.8vw;
-    font-weight: 700;
-    color: var(--darkcharcoal);
-    text-align: center;
-    line-height: 1.35;
-}
-
-.sub-description{
-    margin: 10px 0 30px;
-    font-size: 1vw;
-    font-weight: 400;
-    color: var(--darkcharcoal);
+.btn-block{
+    margin-top: 20px;
     text-align: center;
 }
 
-.roomtype{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 30px;
+.btn {
+    width: 150px;
+    height: 50px;
+    border: 2px solid var(--lightblack);
+    border-radius: 45px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: white;
+    font-size: 1em;
+    font-weight: 550;
+  }
+  
+.btn:hover {
+    background: var(--lightblack);
+    color: white;
+    font-size: 1.2em;
+  }
+
+
+/********** Short About Section ***********/
+
+.short-about{
+    text-align: center;
+    margin: 80px 0;
+    color: var(--lightblack);
 }
 
-.roomtype div img{
+.short-about h2{
+    font-size: 2.3vw;
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: var(--darkcharcoal);
+}
+
+/********** Footer Section ***********/
+
+.footer{
+    margin: 80px 0 10px;
+    text-align: center;
+}
+
+.footer a{
+    text-decoration: none;
+    color: var(--lightblack);
+    font-size: 22px;
+    margin: 0 10px;
+}
+
+.footer hr{
+    background: var(--lightblack);
+    height: 1px;
     width: 100%;
-    border-radius: 10px;
-    filter: grayscale(20%);
-    opacity: 0.9;
+    border: 0;
+    margin: 20px 0;
 }
 
-.roomtype div{
+.footer p{
+    padding-bottom: 15px;
+}
+
+
+/* ----------- styling for header ----------- */
+.active{
     position: relative;
 }
 
-.roomtype div span{
+.active::after{
+    content: '';
+    background-color: var(--white);
+    width: 25px;
+    height: 2px;
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: var(--white);
+    transform: translateX(-50%);
+    bottom: -12px;
+    border-radius: 2px;
 }
-
