@@ -58,5 +58,11 @@
         @yield('content')
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="/assets/js/home.js"> </script>
+        <script src="/assets/phone/js/intlTelInput.js"> </script>
+        <script> 
+            var input = document.querySelector("#phone");
+            window.intlTelInput(input,{});
+        </script>
     </body>
 </html>
