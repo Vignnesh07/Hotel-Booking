@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view("about",'about');
-Route::view("bookings",'bookings');
-Route::view("home",'home');
-Route::view("login",'login');
+Auth::routes();
 
+Route::view("about",'about');
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login/admin');
 });
+Route::get('/login', function () {
+    return redirect('/login/admin');
+});
+
+Route::get('/login/admin', [LoginController::class, 'showAdminLoginForm']);
+Route::get('/login/clerk', [LoginController::class, 'showClerkLoginForm']);
+
+Route::post('/login/admin', [LoginController::class, 'adminLogin']);
+Route::post('/login/clerk', [LoginController::class, 'clerkLogin']);
+
+Route::group(['middleware' => 'auth:clerk'], function () {
+    Route::view('clerk', 'clerk');
+}); 
+
+Route::group(['middleware' => 'auth:admin'], function () {
+    Route::view('home', 'home');
+}); 
+
+Route::get('logout', [LoginController::class, 'logout']);
+
+// Uncomment the below line to work on the homepage for development 
+// Make sure to remove before submitting as it allows unauthenticated users 
+// to enter the home page
+// Route::view('home', 'home');

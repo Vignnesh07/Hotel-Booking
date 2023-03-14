@@ -57,9 +57,13 @@ In order to run the provided solution the following software will need to be ins
 
 ### Setup
 
-1. Fork and clone the repository
-2. Open the repository folder and install the dependencies using `yarn` or `npm install`.
-3. Run the development server using `yarn serve` or `npm serve`.
+1. Fork and clone the repository.
+2. Open the repository folder and install the dependencies using `composer install`.
+3. Set DB configurations in .env file.
+4. Run `php artisan migrate` to create MySQL database.
+5. Run `php artisan db:seed --class=AuthSeeder` to populate MySQL database for authenticate.
+6. Run the development server using `php artisan serve`.
+7. Create a new branch (based on your function name) before making changes.
 ​
 The repository contains a resources directory inside the root folder with scripts and view files; this should be the starting point for the application. Please feel free to create more views to structure the app in a logical manner.
 
