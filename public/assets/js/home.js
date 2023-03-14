@@ -8,7 +8,10 @@
 //     executive:['ES001', 'ES002', 'ES003'],
 //     presidential:['PS001', 'PS002', 'PS003']
 //   };
-  
+
+var input = document.querySelector("#phone");
+window.intlTelInput(input, {});
+
 function filterRooms() {
     // Get the selected room type
     const roomType = document.getElementById('roomtype').value;
