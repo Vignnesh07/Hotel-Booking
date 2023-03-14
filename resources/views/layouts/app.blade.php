@@ -17,6 +17,8 @@
 
         <!--Stylesheet-->
         <link rel="stylesheet" href="/assets/css/home.css" >
+        <link rel="stylesheet" href="/assets/css/about.css" >
+        <link rel="stylesheet" href="/assets/phone/css/intlTelInput.css" >
     </head>
     <body>
         <div class="header" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('/assets/img/home_bg.png');">
@@ -35,7 +37,7 @@
 
                 <div class="dropdown">
 
-                    <button class="dropbtn"> {{ Auth::user()->name }}
+                    <button class="dropbtn"> User
                         <i class="fa-solid fa-caret-down"></i>
                     </button>
 
@@ -58,5 +60,7 @@
         @yield('content')
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="/assets/phone/js/intlTelInput.js"> </script>
+        <script src="/assets/js/home.js"> </script>
     </body>
 </html>
