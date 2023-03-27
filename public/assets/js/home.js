@@ -14,95 +14,109 @@ window.intlTelInput(input, {});
 
 function filterRooms() {
     // Get the selected room type
-    const roomType = document.getElementById('roomtype').value;
-  
+    const roomType = document.getElementById("roomtype").value;
+
     // Get the room number select box and clear its options
-    const roomNumberSelect = document.getElementById('roomnumber');
-    roomNumberSelect.innerHTML = '';
-  
+    const roomNumberSelect = document.getElementById("roomnumber");
+    roomNumberSelect.innerHTML = "";
+
     // If the selected room type is "single", show room numbers S001 to S010
-    if (roomType === 'single') {
+    if (roomType === "single") {
         for (let i = 1; i <= 10; i++) {
             const roomNumber = i < 10 ? `SI00${i}` : `SI010`;
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.text = roomNumber;
             option.value = roomNumber;
             roomNumberSelect.add(option);
         }
     }
-  
+
     // If the selected room type is "double", show room numbers D001 to D010
-    else if (roomType === 'double') {
+    else if (roomType === "double") {
         for (let i = 1; i <= 10; i++) {
             const roomNumber = i < 10 ? `DO00${i}` : `DO010`;
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.text = roomNumber;
             option.value = roomNumber;
             roomNumberSelect.add(option);
         }
-    }
-  
-    else if (roomType === 'triple') {
+    } else if (roomType === "triple") {
         for (let i = 1; i <= 5; i++) {
             const roomNumber = i < 10 ? `TR00${i}` : `TRO010`;
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.text = roomNumber;
             option.value = roomNumber;
             roomNumberSelect.add(option);
         }
-    }
-
-    else if (roomType === 'queen') {
+    } else if (roomType === "queen") {
         for (let i = 1; i <= 10; i++) {
             const roomNumber = i < 10 ? `QU00${i}` : `QUO010`;
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.text = roomNumber;
             option.value = roomNumber;
             roomNumberSelect.add(option);
         }
-    }
-
-    else if (roomType === 'king') {
+    } else if (roomType === "king") {
         for (let i = 1; i <= 10; i++) {
             const roomNumber = i < 10 ? `KI00${i}` : `KI010`;
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.text = roomNumber;
             option.value = roomNumber;
             roomNumberSelect.add(option);
         }
-    }
-
-    else if (roomType === 'studio') {
+    } else if (roomType === "studio") {
         for (let i = 1; i <= 10; i++) {
             const roomNumber = i < 10 ? `ST00${i}` : `ST010`;
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.text = roomNumber;
             option.value = roomNumber;
             roomNumberSelect.add(option);
         }
-    }
-
-    else if (roomType === 'executive') {
+    } else if (roomType === "executive") {
         for (let i = 1; i <= 3; i++) {
             const roomNumber = i < 10 ? `ES00${i}` : `ES010`;
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.text = roomNumber;
             option.value = roomNumber;
             roomNumberSelect.add(option);
         }
-    }
-
-    else if (roomType === 'presidential') {
+    } else if (roomType === "presidential") {
         for (let i = 1; i <= 3; i++) {
             const roomNumber = i < 10 ? `PS00${i}` : `PS010`;
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.text = roomNumber;
             option.value = roomNumber;
             roomNumberSelect.add(option);
         }
     }
 
-
     // Show the room number select box
-    roomNumberSelect.style.display = 'block';
+    roomNumberSelect.style.display = "block";
+}
+
+/* -------------------- Checkindate & Checkoutdate----------------------------------  */
+// Get the check-in and check-out date inputs
+const checkinDateInput = document.getElementById("checkindate");
+const checkoutDateInput = document.getElementById("checkoutdate");
+
+// Listen for changes to the check-in and check-out date inputs
+checkinDateInput.addEventListener("change", updateTotalNights);
+checkoutDateInput.addEventListener("change", updateTotalNights);
+
+function updateTotalNights() {
+    // Get the check-in and check-out dates as Date objects
+    const checkinDate = new Date(checkinDateInput.value);
+    const checkoutDate = new Date(checkoutDateInput.value);
+
+    // Calculate the number of nights stayed between the check-in and check-out dates
+    const timeDifference = checkoutDate.getTime() - checkinDate.getTime();
+    const nightsStayed = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+    // Display the total nights stayed
+    const totalNightsElement = document.querySelector(
+        ".results h3:first-of-type"
+    );
+    totalNightsElement.textContent = `Total Stays: ${nightsStayed} Night${
+        nightsStayed !== 1 ? "s" : ""
+    }`;
 }

@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 Auth::routes();
 
+Route::view("bookings",'bookings');
 Route::view("about",'about');
 Route::get('/', function () {
     return redirect('/login/admin');

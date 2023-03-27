@@ -18,6 +18,7 @@
         <!--Stylesheet-->
         <link rel="stylesheet" href="/assets/css/home.css" >
         <link rel="stylesheet" href="/assets/css/about.css" >
+        <link rel="stylesheet" href="/assets/css/bookings.css" >
         <link rel="stylesheet" href="/assets/phone/css/intlTelInput.css" >
     </head>
     <body>
@@ -29,10 +30,10 @@
                 </div>
 
                 <ul class="nav-links">
-                    <li><a href='#' >Home</a></li>
-                    <li><a href="#" >Bookings</a></li>
-                    <li><a href="#" >About Us</a></li>
-                    <li><a href="#" >Contacts</a></li>
+                    <li><a href='home' >Home</a></li>
+                    <li><a href="bookings" >Bookings</a></li>
+                    <li><a href="about" >About Us</a></li>
+                    <li><a href="#" >Complains</a></li>
                 </ul>
 
                 <div class="dropdown">
@@ -62,5 +63,6 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="/assets/phone/js/intlTelInput.js"> </script>
         <script src="/assets/js/home.js"> </script>
+        <script src="/assets/js/bookings.js"> </script>
     </body>
 </html>
