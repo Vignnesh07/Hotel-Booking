@@ -78,6 +78,7 @@
 
             <fieldset>
 
+            
                 <legend>Customer Information</legend>
                 <div class="columns">
 
