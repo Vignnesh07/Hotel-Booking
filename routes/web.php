@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 Auth::routes();
 
+Route::view("bookings",'bookings');
 Route::view("about",'about');
 Route::get('/', function () {
     return redirect('/login/admin');
@@ -39,6 +40,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
 }); 
 
 Route::get('logout', [LoginController::class, 'logout']);
+
+Route::view("dashboard", 'dashboard');
 
 // Uncomment the below line to work on the homepage for development 
 // Make sure to remove before submitting as it allows unauthenticated users 
