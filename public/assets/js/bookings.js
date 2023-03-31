@@ -178,11 +178,13 @@ function generateTableRows() {
             </td>`
         ;
 
+
+
+        tbody.appendChild(newRow);
+
         if (booking.status === "history") {
             disableEditBtn(newRow);
         }
-
-        tbody.appendChild(newRow);
     });
 }
 document.addEventListener("DOMContentLoaded", () => {
@@ -222,7 +224,7 @@ function openEditOverlay(bookingId) {
     const booking = getBookingById(bookingId);
     const editBtn = document.querySelector(`[data-booking-id="${bookingId}"] .editBtn`);
     
-    if (booking && !editBtn.disabled) {
+    if (booking && booking.status !== "history") {
         document.querySelector("#editPopup #popup-fname-label").textContent = `First Name: ${booking.fName}`;
         document.querySelector("#editPopup #popup-lname-label").textContent = `Last Name: ${booking.lName}`;
         document.querySelector("#editPopup #popup-idcard-label").textContent = `ID Card Number: ${booking.idCard}`;
@@ -495,6 +497,7 @@ document.querySelector("#confirmPaymentBtn").addEventListener("click", () => {
     if (index !== -1) {
         bookings[index].status = "history";
         localStorage.setItem("bookings", JSON.stringify(bookings));
+        disableEditBtn(row); // Add this line here
     }
 
     disableEditBtn(row);
