@@ -7,7 +7,7 @@
 
     <div class="form-box">
 
-        <form>
+        <form id="submitForm" method="post">
 
             <fieldset>
 
@@ -31,7 +31,7 @@
 
                     <div class="item">
                         <label for="roomnumber">Room Number</label>
-                        <select id="roomnumber">
+                        <select id="roomnumber" name="roomnumber">
 
                         </select>
                     </div>
@@ -42,14 +42,31 @@
 
                     <div class="item">
                         <label for="checkindate">Check-in Date</label>
-                        <input id="checkindate" type="date" name="checkindate" />
-                        <i class="fas fa-calendar-alt"></i>
+                        <div class="datepicker-container">
+                            <input
+                            id="checkindate"
+                            type="text"
+                            name="checkindate"
+                            readonly
+                            placeholder="Select check-in date"
+                            />
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        
                     </div>
 
                     <div class="item">
                         <label for="checkoutdate">Check-out Date</label>
-                        <input id="checkoutdate" type="date" name="checkoutdate" />
-                        <i class="fas fa-calendar-alt"></i>
+                        <div class="datepicker-container">
+                            <input
+                            id="checkoutdate"
+                            type="text"
+                            name="checkoutdate"
+                            readonly
+                            placeholder="Select check-out date"
+                            />
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
                     </div>
 
                 </div>
@@ -57,9 +74,9 @@
                 <br>
 
                 <div class="results">
-                    <h3> Total Stays: </h3>
-                    <h3> Prices: </h3>
-                    <h3> Total Amount: </h3>
+                    <h3 id="stays">Total Stays:</h3>
+                    <h3 id="prices">Prices:</h3>
+                    <h3 id="amount">Total Amount:</h3>
                 </div>
 
                 <br>
@@ -89,7 +106,7 @@
 
                     <div class="item">
                         <label for="idcard"> ID Card Number </label>
-                        <input type="tel" id="idcard" placeholder="ID Card Number" name="idcard">
+                        <input type="text" id="idcard" placeholder="ID Card Number" name="idcard">
                     </div>
 
                     <div class="item">
@@ -112,7 +129,7 @@
 
                     <div class="item special">
                         <label for="residentialaddress"> Residential Address </label>
-                        <input type="text" id="residentialaddress" placeholder="Full Address" name="residentialaddress">
+                        <input type="text" id="residentialaddress" placeholder="Address" name="residentialaddress">
                     </div>
 
                 </div>
@@ -130,6 +147,7 @@
 
             </fieldset>
 
+            <!-- onclick="submitForm()" -->
             <div class="btn-block">
                 <button class="btn" type="submit">
                     Book
@@ -138,6 +156,33 @@
 
 
         </form>
+
+        <div id="overlay" class="overlay">
+            <div class="popup">
+
+                <h2>Booking Summary</h2>
+                <div class="confirm-box">
+                    <p class="confirm-message">
+                        Please confirm your submission:
+                    </p>
+                </div>
+
+                <div class="content">
+                    <p id="popup-name">Customer Name:</p>
+                    <p id="popup-roomtype">Room Type:</p>
+                    <p id="popup-roomnumber">Room Number:</p>
+                    <p id="popup-checkindate">Check In:</p>
+                    <p id="popup-checkoutdate">Check Out:</p>
+                    <p id="popup-stays">Total Stays:</p>
+                    <p id="popup-prices">Prices:</p>
+                    <p id="popup-amount">Total Amount:</p>
+                    <button id="confirmBtn">Confirm</button>
+                    <button id="cancelBtn">Cancel</button>
+                    <!-- <button class="close-btn" id="close-btn">Close</button> -->
+                </div>
+
+            </div>
+        </div>
 
     </div>
 
