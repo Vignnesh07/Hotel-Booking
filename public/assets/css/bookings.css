@@ -209,6 +209,7 @@ table tbody tr:last-child {
     color: white;
     border: 0;
     font-weight: 400;
+    cursor: default;
 }
 
 .pay-btn{
@@ -218,7 +219,7 @@ table tbody tr:last-child {
     color: white;
     border: 0;
     font-weight: 400;
-    cursor: default;
+    cursor: pointer;
 }
 
 .history-btn{
