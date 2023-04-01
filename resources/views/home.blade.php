@@ -1,13 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+        
+<div class="header">
+    <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('/assets/img/home_bg.png');"></div>
+    <div class="container">
+        <h1 class="text-background"> Book Luxury Stays Seamlessly </h1>
+    </div>
+</div>
+
 <div class="container">
 
     <h2 class="sub-title">Accomodation Reservations</h2>
 
     <div class="form-box">
 
-        <form id="submitForm" method="post">
+        <form id="submitReservationForm" method="post">
 
             <fieldset>
 
@@ -147,7 +155,6 @@
 
             </fieldset>
 
-            <!-- onclick="submitForm()" -->
             <div class="btn-block">
                 <button class="btn" type="submit">
                     Book
@@ -168,18 +175,20 @@
                 </div>
 
                 <div class="content">
-                    <p id="popup-name">Customer Name:</p>
-                    <p id="popup-roomtype">Room Type:</p>
-                    <p id="popup-roomnumber">Room Number:</p>
-                    <p id="popup-checkindate">Check In:</p>
-                    <p id="popup-checkoutdate">Check Out:</p>
-                    <p id="popup-stays">Total Stays:</p>
-                    <p id="popup-prices">Prices:</p>
-                    <p id="popup-amount">Total Amount:</p>
-                    <button id="confirmBtn">Confirm</button>
-                    <button id="cancelBtn">Cancel</button>
-                    <!-- <button class="close-btn" id="close-btn">Close</button> -->
+                    <p id="popup-name">Name <span></span></p>
+                    <p id="popup-roomtype">Type <span></span></p>
+                    <p id="popup-roomnumber">Room Number <span></span></p>
+                    <p id="popup-checkindate">Check In <span></span></p>
+                    <p id="popup-checkoutdate">Check Out <span></span></p>
+                    <p id="popup-stays">Total Stays <span></span></p>
+                    <p id="popup-prices"> Prices <span></span></p>
+                    <p id="popup-amount"> Total Amount <span></span></p>
                 </div>
+                <div class="content-button">
+                    <button class="confirmBtn" id="confirmBtn">Confirm</button>
+                    <button class="close-btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                
 
             </div>
         </div>
@@ -188,7 +197,6 @@
 
 
     <!--------------- Short About -------------->
-    <!-- <h2 class="sub-title">About Prestige Co. </h2> -->
     <div class="short-about">
         <h2> About Prestige Co. </h2>
         <p>Prestige Co. is a luxury hotel chain known for providing exceptional
@@ -199,17 +207,6 @@
             the forefront of the hospitality industry, consistently raising the bar for what
             guests can expect from a luxury hotel stay.
         </p>
-    </div>
-
-    <!--------------- Footer -------------->
-    <div class="footer">
-        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <hr>
-        <p>Copyright &copy; 2023, Prestige Co.</p>
     </div>
 
 </div>

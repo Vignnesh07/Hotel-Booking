@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="header">
+    <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('/assets/img/home_bg.png');"></div>
+    <div class="container">
+        <h1> Book Luxury Stays Seamlessly </h1>
+    </div>
+</div>
+
 <div class="container">
 
     <h2 class="sub-title">Well-Appointed Room In A <br> Vibrant City</h2>
@@ -70,19 +78,6 @@
             <h3>Presidential Suite</h3>
         </div>
     </div>
-
-
-    <!--------------- Footer -------------->
-    <div class="footer">
-        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <hr>
-        <p>Copyright &copy; 2023, Prestige Co.</p>
-    </div>
-
 
 </div>
 @endsection
