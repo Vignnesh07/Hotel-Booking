@@ -1,14 +1,3 @@
-// const roomNumbers = {
-//     single: ['SI001', 'SI002', 'SI003', 'SI004', 'SI005', 'SI006', 'SI007', 'SI008', 'SI009', 'DO010'],
-//     double: ['DO001', 'DO002', 'DO003', 'DO004', 'DO005', 'DO006', 'DO007', 'DO008', 'DO009', 'DO010'],
-//     triple:['TR001', 'TR002', 'TR003', 'TR004', 'TR005'],
-//     queen:['QU001', 'QU002', 'QU003', 'QU004', 'QU005', 'QU006', 'QU007', 'QU008', 'QU009', 'QU010'],
-//     king:['KI001', 'KI002', 'KI003', 'KI004', 'KI005', 'KI006', 'KI007', 'KI008', 'KI009', 'KI010'],
-//     studio:['ST001', 'ST002', 'ST003', 'ST004', 'ST005', 'ST006', 'ST007', 'ST008', 'ST009', 'ST010'],
-//     executive:['ES001', 'ES002', 'ES003'],
-//     presidential:['PS001', 'PS002', 'PS003']
-//   };
-
 var input = document.querySelector("#phone");
 window.intlTelInput(input, {});
 
@@ -94,29 +83,179 @@ function filterRooms() {
     roomNumberSelect.style.display = "block";
 }
 
-/* -------------------- Checkindate & Checkoutdate----------------------------------  */
-// Get the check-in and check-out date inputs
-const checkinDateInput = document.getElementById("checkindate");
-const checkoutDateInput = document.getElementById("checkoutdate");
 
-// Listen for changes to the check-in and check-out date inputs
-checkinDateInput.addEventListener("change", updateTotalNights);
-checkoutDateInput.addEventListener("change", updateTotalNights);
+function getLockedDays(roomNumber) {
+    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    const lockedDays = [];
 
-function updateTotalNights() {
-    // Get the check-in and check-out dates as Date objects
-    const checkinDate = new Date(checkinDateInput.value);
-    const checkoutDate = new Date(checkoutDateInput.value);
+    bookings.forEach((booking) => {
+      if (booking.roomNumber === roomNumber) {
+        const checkInDate = new Date(booking.checkInDate);
+        const checkOutDate = new Date(booking.checkOutDate);
 
-    // Calculate the number of nights stayed between the check-in and check-out dates
-    const timeDifference = checkoutDate.getTime() - checkinDate.getTime();
-    const nightsStayed = Math.ceil(timeDifference / (1000 * 3600 * 24));
-
-    // Display the total nights stayed
-    const totalNightsElement = document.querySelector(
-        ".results h3:first-of-type"
-    );
-    totalNightsElement.textContent = `Total Stays: ${nightsStayed} Night${
-        nightsStayed !== 1 ? "s" : ""
-    }`;
+        for (let d = checkInDate; d < checkOutDate; d.setDate(d.getDate() + 1)) {
+          lockedDays.push(new Date(d).toISOString().split("T")[0]);
+        }
+      }
+    });
+    return lockedDays;
 }
+
+/* -------------------- Checkindate & Checkoutdate & PopUp----------------------------------  */
+    // Run the code inside this function when the DOM is ready
+    document.addEventListener("DOMContentLoaded", () => {
+    // Get references to the check-in and check-out date input fields
+    const checkinDateInput = document.getElementById("checkindate");
+    const checkoutDateInput = document.getElementById("checkoutdate");
+
+    const initialRoomNumber = document.getElementById("roomnumber").options[0]?.value || "";
+    const initialLockedDays = getLockedDays(initialRoomNumber);
+    const picker = new Litepicker({
+        element: checkinDateInput,
+        elementEnd: checkoutDateInput,
+        singleMode: false,
+        numberOfMonths: 2,
+        numberOfColumns: 2,
+        format: "YYYY-MM-DD",
+        minDate: new Date(),
+        lockDays: initialLockedDays,
+        tooltipText: {
+        one: "night",
+        other: "days",
+        },
+    });
+
+    // update total nights when the user selects a date
+    picker.on("selected", () => {
+        updateTotalNights();
+    });
+
+    // Calculate the total number of nights between the check-in and check-out dates
+    function updateTotalNights() {
+            const checkinDate = new Date(checkinDateInput.value);
+            const checkoutDate = new Date(checkoutDateInput.value);
+            const totalNights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
+
+            if (!isNaN(totalNights) && totalNights > 0) {
+                const roomType = document.getElementById("roomtype").value;
+                let price;
+
+                if (roomType === "single") {
+                    price = 150;
+                } else if (roomType === "double") {
+                    price = 250;
+                }else if (roomType === "triple") {
+                    price = 350;
+                }else if (roomType === "queen") {
+                    price = 250;
+                }else if (roomType === "king") {
+                    price = 300;
+                }else if (roomType === "studio") {
+                    price = 400;
+                }else if (roomType === "executive") {
+                    price = 600;
+                }else if (roomType === "presidential") {
+                    price = 1000;
+                }
+
+                const amount = price * totalNights;
+
+                document.getElementById("stays").textContent = `Total Stays: ${totalNights} nights`;
+                document.getElementById("prices").textContent = `Prices: $${price} x ${totalNights} nights`;
+                document.getElementById("amount").textContent = `Total Amount: $${amount}`;
+            } else {
+                document.getElementById("stays").textContent = "Total Stays:";
+                document.getElementById("prices").textContent = "Prices:";
+                document.getElementById("amount").textContent = "Total Amount:";
+            }
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const roomNumber = roomnumber.value;
+            const checkInDate = checkindate.value;
+            const checkOutDate = checkoutdate.value;
+            const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+            const hasExistingBooking = bookings.some((booking) =>
+                booking.roomNumber === roomNumber &&
+                ((checkInDate >= booking.checkInDate &&
+                checkInDate < booking.checkOutDate) ||
+                (checkOutDate > booking.checkInDate &&
+                    checkOutDate <= booking.checkOutDate))
+            );
+
+            if (hasExistingBooking) {
+                alert("This room is already booked for the selected dates.");
+            return;
+            }
+
+            document.getElementById("popup-name").textContent = `Customer Name: ${fname.value} ${lname.value}`;
+            document.getElementById("popup-roomtype").textContent = `Room Type: ${roomtype.value.charAt(0).toUpperCase() + roomtype.value.slice(1)}`;
+            document.getElementById("popup-roomnumber").textContent = `Room Number: ${roomnumber.value}`;
+            document.getElementById("popup-checkindate").textContent = `Check In: ${checkinDateInput.value}`;
+            document.getElementById("popup-checkoutdate").textContent = `Check Out: ${checkoutDateInput.value}`;
+            document.getElementById("popup-stays").textContent = document.getElementById("stays").textContent;
+            document.getElementById("popup-prices").textContent = document.getElementById("prices").textContent;
+            document.getElementById("popup-amount").textContent = document.getElementById("amount").textContent;
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        // Inside the handleConfirm function
+        function handleConfirm() {
+            const totalStaysText = document.getElementById("stays").textContent;
+            const pricesText = document.getElementById("prices").textContent;
+            const amountText = document.getElementById("amount").textContent;
+
+            const totalStays = parseInt(totalStaysText.match(/(\d+)/)[0], 10);
+            const prices = parseInt(pricesText.match(/\$(\d+)/)[1], 10);
+            const amount = parseInt(amountText.match(/\$(\d+)/)[1], 10);
+            const phoneNumber = phone.value.replace('+', '');
+
+            const newBooking = {
+                fName: fname.value,
+                lName: lname.value,
+                idCard: idcard.value,
+                emailAddress: email.value,
+                phoneNumber,
+                residentialAddress: residentialaddress.value,
+                city: city.value,
+                zipCode: zipcode.value,
+                bookingId: Date.now().toString(),
+                roomNumber: roomnumber.value,
+                roomType: roomtype.value,
+                checkInDate: checkindate.value,
+                checkOutDate: checkoutdate.value,
+                totalStays,
+                prices,
+                amount,
+            };
+
+            // Retrieve existing bookings from local storage or create a new array
+            let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+            // Add the new booking to the array and save it to local storage
+            bookings.push(newBooking);
+            localStorage.setItem("bookings", JSON.stringify(bookings));
+
+            picker.setOptions({ lockDays: getLockedDays(roomnumber.value) });
+
+            // Redirect to view.html
+            window.location.href = "bookings";
+        }
+
+        function handleCancel() {
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        // Add event listeners to the form and confirmation buttons
+        document.getElementById("submitForm").addEventListener("submit", handleFormSubmit);
+        document.getElementById("confirmBtn").addEventListener("click", handleConfirm);
+        document.getElementById("cancelBtn").addEventListener("click", handleCancel);
+        document.getElementById("roomnumber").addEventListener("change", () => {
+            const roomNumber = document.getElementById("roomnumber").value;
+            const lockedDays = getLockedDays(roomNumber);
+            picker.setOptions({ lockDays: lockedDays });
+        });
+    });
