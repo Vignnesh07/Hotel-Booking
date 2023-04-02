@@ -9,8 +9,10 @@ const sr = ScrollReveal({
 
 
 // -------------------Home-------------------- 
-sr.reveal('.text-background', {delay:300, origin:'bottom'})
-sr.reveal('nav', {delay:50, origin:'top'})
+
+sr.reveal('.nav-links', {delay:50, origin:'top'})
+sr.reveal('.logo-title', {delay:50, origin:'top'})
+sr.reveal('.text-background', {delay:500, origin:'bottom'})
 
 // // -------- Bookings----------- 
 // sr.reveal('.left', {delay:100, origin:'left'})
