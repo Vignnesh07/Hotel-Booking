@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 
 /*
@@ -16,7 +17,14 @@ use App\Http\Controllers\Auth\LoginController;
 
 Auth::routes();
 
+Route::view("complaints",'complaints');
 Route::view("bookings",'bookings');
+Route::get('/bookings-table', function () {
+    return redirect('/bookings#bookings-table');
+});
+Route::get('/reservation-form', function () {
+    return redirect('/home#submitReservationForm');
+});
 Route::view("about",'about');
 Route::get('/', function () {
     return redirect('/login/admin');

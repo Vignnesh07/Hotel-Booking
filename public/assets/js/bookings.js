@@ -1,17 +1,20 @@
-// --------------- Table --------------------------------
-// Get DOM elements
-const select = document.getElementById("entries-per-page");
-const table = document.getElementById("my-table");
+// --------------- Table Pagination and Search -----------------
+
+// Get DOM elements for table pagination and search
+const select = document.getElementById("entries-per-page-bookings");
+const table = document.getElementById("bookings-table");
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 const pageNumberDiv = document.getElementById("page-numbers");
-const searchButton = document.querySelector(".search-btn");
-const searchInput = document.querySelector(".search-bar");
+const searchButton = document.getElementById("search-btn-bookings");
+const searchInput = document.getElementById("search-bar-bookings");
+
+// Function to get all table rows
 function getTableRows() {
     return table.querySelectorAll("tbody tr");
 }
 
-// Initialize variables
+// Initialize variables for pagination
 let currentPage = 1;
 let rowsPerPage = parseInt(select.value);
 let totalPages = Math.ceil(getTableRows().length / rowsPerPage);
@@ -20,7 +23,7 @@ let searchInputValue = "";
 // Update the table when the page loads
 updateTable(currentPage, rowsPerPage);
 
-// Add event listeners
+// Add event listeners for pagination and search
 previousButton.addEventListener("click", () => {
     currentPage--;
     updateTable(currentPage, rowsPerPage, searchInputValue.toLowerCase());
@@ -44,6 +47,7 @@ searchButton.addEventListener("click", () => {
     updateTable(currentPage, rowsPerPage, searchInputValue);
 });
 
+// Function to update the table based on the current page, rows per page, and search input value
 function updateTable(currentPage, rowsPerPage, searchInputValue = "") {
     const startIndex = (currentPage - 1) * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
@@ -54,12 +58,15 @@ function updateTable(currentPage, rowsPerPage, searchInputValue = "") {
     for (let i = 0; i < getTableRows().length; i++) {
         const row = getTableRows()[i];
         const columns = row.querySelectorAll("td");
+
         // Search functionality
         if (searchInputValue !== "") {
             let foundMatch = false;
+
             // Loop through the columns
             for (let j = 0; j < columns.length; j++) {
                 const column = columns[j];
+
                 // Check if the searchInputValue matches any column value
                 if (
                     column.textContent.toLowerCase().includes(searchInputValue)
@@ -68,6 +75,7 @@ function updateTable(currentPage, rowsPerPage, searchInputValue = "") {
                     break;
                 }
             }
+
             // Hide row if no match found
             if (!foundMatch) {
                 row.style.display = "none";
@@ -75,8 +83,10 @@ function updateTable(currentPage, rowsPerPage, searchInputValue = "") {
             }
         }
 
-        totalSearchResults++; // Increment the total search results count
+        // Increment the total search results count
+        totalSearchResults++; 
         counter++;
+
         // Hide rows that are not in the current page
         if (counter > endIndex) {
             row.style.display = "none";
@@ -116,12 +126,26 @@ function updateTable(currentPage, rowsPerPage, searchInputValue = "") {
     }
 }
 
+//navigate back to home/reservation
+document.getElementById("backToReserve").addEventListener("click", function() {
+    window.location.href = "/reservation-form";
+});
+
 // --------------- Button Actions --------------------------------
+// Query DOM elements for buttons
 const bookedBtns = document.querySelectorAll(".booked-btn");
 const payBtns = document.querySelectorAll(".pay-btn");
+const deleteBtns = document.querySelectorAll(".delete-btn");
 const historyBtns = document.querySelectorAll(".history-btn");
 
 
+// Function to get booking by its ID from localStorage
+function getBookingById(bookingId) {
+    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    return bookings.find((booking) => booking.bookingId === bookingId);
+}
+
+// Function to disable the edit button in a row 
 function disableEditBtn(row) {
     const editBtn = row.querySelector(".editBtn");
     editBtn.disabled = true;
@@ -130,21 +154,23 @@ function disableEditBtn(row) {
 }
 
 
+// Function to generate table rows with booking data
 function generateTableRows() {
     const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-    const tbody = document.querySelector("#my-table tbody");
+    const tbody = document.querySelector("#bookings-table tbody");
     tbody.innerHTML = ""; // Clear the tbody to avoid duplicate rows when regenerating the table
 
     // Sort the bookings by check-in date
     bookings.sort((a, b) => new Date(a.checkInDate) - new Date(b.checkInDate));
 
+    // Iterate through the bookings and create a new row for each booking
     bookings.forEach((booking) => {
         const newRow = document.createElement("tr");
 
         newRow.innerHTML = `
-            <td class="column1">${booking.bookingId}</td>
-            <td class="column2">${booking.roomNumber}</td>
-            <td class="column3">${
+            <td class="bookings-column1" id="c-bookings1">${booking.bookingId}</td>
+            <td class="bookings-column2" id="c-bookings2">${booking.roomNumber}</td>
+            <td class="bookings-column3" id="c-bookings3">${
                 booking.roomType === "single"
                 ? "Single Room"
                 : booking.roomType === "double"
@@ -161,19 +187,19 @@ function generateTableRows() {
                 ? "Executive Suite"
                 : "Presidential Suite"
             }</td>
-            <td class="column4">${booking.status === "history" ? "<button class='history-btn bookings-btn'>History</button>": "<button class='booked-btn bookings-btn'>Booked</button>"}</td>
-            <td class="column5">${booking.checkInDate}</td>
-            <td class="column6">${booking.checkOutDate}</td>
-            <td class="column7">${
+            <td class="bookings-column4" id="c-bookings4">${booking.status === "history" ? "<button class='history-btn bookings-btn'>History</button>": "<button class='booked-btn bookings-btn'>Booked</button>"}</td>
+            <td class="bookings-column5" id="c-bookings5">${booking.checkInDate}</td>
+            <td class="bookings-column6" id="c-bookings6">${booking.checkOutDate}</td>
+            <td class="bookings-column7" id="c-bookings7">${
                 booking.status === "history"
                 ? "-"
                 : "<button class='pay-btn bookings-btn'>Pay</button>"
             }</td>
-            <td class="column8">
+            <td class="bookings-column8" id="c-bookings8">
                 <div class="actions">
                 <button class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
                 <button class="viewBtn"><i class="fa-solid fa-eye"></i></button>
-                <button class="delete-btn"><i class="fa-sharp fa-solid fa-trash"></i></button>
+                <button class="delete-btn"><i class="fa-sharp fa-solid fa-trash delete-btn"></i></button>
                 </div>
             </td>`
         ;
@@ -182,57 +208,97 @@ function generateTableRows() {
 
         tbody.appendChild(newRow);
 
+        // Disable the edit button if the booking status is "history"
         if (booking.status === "history") {
             disableEditBtn(newRow);
         }
     });
 }
+
+// Event listener for when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
+    // Generate table rows with booking data and update the table with pagination
     generateTableRows();
     updateTable(currentPage, rowsPerPage);
 });
 
 
-document.querySelector("#my-table").addEventListener("click", (event) => {
-    if (event.target.closest(".delete-btn")) {
-        const rowToDelete = event.target.closest("tr");
-        const bookingId = rowToDelete.querySelector(".column1").textContent;
 
-        let bookings = JSON.parse(localStorage.getItem("bookings"));
-        bookings = bookings.filter((booking) => booking.bookingId !== bookingId);
+// --------------- DELETE --------------------------------
+// Add event listener to Delete buttons
+document.querySelector("#bookings-table").addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete-btn")) {
+        const deleteBtn = event.target;
+        document.querySelector("#deleteConfirmationOverlay").style.display ="block";
+        document.querySelector("#deleteConfirmationOverlay").dataset.rowIndex = deleteBtn.closest("tr").rowIndex; // Store the rowIndex
+    }
+});
+
+// Add event listener to confirm Delete table row with the selected booking id
+document.querySelector("#confirmDeleteBtn").addEventListener("click", () => {
+    const rowIndex = document.querySelector("#deleteConfirmationOverlay").dataset.rowIndex;
+    const row = document.querySelector("#bookings-table").rows[rowIndex];
+
+    const bookingId = row.querySelector("#c-bookings1").textContent;
+    let bookings = JSON.parse(localStorage.getItem("bookings"));
+    const index = bookings.findIndex(
+        (booking) => booking.bookingId === bookingId
+    );
+
+    if (index !== -1) {
+        bookings.splice(index, 1); // Remove the booking from the array
         localStorage.setItem("bookings", JSON.stringify(bookings));
-        rowToDelete.remove();
+        row.remove();
         generateTableRows();
         updateTable(currentPage, rowsPerPage);
     }
+
+    document.querySelector("#deleteConfirmationOverlay").style.display = "none";
+    
 });
 
-document.querySelector("#my-table").addEventListener("click", (event) => {
+// Add event listener to cancel Delete table row with the selected booking id
+//just close the overlay
+document.querySelector("#deleteCancelBtn").addEventListener("click", () => {
+    document.querySelector("#deleteConfirmationOverlay").style.display = "none";
+});
+
+
+
+
+
+// -------------------- View, History, Edit, --------------------------------
+
+// Add event listener to handle clicks on the bookings table
+document.querySelector("#bookings-table").addEventListener("click", (event) => {
+    // Check if the clicked element is the edit button or its child elements
     if (event.target.closest(".editBtn")) {
-        const bookingId = event.target.closest("tr").querySelector(".column1").textContent;
+        // Get the booking ID from the row that contains the clicked button
+        const bookingId = event.target.closest("tr").querySelector("#c-bookings1").textContent;
         openEditOverlay(bookingId);
     }
-    if (event.target.closest(".viewBtn")) {const bookingId = event.target.closest("tr").querySelector(".column1").textContent;
+    if (event.target.closest(".viewBtn")) {const bookingId = event.target.closest("tr").querySelector("#c-bookings1").textContent;
         openViewOverlay(bookingId);
     }
-    if (event.target.closest(".history-btn")) {const bookingId = event.target.closest("tr").querySelector(".column1").textContent;
+    if (event.target.closest(".history-btn")) {const bookingId = event.target.closest("tr").querySelector("#c-bookings1").textContent;
         openHistoryOverlay(bookingId);
     }
 });
+
 
 function openEditOverlay(bookingId) {
     const booking = getBookingById(bookingId);
     const editBtn = document.querySelector(`[data-booking-id="${bookingId}"] .editBtn`);
     
     if (booking && booking.status !== "history") {
-        document.querySelector("#editPopup #popup-fname-label").textContent = `First Name: ${booking.fName}`;
-        document.querySelector("#editPopup #popup-lname-label").textContent = `Last Name: ${booking.lName}`;
-        document.querySelector("#editPopup #popup-idcard-label").textContent = `ID Card Number: ${booking.idCard}`;
-        document.querySelector("#editPopup #popup-email-label").textContent = `Email Address: ${booking.emailAddress}`;
-        document.querySelector("#editPopup #popup-phonenumber-label").textContent = `Phone Number: +${booking.phoneNumber}`;
-        document.querySelector("#editPopup #popup-residentialaddress-label").textContent = `Residential Address: ${booking.residentialAddress}`;
-        document.querySelector("#editPopup #popup-city-label").textContent = `City: ${booking.city}`;
-        document.querySelector("#editPopup #popup-zipcode-label").textContent = `Zip Code: ${booking.zipCode}`;
+        document.querySelector("#editPopup #popup-fname-label").querySelector('span').textContent= `${booking.fName}`;
+        document.querySelector("#editPopup #popup-lname-label").querySelector('span').textContent= `${booking.lName}`;
+        document.querySelector("#editPopup #popup-idcard-label").querySelector('span').textContent= `${booking.idCard}`;
+        document.querySelector("#editPopup #popup-email-label").querySelector('span').textContent= `${booking.emailAddress}`;
+        document.querySelector("#editPopup #popup-phonenumber-label").querySelector('span').textContent = `+${booking.phoneNumber}`;
+        document.querySelector("#editPopup #popup-residentialaddress-label").querySelector('span').textContent = `${booking.residentialAddress}`;
+        document.querySelector("#editPopup #popup-city-label").querySelector('span').textContent = `${booking.city}`;
+        document.querySelector("#editPopup #popup-zipcode-label").querySelector('span').textContent = `${booking.zipCode}`;
 
         document.querySelector("#editOverlay").style.display = "block";
         document.querySelector("#editOverlay").dataset.bookingId = bookingId; // Store the bookingId
@@ -242,23 +308,24 @@ function openEditOverlay(bookingId) {
 function openViewOverlay(bookingId) {
     const booking = getBookingById(bookingId);
     if (booking) {
-        document.querySelector("#viewPopup #popup-customername").textContent = `Customer Name: ${booking.fName} ${booking.lName}`;
-        document.querySelector("#viewPopup #popup-idcardnumber").textContent = `ID Card Number: ${booking.idCard}`;
-        document.querySelector("#viewPopup #popup-emailaddress").textContent = `Email Address: ${booking.emailAddress}`;
-        document.querySelector("#viewPopup #popup-phonenumber").textContent = `Phone Number: +${booking.phoneNumber}`;
-        document.querySelector("#viewPopup #popup-residentialaddress").textContent = `Residential Address: ${booking.residentialAddress}`;
-        document.querySelector("#viewPopup #popup-city").textContent = `City: ${booking.city}`;
-        document.querySelector("#viewPopup #popup-zipcode").textContent = `Zip Code: ${booking.zipCode}`;
-        document.querySelector("#viewPopup #popup-amount").textContent = `Total Amount: $${booking.amount}`;
+        document.querySelector("#viewPopup #popup-customername").querySelector('span').textContent = `${booking.fName} ${booking.lName}`;
+        document.querySelector("#viewPopup #popup-idcardnumber").querySelector('span').textContent = `${booking.idCard}`;
+        document.querySelector("#viewPopup #popup-emailaddress").querySelector('span').textContent = `${booking.emailAddress}`;
+        document.querySelector("#viewPopup #popup-phonenumber").querySelector('span').textContent = `+${booking.phoneNumber}`;
+        document.querySelector("#viewPopup #popup-residentialaddress").querySelector('span').textContent = `${booking.residentialAddress}`;
+        document.querySelector("#viewPopup #popup-city").querySelector('span').textContent = `${booking.city}`;
+        document.querySelector("#viewPopup #popup-zipcode").querySelector('span').textContent = `${booking.zipCode}`;
+        document.querySelector("#viewPopup #popup-amount").querySelector('span').textContent = `$${booking.amount}`;
         document.querySelector("#viewOverlay").style.display = "block";
     }
 }
 
+// the overlay will only appear after finish payment, the booked will become history
 function openHistoryOverlay(bookingId) {
     const booking = getBookingById(bookingId);
     if (booking) {
-        document.querySelector("#historyPopup #popup-customername").textContent = `Customer Name: ${booking.fName} ${booking.lName}`;
-        document.querySelector("#historyPopup #popup-roomtype").textContent = `Room Type: ${
+        document.querySelector("#historyPopup #popup-customername").querySelector('span').textContent = `${booking.fName} ${booking.lName}`;
+        document.querySelector("#historyPopup #popup-roomtype").querySelector('span').textContent = `${
             booking.roomType === "single"
             ? "Single Room"
             : booking.roomType === "double"
@@ -275,12 +342,14 @@ function openHistoryOverlay(bookingId) {
             ? "Executive Suite"
             : "Presidential Suite"
         }`;
-        document.querySelector("#historyPopup #popup-roomnumber").textContent = `Room Number: ${booking.roomNumber}`;
-        document.querySelector("#historyPopup #popup-checkindate").textContent = `Check In: ${booking.checkInDate}`;
-        document.querySelector("#historyPopup #popup-checkoutdate").textContent = `Check Out: ${booking.checkOutDate}`;
-        document.querySelector("#historyPopup #popup-stays").textContent = `Total Stays: ${booking.totalStays} Nights`;
-        document.querySelector("#historyPopup #popup-prices").textContent = `Prices: $${booking.prices} x ${booking.totalStays} Nights`;
-        document.querySelector("#historyPopup #popup-amount").textContent = `Total Amount: $${booking.amount}`;
+
+        document.querySelector("#historyPopup #popup-roomnumber").querySelector('span').textContent = `${booking.roomNumber}`;
+        document.querySelector("#historyPopup #popup-checkindate").querySelector('span').textContent = `${booking.checkInDate}`;
+        document.querySelector("#historyPopup #popup-checkoutdate").querySelector('span').textContent = `${booking.checkOutDate}`;
+        document.querySelector("#historyPopup #popup-stays").querySelector('span').textContent = `${booking.totalStays} nights`;
+        document.querySelector("#historyPopup #popup-prices").querySelector('span').textContent = `$${booking.prices} x ${booking.totalStays} nights`;
+        document.querySelector("#historyPopup #popup-amount").querySelector('span').textContent = `$${booking.amount}`;
+
         document.querySelector("#historyOverlay").style.display = "block";
     }
 }
@@ -297,11 +366,10 @@ function closeHistoryOverlay() {
     document.querySelector("#historyOverlay").style.display = "none";
 }
 
-function getBookingById(bookingId) {
-    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-    return bookings.find((booking) => booking.bookingId === bookingId);
-}
 
+
+// -------------------- Edit Save Button --------------------------------
+//edit save button is in the edit overlay to save modified input
 document.querySelector("#editSaveBtn").addEventListener("click", () => {
     const bookingId = document.querySelector("#editOverlay").dataset.bookingId;
     let bookings = JSON.parse(localStorage.getItem("bookings"));
@@ -320,7 +388,6 @@ document.querySelector("#editSaveBtn").addEventListener("click", () => {
         const zipCodeInput = document.querySelector("#editPopup #popup-zipcode-input");
         
         // Check which fields were edited and update only those fields
-
         if (fnameInput.style.display !== "none" && fnameInput.value !== "") {
                 bookings[index].fName = fnameInput.value;
             toggleEdit("fname"); 
@@ -360,7 +427,8 @@ document.querySelector("#editSaveBtn").addEventListener("click", () => {
     closeEditOverlay();
 });
 
-
+//when click cancel, everything will reset back to its original state 
+// like how you opened the edit, eventhough if u edited halfway
 function resetEditOverlay() {
 
     const fnameInput = document.querySelector("#editPopup #popup-fname-input");
@@ -458,22 +526,24 @@ document.querySelector("#editZipCodeIcon").addEventListener("click", () => {
 });
 
 
-
+// Function to toggle the display state of the label and input elements for a specific field
 function toggleEdit(field) {
+    // Select the label and input elements by their respective IDs
     const label = document.querySelector(`#editPopup #popup-${field}-label`);
     const input = document.querySelector(`#editPopup #popup-${field}-input`);
 
-    label.style.display =
-        label.style.display === "none" ? "inline" : "none";
-    input.style.display =
-        input.style.display === "none" ? "inline" : "none";
+    // Toggle the display state of the label&input element between "none" and "inline"
+    label.style.display = label.style.display === "none" ? "inline" : "none";
+    input.style.display = input.style.display === "none" ? "inline" : "none";
+
+     // Set the input value to the label's text content, excluding the field name
     input.value = label.textContent.split(": ")[1];
 }
 
 
 // --------------- Payment --------------------------------
 // Add event listener to Pay buttons
-document.querySelector("#my-table").addEventListener("click", (event) => {
+document.querySelector("#bookings-table").addEventListener("click", (event) => {
     if (event.target.classList.contains("pay-btn")) {
         const payBtn = event.target;
         document.querySelector("#paymentConfirmationOverlay").style.display ="block";
@@ -481,14 +551,15 @@ document.querySelector("#my-table").addEventListener("click", (event) => {
     }
 });
 
+// After clicking confirm payment button, the booked will become history and pay button will become "-"
 document.querySelector("#confirmPaymentBtn").addEventListener("click", () => {
     const rowIndex = document.querySelector("#paymentConfirmationOverlay").dataset.rowIndex;
-    const row = document.querySelector("#my-table").rows[rowIndex];
+    const row = document.querySelector("#bookings-table").rows[rowIndex];
 
-    row.querySelector(".column7").innerHTML = "-";
-    row.querySelector(".column4").innerHTML ="<button class='history-btn bookings-btn'>History</button>";
+    row.querySelector("#c-bookings7").innerHTML = "-";
+    row.querySelector("#c-bookings4").innerHTML ="<button class='history-btn bookings-btn'>History</button>";
 
-    const bookingId = row.querySelector(".column1").textContent;
+    const bookingId = row.querySelector("#c-bookings1").textContent;
     let bookings = JSON.parse(localStorage.getItem("bookings"));
     const index = bookings.findIndex(
         (booking) => booking.bookingId === bookingId
@@ -497,7 +568,7 @@ document.querySelector("#confirmPaymentBtn").addEventListener("click", () => {
     if (index !== -1) {
         bookings[index].status = "history";
         localStorage.setItem("bookings", JSON.stringify(bookings));
-        disableEditBtn(row); // Add this line here
+        disableEditBtn(row); 
     }
 
     disableEditBtn(row);
@@ -509,5 +580,7 @@ document.querySelector("#confirmPaymentBtn").addEventListener("click", () => {
 document.querySelector("#paymentCancelBtn").addEventListener("click", () => {
     document.querySelector("#paymentConfirmationOverlay").style.display = "none";
 });
+
+
 
 
