@@ -14,6 +14,7 @@ sr.reveal('.nav-links', {delay:50, origin:'top'})
 sr.reveal('.logo-title', {delay:50, origin:'top'})
 sr.reveal('.text-background', {delay:500, origin:'bottom'})
 
+
 // // -------- Bookings----------- 
 // sr.reveal('.left', {delay:100, origin:'left'})
 // sr.reveal('.right', {delay:100, origin:'right'})
