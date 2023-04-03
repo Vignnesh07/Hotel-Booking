@@ -16,19 +16,15 @@ class AuthSeeder extends Seeder {
     public function run(): void
     {
         DB::table('admins') -> insert([
-            Admin::create([
-                'name' => 'Admin',
-                'email' => 'admin@gmail.com',
-                'password' => Hash::make('123456'),
-            ]),
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('123456'),
         ]);
 
         DB::table('clerks') -> insert([
-            Clerk::create([
-                'name' => 'Clerk',
-                'email' => 'clerk@gmail.com',
-                'password' => Hash::make('123456'),
-            ]),
+            'name' => 'Clerk',
+            'email' => 'clerk@gmail.com',
+            'password' => Hash::make('123456'),
         ]);
     }
 }
