@@ -18,6 +18,44 @@ use App\Http\Controllers\Auth\LoginController;
 
 Auth::routes();
 
+// Completed routes 
+
+/* Initial route */
+Route::get('/', function () {
+    return redirect('/login/admin');
+});
+
+/* Login Routes */
+// Short-handed login route
+Route::get('/login', function () {
+    return redirect('/login/admin');
+});
+
+// Admin login routes
+Route::get('/login/admin', [LoginController::class, 'showAdminLoginForm']);
+Route::post('/login/admin', [LoginController::class, 'adminLogin']);
+
+// Clerk login routes
+Route::get('/login/clerk', [LoginController::class, 'showClerkLoginForm']);
+Route::post('/login/clerk', [LoginController::class, 'clerkLogin']);
+
+/* Clerk complaints routes */
+Route::get('/complaints', [ComplaintController::class, 'viewComplaints']);
+Route::post('/complaints', [ComplaintController::class, 'addComplaint']);
+
+/* Route Middlewares */
+Route::group(['middleware' => 'auth:clerk'], function () {
+    Route::view('/home', 'home');
+}); 
+
+Route::group(['middleware' => 'auth:admin'], function () {
+    Route::view('/admin/dashboard', 'dashboard');
+}); 
+
+/* Logout route */
+Route::get('logout', [LoginController::class, 'logout']);
+
+// Incompleted routes 
 Route::view("clerkProfile",'clerkProfile');
 Route::view("bookings",'bookings');
 Route::get('/bookings-table', function () {
@@ -27,40 +65,9 @@ Route::get('/reservation-form', function () {
     return redirect('/home#submitReservationForm');
 });
 Route::view("about",'about');
-Route::get('/', function () {
-    return redirect('/login/admin');
-});
-Route::get('/login', function () {
-    return redirect('/login/admin');
-});
-
-Route::get('/login/admin', [LoginController::class, 'showAdminLoginForm']);
-Route::get('/login/clerk', [LoginController::class, 'showClerkLoginForm']);
-
-Route::post('/login/admin', [LoginController::class, 'adminLogin']);
-Route::post('/login/clerk', [LoginController::class, 'clerkLogin']);
-
-Route::group(['middleware' => 'auth:clerk'], function () {
-    Route::view('clerk', 'clerk');
-}); 
-
-Route::group(['middleware' => 'auth:admin'], function () {
-    Route::view('home', 'home');
-}); 
-
-Route::get('logout', [LoginController::class, 'logout']);
-
-Route::post("complaints", [ComplaintController::class, 'addComplaint']);
-Route::get("complaints", [ComplaintController::class, 'viewComplaints']);
-
-Route::view("/admin/dashboard", 'dashboard');
-
-Route::view('admin/staff', 'staff');
-
+Route::view('/admin/staff', 'staff');
 Route::view("/admin/bookings",'adminBooking');
-
 Route::view("/admin/complaint",'adminComplaint');
-
 Route::view('/admin/profile', 'adminProfile');
 
 // Uncomment the below line to work on the homepage for development 

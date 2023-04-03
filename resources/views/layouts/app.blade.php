@@ -47,7 +47,6 @@
             </ul>
 
             <div class="dropdown">
-
                 <button class="dropbtn"> User
                     <i class="fa-solid fa-caret-down"></i>
                 </button>

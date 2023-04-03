@@ -36,7 +36,7 @@ class LoginController extends Controller {
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        // $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
         $this->middleware('guest:clerk')->except('logout');
     }
@@ -52,7 +52,7 @@ class LoginController extends Controller {
         ]);
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->intended('/home');
+            return redirect()->intended('/admin/dashboard');
         }
         return back()->withInput($request->only('email', 'remember'));
     }
@@ -68,7 +68,7 @@ class LoginController extends Controller {
         ]);
 
         if (Auth::guard('clerk')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->intended('/clerk');
+            return redirect()->intended('/home');
         }
         return back()->withInput($request->only('email', 'remember'));
     }
