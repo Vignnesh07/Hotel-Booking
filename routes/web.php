@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\Auth\LoginController;
 
 /*
@@ -18,7 +19,6 @@ use App\Http\Controllers\Auth\LoginController;
 Auth::routes();
 
 Route::view("clerkProfile",'clerkProfile');
-Route::view("complaints",'complaints');
 Route::view("bookings",'bookings');
 Route::get('/bookings-table', function () {
     return redirect('/bookings#bookings-table');
@@ -49,6 +49,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
 }); 
 
 Route::get('logout', [LoginController::class, 'logout']);
+
+Route::post("complaints", [ComplaintController::class, 'addComplaint']);
+Route::get("complaints", [ComplaintController::class, 'viewComplaints']);
 
 Route::view("/admin/dashboard", 'dashboard');
 

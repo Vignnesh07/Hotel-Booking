@@ -16,62 +16,70 @@
     <div class="container-all-complaint">
         <div class="container-complaint-form">
             
-            <form id="submitComplaintForm">
+            <form method="POST" label="{{ __('Submit') }}" id="submitComplaintForm">
+                @csrf
                 <h3>Complaint Form</h3>
 
                 <hr>
 
                 <div class="columns c-column">
                     <div class="item">
-                        <label for="cName">Complaint Name:</label>
-                        <input type="text" name="cName" placeholder="Complaint Name" />
+                        <label for="name">Your Name:</label>
+                        <input type="text" name="name" placeholder="Your Name" required/>
                     </div>
 
                     <div class="item">
-                        <label for="cType">Complaint Type:</label>
-                        <input type="text" name="cType" placeholder="Complaint Type" />
+                        <label for="roomID">Room Number:</label>
+                        <input type="text" name="roomID" placeholder="Room Number" required/>
                     </div>
                 </div>
                 <!-- FOR ERROR -->
                 <div class="columns ">
-                    <!-- <div class="error-span">
-                            <span class="invalid-feedback" role="alert">
-                                <strong class="error-message">
-                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                    Please fill in the required fill
-                                </strong>
-                            </span>
-                    </div>
+                    @error('name')
                     <div class="error-span">
-                            <span class="invalid-feedback" role="alert">
-                                <strong class="error-message">
-                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                    Please fill in the required fill
-                                </strong>
-                            </span>
-                    </div> -->
+                        <span class="invalid-feedback" role="alert">
+                            <strong class="error-message">
+                                <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                Please fill in the required fill
+                            </strong>
+                        </span>
+                    </div>
+                    @enderror
+
+                    @error('roomID')
+                    <div class="error-span">
+                        <span class="invalid-feedback" role="alert">
+                            <strong class="error-message">
+                                <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                Please fill in the required fill
+                            </strong>
+                        </span>
+                    </div>
+                    @enderror
                 </div>
 
                 <div class="columns c-column">
                     <div class="item special">
-                        <label for="cDescription">Please Describe Your Complaints:</label>
-                        <input type="text" name="cDescription" placeholder="Complaint" />
+                        <label for="complaint">Please Describe Your Complaints:</label>
+                        <input type="text" name="complaint" placeholder="Complaint" required/>
                     </div>
                 </div>
                 <!-- FOR ERROR -->
                 <div class="columns ">
-                    <!-- <div class="error-span">
-                            <span class="invalid-feedback" role="alert">
-                                <strong class="error-message">
-                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                    Please fill in the required fill
-                                </strong>
-                            </span>
-                    </div> -->
+                    @error('complaint')
+                    <div class="error-span">
+                        <span class="invalid-feedback" role="alert">
+                            <strong class="error-message">
+                                <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                Please fill in the required fill
+                            </strong>
+                        </span>
+                    </div>
+                    @enderror
                 </div>
 
                 <div class="button-complaint">
-                    <button type="submit" class="submitComplaint">Submit</button>
+                    <button type="submit" class="submitComplaint">{{ __('Submit') }}</button>
                     <button type="button" class="resetComplaint">Reset</button>
                 </div>
 
@@ -93,8 +101,8 @@
                     <div class="show-entries">
                         <label for="entries-per-page-complaints">Show:</label>
                         <select id="entries-per-page-complaints" class="select-entries">
-                            <option value="5">5</option>
-                            <option value="10" selected>10</option>
+                            <option value="5" selected>5</option>
+                            <option value="10">10</option>
                             <option value="15">15</option>
                         </select>
                         <span>entries</span>
@@ -115,7 +123,7 @@
                         <tr class="table-head">
                             <th class="complaint-column1" id="c-bookings1">#</th>
                             <th class="complaint-column2" id="c-bookings2">Complaint Name</th>
-                            <th class="complaint-column3" id="c-bookings3">Complaint Type</th>
+                            <th class="complaint-column3" id="c-bookings3">Room ID.</th>
                             <th class="complaint-column4" id="c-bookings4">Complaint</th>
                             <th class="complaint-column5" id="c-bookings5">Created Date</th>
                             <th class="complaint-column6" id="c-bookings6">Resolve</th>
@@ -123,40 +131,30 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($complaints as $complaint)
                     <tr>
-                        <td class="complaint-column1">1</td>
-                        <td class="complaint-column2">Chong Hau Yong</td>
-                        <td class="complaint-column3">Room Windows</td>
-                        <td class="complaint-column4"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </td>
-                        <td class="complaint-column5">Jul 16 2020</td>
-                        <td class="complaint-column6"><span id="dateBtn"></span>-</td>
-                        <td class="complaint-column7">Budget</td>
+                        <td class="complaint-column1">{{$complaint['id']}}</td>
+                        <td class="complaint-column2">{{$complaint['name']}}</td>
+                        <td class="complaint-column3">{{$complaint['roomID']}}</td>
+                        <td class="complaint-column4">{{$complaint['complaint']}}</td>
+                        <td class="complaint-column5">{{$complaint['created_at'] -> format('d.m.Y')}}</td>
+                        <td class="complaint-column6">{{$complaint['status']}}</td>
+                        <td class="complaint-column7">
+                            @if($complaint['budget'] == '')
+                                -
+                            @else
+                                {{$complaint['budget']}}
+                            @endif
+                        </td>
                     </tr>
-                    <tr>
-                        <td class="complaint-column1">1</td>
-                        <td class="complaint-column2">Chong Hau Yong</td>
-                        <td class="complaint-column3">Room Windows</td>
-                        <td class="complaint-column4"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </td>
-                        <td class="complaint-column5">Jul 16 2020</td>
-                        <td class="complaint-column6"><span id="dateBtn"></span>2023-4-1</td >
-                        <td class="complaint-column7">$1000</td>
-                    </tr>
-                                            <!-- ----------- new complaints will be added here ---------- -->
-                                            
+                    @endforeach
+
                     </tbody>
                 </table>
 
-                <div class="pagination">
-                    <div></div>
-                    <div class="pagination-button">
-                        <button id="previous">Previous</button>
-                        <div id="page-numbers"></div>
-                        <button id="next">Next</button>
-                    </div>
-                    
-                </div>
+                {!! $complaints->links('vendor.pagination.custom') !!}
             </div>
-
+            
         </div>
 
     </div>
