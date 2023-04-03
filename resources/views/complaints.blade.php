@@ -129,11 +129,7 @@
                         <td class="complaint-column3">Room Windows</td>
                         <td class="complaint-column4"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </td>
                         <td class="complaint-column5">Jul 16 2020</td>
-                        <td class="complaint-column6">
-                            <span id="dateBtn" onclick="displayDate()">
-                                <button class='resolve-btn bookings-btn'>Resolve</button>
-                            </span>
-                        </td >
+                        <td class="complaint-column6"><span id="dateBtn"></span>-</td>
                         <td class="complaint-column7">Budget</td>
                     </tr>
                     <tr>
@@ -142,12 +138,8 @@
                         <td class="complaint-column3">Room Windows</td>
                         <td class="complaint-column4"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </td>
                         <td class="complaint-column5">Jul 16 2020</td>
-                        <td class="complaint-column6">
-                            <span id="dateBtn" onclick="displayDate()">
-                                <button class='resolve-btn bookings-btn'>Resolve</button>
-                            </span>
-                        </td >
-                        <td class="complaint-column7">Budget</td>
+                        <td class="complaint-column6"><span id="dateBtn"></span>2023-4-1</td >
+                        <td class="complaint-column7">$1000</td>
                     </tr>
                                             <!-- ----------- new complaints will be added here ---------- -->
                                             

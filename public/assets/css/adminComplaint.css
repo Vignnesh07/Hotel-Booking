@@ -96,13 +96,12 @@
 }
 
 .complaint-column3 {
-    width: 150px;
+    width: 180px;
     text-align: center;
 }
 
 .complaint-column4 {
-    width: 397px;
-    text-align: center;
+    width: 379px;
     padding: 10px 0px;
 }
 
@@ -119,7 +118,8 @@
 .complaint-column7 {
     width: 115px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--darkcharcoal);
 }
 
 .resolve-btn{
@@ -139,8 +139,6 @@
     text-align: center;
     line-height: 1.35;
     background-color: white;
-    border-top: 50px solid #ededf5;
-    margin-top: -70px;
 }
 
 #complaints-table {
@@ -156,10 +154,14 @@
 .table-head{
     height: 60px;
     background: var(--darkcharcoal);
-    font-size: 18px;
+    font-size: 15px;
     color: var(--white);
     line-height: 1.2;
     font-weight: unset;
+}
+
+.table-head th{
+    font-size: 15px !important;
 }
 
 .pagination{

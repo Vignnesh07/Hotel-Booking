@@ -6,6 +6,8 @@
 
     <div class="container-all-complaint">
         <div class="container-complaint-form">
+            <div class="add-colour"></div>
+            <br ><br><br>
             <h2 class="sub-title">Complaint Management</h2>
             <form id="submitComplaintForm">
                 <h3>Complaint Form</h3>
@@ -130,7 +132,7 @@
                         <p>Complaint Resolve</p>
                         <div>
                             <label class="budget">Budget</label>
-                            <input type="text" class="budget" placeholder='Budget'/>
+                            <input type="number" class="budget" placeholder='Budget'/>
                         </div>
                         <div class='resolveButtonBox'>
                             <button id="resolveBtn">Resolve</button>
