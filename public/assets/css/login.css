@@ -13,20 +13,97 @@
     list-style: none;
 }
 
+.header-login .header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+}
 
-section{
+.header-login {
+    width: 100%;
+}
+
+.auth-nav{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px 7%;
+}
+
+
+.auth-nav .dropdown {
+    overflow: hidden;
+    color: var(--darkcharcoal);
+    background: var(--white);
+    border-radius: 20px;
+}
+
+.auth-nav .dropdown .dropbtn {
+    font-size: 14px;
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    background-color: inherit;
+    margin: 0;
+}
+
+.auth-nav .dropdown:hover .dropbtn {
+    background: var(--white);
+}
+
+.auth-nav .fa-caret-down {
+    padding-left: 5px;
+}
+
+.auth-nav .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    border-radius: 15px;
+    font-size: 14px;
+    left: 84%;
+}
+
+.auth-nav .dropdown-content a {
+    float: none;
+    color: var(--white);
+    padding: 15px 46px;
+    border-radius: 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+
+}
+
+.auth-nav .dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.auth-nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.login-page{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100%;
+    height: 80vh;
+    /* width: 100%;
     background-position: center;
     background-repeat: no-repeat; 
-    background-size: cover;
+    background-size: cover; */
    
 }
 
-.form-box{
+.login-page .form-box{
     position: relative;
     width: 550px;
     height: 400px;
@@ -38,27 +115,27 @@ section{
     backdrop-filter: blur(2px);
 }
 
-h2{
+.login-page h2{
     font-size: 2.2em;
     color: var(--lightblack);
     text-align: center;
 }
 
-.input-email{
+.login-page .input-email{
     position: relative;
-    margin: 10px 0px 30px 0px;
+    margin: 10px 0px 0px 0px;
     width: 310px;
     border-bottom: 2px solid var(--lightblack);
 }
 
-.input-password{
+.login-page .input-password{
     position: relative;
-    margin: 30px 0;
+    margin: 30px 0 0 0;
     width: 310px;
     border-bottom: 2px solid var(--lightblack);
 }
 
-.input-box ::placeholder{
+.login-page .input-box ::placeholder{
 
     color: var(--lightblack);
     font-size: 1.1em;
@@ -66,7 +143,7 @@ h2{
 }
 
 
-.input-box input{
+.login-page .input-box input{
     width: 85%;
     height: 50px;
     background: transparent;
@@ -77,7 +154,7 @@ h2{
     color: var(--lightblack);
 }
 
-.input-box ion-icon{
+.login-page .input-box ion-icon{
     position: absolute;
     right: 8px;
     color: var(--lightblack);
@@ -85,7 +162,7 @@ h2{
     top:  20px;
 }
 
-.button{
+.login-page .button{
     width: 100%;
     height: 50px;
     border-radius: 40px;
@@ -97,19 +174,19 @@ h2{
     font-weight: 600;
 }
 
-.logo-title{
+.login-page .logo-title{
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
 
-.logo{
+.login-page .logo{
     width: 80px;
     height: 80px;
 }
 
-.btn{
+.login-page .btn{
     font-size: 1.2em;
     display: inline-flex;
     justify-content: center;
@@ -123,4 +200,23 @@ h2{
     cursor: pointer;
     border: none;
     outline: none;
+    margin-top: 30px;
+    transition: all 0.3s;
+}
+
+.login-page .btn:hover{
+    font-size: 1.3em;
+    background: var(--lightblack);
+    color: white;
+}
+
+.login-page .error-email-password{
+    position: relative;
+    margin: 0px 0;
+    width: 310px;
+}
+
+.login-page .error-message{
+    font-size: 11px;
+    color: red;
 }

@@ -13,6 +13,10 @@
     list-style: none;
 }
 
+body{
+    background-color: #faebd74a;
+}
+
 #logout-form {
     display: none;
 }
@@ -42,7 +46,7 @@ nav {
     padding: 20px 7%;
 }
 
-.logo-title {
+.clerk-logo-title{
     display: flex;
     align-items: center;
 
@@ -54,7 +58,7 @@ nav {
     padding-bottom: 7px;
 }
 
-.logo-title h2 {
+.clerk-logo-title h2 {
     padding-left: 8px;
     font-size: 1.2rem;
     color: var(--white);
@@ -564,3 +568,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .popup .close-btn i {
     display: block;
 }
+
+
+/********** Error Span ***********/
+.error-span {
+    position: relative;
+    margin: 0 0 10px 0;
+    width: 50%;
+    margin-left: 10px;
+    margin-top: -16px;
+}
+
+.error-email-password{
+    position: relative;
+    margin: 0px 0;
+    width: 310px;
+}
+
+.error-message{
+    font-size: 12px;
+    color: red;
+    
+}
+
+.error-message i{
+    font-size: 13px;
+    margin-right: 8px;
+    margin-left: 4px;
+
+}
+

@@ -17,6 +17,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 Auth::routes();
 
+Route::view("clerkProfile",'clerkProfile');
 Route::view("complaints",'complaints');
 Route::view("bookings",'bookings');
 Route::get('/bookings-table', function () {

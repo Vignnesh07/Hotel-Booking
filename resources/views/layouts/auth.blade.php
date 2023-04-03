@@ -17,11 +17,30 @@
 
         <!--Stylesheet-->
         <link rel="stylesheet" href="/assets/css/login.css" >
+
+        <!--preload/download image to reduce long rendering-->
+        <link rel="preload" href="/assets/img/login_bg.png" as="image">
     </head>
 
     <body>
+        <nav class="auth-nav">
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="admin"> Admin </a>
+                    <a href="clerk"> Clerk </a>
+                </div>
+            </div>
+        </nav>
+
         @yield('loginContent')
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="/assets/js/scrollReveal.js"> </script>
     </body>
 </html>

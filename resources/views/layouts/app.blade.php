@@ -20,14 +20,20 @@
         <link rel="stylesheet" href="/assets/css/about.css" >
         <link rel="stylesheet" href="/assets/css/bookings.css" >
         <link rel="stylesheet" href="/assets/css/complaints.css" >
+        <link rel="stylesheet" href="/assets/css/clerkProfile.css" >
         <link rel="stylesheet" href="/assets/phone/css/intlTelInput.css" >
 
+        <!--preload/download image to reduce long rendering-->
         <link rel="preload" href="/assets/img/home_bg.png" as="image">
+        <link rel="preload" href="/assets/img/about_bg.png" as="image">
+        <link rel="preload" href="/assets/img/bookings_bg.png" as="image">
+        <link rel="preload" href="/assets/img/complaints_bg.png" as="image">
+        <link rel="preload" href="/assets/img/profile_bg.png" as="image">
     </head>
     <body>
-        <nav>
+        <nav class="clerk-nav">
 
-            <a class="logo-title" href="home">               
+            <a class="clerk-logo-title" href="home">               
                 <img class="logo" src="/assets/img/logo.png">
                 <h2>Prestige Co.</h2>
             </a>
@@ -47,7 +53,7 @@
                 </button>
 
                 <div class="dropdown-content">
-                    <a href="#"> Profile </a>
+                    <a href="clerkProfile"> Profile </a>
                     <a href="{{ route('logout') }}" 
                         onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();"> Logout </a>
@@ -81,6 +87,6 @@
         <script src="/assets/phone/js/intlTelInput.js"> </script>
         <script src="/assets/js/home.js"> </script>
         <script src="/assets/js/bookings.js"> </script>
-        <script src="/assets/js/app.js"> </script>
+        <script src="/assets/js/scrollReveal.js"> </script>
     </body>
 </html>
