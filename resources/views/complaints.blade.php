@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="header">
-    <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('/assets/img/home_bg.png');"></div>
+    <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)), url('/assets/img/complaints_bg.png');"></div>
     <div class="container">
-        <h1> Book Luxury Stays Seamlessly </h1>
+        <h1 class="text-background"> Let Us Hear Your Feedback </h1>
     </div>
 </div>
 
@@ -32,12 +32,42 @@
                         <input type="text" name="cType" placeholder="Complaint Type" />
                     </div>
                 </div>
+                <!-- FOR ERROR -->
+                <div class="columns ">
+                    <!-- <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div>
+                    <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div> -->
+                </div>
 
                 <div class="columns c-column">
                     <div class="item special">
                         <label for="cDescription">Please Describe Your Complaints:</label>
                         <input type="text" name="cDescription" placeholder="Complaint" />
                     </div>
+                </div>
+                <!-- FOR ERROR -->
+                <div class="columns ">
+                    <!-- <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div> -->
                 </div>
 
                 <div class="button-complaint">

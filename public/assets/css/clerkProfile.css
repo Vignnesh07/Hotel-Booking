@@ -1,0 +1,56 @@
+.container-clerk {
+    padding: 0px 14%;
+}
+
+.container-clerk .container-overlay {
+    height: 38vw;
+    background-color: white;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.8);
+}
+
+.container-clerk .profile-image {
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 40px 0 0 40px;
+}
+
+.container .about-clerk {
+    margin: 0px 0 !important;
+}
+
+.container-clerk .right-information{
+    flex-grow: 1;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-clerk .item-clerk{
+    margin-left: 0;
+}
+
+.container-clerk .item-clerk:nth-child(even){
+    margin-left: 10px;
+}
+
+.container-clerk .item-clerk label{
+    font-weight: 600;
+}
+
+.container-clerk .right-information p{
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border: 1px solid var(--lightblack);
+    border-radius: 5px;
+    margin-top: 2px;
+    opacity: 0.7;
+}
+
+.container-clerk .item:hover p{
+    color: black;
+}

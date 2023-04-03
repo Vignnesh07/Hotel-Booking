@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="header">
-    <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('/assets/img/home_bg.png');"></div>
+    <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)), url('/assets/img/bookings_bg.png');"></div>
     <div class="container">
-        <h1> Book Luxury Stays Seamlessly </h1>
+        <h1 class="text-background"> Booking Details at a Glance </h1>
     </div>
 </div>
 
@@ -187,7 +187,7 @@
           <p id="popup-idcardnumber">ID Card Number <span></span></p>
           <p id="popup-emailaddress">Email Address <span></span></p>
           <p id="popup-phonenumber">Phone Number <span></span></p>
-          <p id="popup-residentialaddress">Residential Address <span></span></p>
+          <p id="popup-residentialaddress">Address <span></span></p>
           <p id="popup-city">City <span></span></p>
           <p id="popup-zipcode">Zip Code <span></span></p>
           <p id="popup-amount">Total Amount <span></span></p>

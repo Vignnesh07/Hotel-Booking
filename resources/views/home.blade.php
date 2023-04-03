@@ -3,7 +3,7 @@
 @section('content')
         
 <div class="header">
-    <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('/assets/img/home_bg.png');"></div>
+    <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)), url('/assets/img/home_bg.png');"></div>
     <div class="container">
         <h1 class="text-background"> Book Luxury Stays Seamlessly </h1>
     </div>
@@ -36,14 +36,32 @@
                             <option value="presidential">Presidential Suite</option>
                         </select>
                     </div>
-
                     <div class="item">
                         <label for="roomnumber">Room Number</label>
                         <select id="roomnumber" name="roomnumber">
 
                         </select>
                     </div>
-
+                </div>
+                
+                <!-- FOR ERROR -->
+                <div class="columns ">
+                    <!-- <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div>
+                    <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div> -->
                 </div>
 
                 <div class="columns">
@@ -79,6 +97,26 @@
 
                 </div>
 
+                <!-- FOR ERROR -->
+                <div class="columns ">
+                    <!-- <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div>
+                    <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div> -->
+                </div>
+
                 <br>
 
                 <div class="results">
@@ -109,6 +147,25 @@
                     </div>
 
                 </div>
+                <!-- FOR ERROR -->
+                <div class="columns ">
+                    <!-- <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div>
+                    <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div> -->
+                </div>
 
                 <div class="columns">
 
@@ -124,6 +181,26 @@
 
                 </div>
 
+                <!-- FOR ERROR -->
+                <div class="columns ">
+                    <!-- <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div>
+                    <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div> -->
+                </div>
+
                 <div class="columns">
 
                     <div class="item">
@@ -131,6 +208,18 @@
                         <input type="tel" id="phone" placeholder="Phone Number" name="phone">
                     </div>
 
+                </div>
+
+                <!-- FOR ERROR -->
+                <div class="columns ">
+                    <!-- <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div> -->
                 </div>
 
                 <div class="columns">
@@ -142,6 +231,18 @@
 
                 </div>
 
+                <!-- FOR ERROR -->
+                <div class="columns ">
+                    <!-- <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div> -->
+                </div>
+
                 <div class="columns">
                     <div class="item">
                         <label for="city">City</label>
@@ -151,6 +252,26 @@
                         <label for="zipcode"> Zip Code </label>
                         <input type="text" id="zipcode" placeholder="Zip Code" name="zipcode">
                     </div>
+                </div>
+
+                <!-- FOR ERROR -->
+                <div class="columns ">
+                    <!-- <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div>
+                    <div class="error-span">
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="error-message">
+                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                    Please fill in the required fill
+                                </strong>
+                            </span>
+                    </div> -->
                 </div>
 
             </fieldset>
