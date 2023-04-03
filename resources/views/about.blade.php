@@ -39,12 +39,13 @@
         <div class="roomtype-card">
 
             <div class="roomtype-image">
-                <img class="room-img" src="assets/img/room1.png">
+                <img class="room-img" src="assets/img/room/room1.png">
             </div>
             
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Single</h5>
-                <p class="roomtype-description">Lorem ipsum is a generated content</p>
+                <p class="roomtype-description">A cozy single room perfect for solo travelers, 
+                    offering modern amenities and a comfortable space for a restful stay</p>
                 <div class="roomtype-list-container">
                     <ul class="roomtype-list">
                         <li class="list-pax">
@@ -66,12 +67,13 @@
         <div class="roomtype-card">
 
             <div class="roomtype-image">
-                <img class="room-img" src="assets/img/room2.png">
+                <img class="room-img" src="assets/img/room/room2.png">
             </div>
             
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Double</h5>
-                <p class="roomtype-description">Lorem ipsum is a generated content</p>
+                <p class="roomtype-description">Experience a comfortable stay in our spacious double room, 
+                    designed for two guests seeking style and convenience in the city.</p>
                 <div class="roomtype-list-container">
                     <ul class="roomtype-list">
                         <li class="list-pax">
@@ -94,12 +96,13 @@
         <div class="roomtype-card">
 
             <div class="roomtype-image">
-                <img class="room-img" src="assets/img/room3.png">
+                <img class="room-img" src="assets/img/room/room3.png">
             </div>
             
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Triple</h5>
-                <p class="roomtype-description">Lorem ipsum is a generated content</p>
+                <p class="roomtype-description">Designed for three guests, our triple room offers 
+                    ample space and modern amenities to ensure a pleasant and enjoyable stay.</p>
                 <div class="roomtype-list-container">
                     <ul class="roomtype-list">
                         <li class="list-pax">
@@ -127,12 +130,13 @@
         <div class="roomtype-card">
 
             <div class="roomtype-image">
-                <img class="room-img" src="assets/img/room4.png">
+                <img class="room-img" src="assets/img/room/room4.png">
             </div>
             
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Executive</h5>
-                <p class="roomtype-description">Lorem ipsum is a generated content</p>
+                <p class="roomtype-description">Indulge in luxury with our executive room, featuring a 
+                    king-size bed, upscale amenities, and a serene view of the city and courtyard.</p>
                 <div class="roomtype-list-container">
                     <ul class="roomtype-list">
                         <li class="list-pax">
@@ -155,12 +159,13 @@
         <div class="roomtype-card">
 
             <div class="roomtype-image">
-                <img class="room-img" src="assets/img/room5.png">
+                <img class="room-img" src="assets/img/room/room5.png">
             </div>
             
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Presidential</h5>
-                <p class="roomtype-description">Lorem ipsum is a generated content</p>
+                <p class="roomtype-description">Experience unparalleled opulence in our presidential suite, 
+                    complete with a king-size bed, lavish amenities, and stunning city and courtyard views.</p>
                 <div class="roomtype-list-container">
                     <ul class="roomtype-list">
                         <li class="list-pax">
@@ -184,12 +189,13 @@
         <div class="roomtype-card">
 
             <div class="roomtype-image">
-                <img class="room-img" src="assets/img/room6.png">
+                <img class="room-img" src="assets/img/room/room6.png">
             </div>
             
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Studio</h5>
-                <p class="roomtype-description">Lorem ipsum is a generated content</p>
+                <p class="roomtype-description">Enjoy the comfort and functionality of our studio room, 
+                    perfect for guests seeking a stylish and well-equipped space for their urban getaway.</p>
                 <div class="roomtype-list-container">
                     <ul class="roomtype-list">
                         <li class="list-pax">
@@ -215,12 +221,13 @@
         <div class="roomtype-card special">
 
             <div class="roomtype-image">
-                <img class="room-img" src="assets/img/room7.png">
+                <img class="room-img" src="assets/img/room/room7.png">
             </div>
 
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - King</h5>
-                <p class="roomtype-description">Lorem ipsum is a generated content</p>
+                <p class="roomtype-description">Relax in our spacious king room, boasting a 
+                    luxurious king-size bed and modern amenities to make your stay memorable and enjoyable.</p>
                 <div class="roomtype-list-container">
                     <ul class="roomtype-list">
                         <li class="list-pax">
@@ -244,12 +251,13 @@
             <div class="roomtype-card special">
 
             <div class="roomtype-image">
-                <img class="room-img" src="assets/img/room8.png">
+                <img class="room-img" src="assets/img/room/room8.png">
             </div>
 
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Queen</h5>
-                <p class="roomtype-description">Lorem ipsum is a generated content</p>
+                <p class="roomtype-description">Unwind in our elegant queen room, designed to provide a 
+                    perfect blend of comfort and style for discerning travelers.</p>
                 <div class="roomtype-list-container">
                     <ul class="roomtype-list">
                         <li class="list-pax">
@@ -289,7 +297,7 @@
 
             <div class="team1">
                 <div class="card2">
-                    <img class="team-image" src="assets/img/team1.png" style="width:100%">
+                    <img class="team-image" src="assets/img/team/team1.png" style="width:100%">
                     <div class="middle">
                         <h3 class="card-text">Voo Keat Vun</h3>
                         <p class="card-text">Sales Manager</p>
@@ -299,17 +307,17 @@
 
             <div class="team2">
                 <div class="card2">
-                    <img class="team-image" src="assets/img/team2.png" style="width:100%">
+                    <img class="team-image" src="assets/img/team/team2.png" style="width:100%">
                     <div class="middle">
                         <h3 class="card-text">Vignnesh Ravindran</h3>
-                        <p class="card-text">Co-Foundar</p>
+                        <p class="card-text">Co-Founder</p>
                     </div>
                 </div>
             </div>
 
             <div class="team3">
                 <div class="card2">
-                    <img class="team-image" src="assets/img/team3.png" style="width:100%">
+                    <img class="team-image" src="assets/img/team/team3.png" style="width:100%">
                     <div class="middle">
                         <h3 class="card-text">Yong Li Jonn</h3>
                         <p class="card-text">CEO & Founder</p>
@@ -319,7 +327,7 @@
 
             <div class="team4">
                 <div class="card2">
-                    <img class="team-image" src="assets/img/team4.png" style="width:100%">
+                    <img class="team-image" src="assets/img/team/team4.png" style="width:100%">
                     <div class="middle">
                         <h3 class="card-text">Joanne Lim</h3>
                         <p class="card-text">General Manager</p>
@@ -329,7 +337,7 @@
 
             <div class="team5">
                 <div class="card2">
-                    <img class="team-image" src="assets/img/team5.png" style="width:100%">
+                    <img class="team-image" src="assets/img/team/team5.png" style="width:100%">
                     <div class="middle">
                         <h3 class="card-text">Chong Hau Yong</h3>
                         <p class="card-text">Marketing Manager</p>
