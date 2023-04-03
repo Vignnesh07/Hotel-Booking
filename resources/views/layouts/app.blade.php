@@ -87,6 +87,7 @@
         <script src="/assets/phone/js/intlTelInput.js"> </script>
         <script src="/assets/js/home.js"> </script>
         <script src="/assets/js/bookings.js"> </script>
+        <script src="/assets/js/clerkComplaint.js"> </script>
         <script src="/assets/js/scrollReveal.js"> </script>
     </body>
 </html>

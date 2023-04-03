@@ -6,16 +6,16 @@
     --darkcharcoal: #333;
 }
 
-body{
-    background-color:#ededf5;
+body {
+    background-color: #ededf5;
 }
 
-.entries-search{
+.entries-search {
     display: flex;
     justify-content: space-between;
 }
 
-.show-entries{
+.show-entries {
     width: 100%;
     margin-left: 20px;
 }
@@ -33,21 +33,22 @@ body{
     line-height: 22px;
 }
 
-.search-section{
+.search-section {
     display: flex;
     margin-right: 20px;
 
 }
-.search-label{
+
+.search-label {
     padding-right: 5px;
 }
 
-.search{
+.search {
     display: flex;
     align-items: center;
 }
 
-.search-btn{
+.search-btn {
     border: 0;
     cursor: pointer;
     background: var(--white);
@@ -55,16 +56,16 @@ body{
     padding-left: 8px;
 }
 
-.staffTable{
+.staffTable {
     background-color: white;
-    position:static;
+    position: static;
     padding-top: 20px;
     margin-left: 340px;
     margin-right: 20px;
     padding-bottom: 20px;
 }
 
-.staffTable .heading{
+.staffTable .heading {
     display: flex;
     margin-bottom: 20px;
     justify-content: space-between;
@@ -72,24 +73,24 @@ body{
     margin-right: 20px;
 }
 
-.staffTable .heading h1{
+.staffTable .heading h1 {
     margin-left: 20px;
 }
 
-.staffTable .heading button{
+.staffTable .heading button {
     height: 40px;
     width: 100px;
-    border:none;
+    border: none;
     background-color: rgb(89, 126, 89);
-    color:white;
-    cursor:pointer;
+    color: white;
+    cursor: pointer;
 }
 
-.staffTable .heading button:hover{
-    opacity:0.7;
+.staffTable .heading button:hover {
+    opacity: 0.7;
 }
 
-.staffTable table{
+.staffTable table {
     border-spacing: 1;
     border-collapse: collapse;
     background: var(--white);
@@ -97,53 +98,53 @@ body{
     overflow: hidden;
     width: 98%;
     margin: 0 auto;
-    position:static;
+    position: static;
 }
 
-.staffTable table .first-row{
+.staffTable table .first-row {
     height: 60px;
     background: var(--darkcharcoal);
-    font-size: 18px;
+    font-size: 16px;
     color: var(--white);
     line-height: 1.2;
     font-weight: unset;
 }
 
-.staffTable table .column-1{
+.staffTable table .column-1 {
     width: 150px;
     text-align: left;
     padding-left: 30px;
 }
 
-.staffTable table .column-2{
+.staffTable table .column-2 {
     width: 300px;
     text-align: left;
 }
 
-.staffTable table .column-3{
-    width:350px;
+.staffTable table .column-3 {
+    width: 310px;
     text-align: left;
 }
 
-.staffTable table .column-4{
-    width: 200px;
+.staffTable table .column-4 {
+    width: 260px;
     text-align: center;
 }
 
-.staffTable table .column-5{
-    width: 200px;
+.staffTable table .column-5 {
+    width: 160px;
     text-align: center;
 }
 
-.staffTable table .column-5 button{
-    border:none;
-    font-size: 20px;
-    margin-right: 20px;
+.staffTable table .column-5 button {
+    border: none;
+    font-size: 13.5px;
+    padding: 15px;
     background: transparent;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.staffTable table tbody tr{
+.staffTable table tbody tr {
     height: 50px;
     font-size: 15px;
     color: var(--gray);
@@ -159,7 +160,11 @@ table tbody tr:last-child {
     border: 0;
 }
 
-.staff-overlay, .editStaff-overlay, .viewStaff-overlay, .resolve-overlay{
+.staff-overlay,
+.editStaff-overlay,
+.viewStaff-overlay,
+.resolve-overlay,
+.deleteStaff-overlay{
     display: none;
     position: fixed;
     top: 0;
@@ -170,11 +175,14 @@ table tbody tr:last-child {
     z-index: 1001;
 }
 
-.staff-overlay.active{
-    display:block;
+.staff-overlay.active {
+    display: block;
 }
 
-.staff-overlay form, .editStaff-overlay form, .view-container, .resolve-container{
+.staff-overlay form,
+.editStaff-overlay form,
+.view-container,
+.resolve-container {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -188,6 +196,22 @@ table tbody tr:last-child {
     z-index: 11;
 }
 
+.delete-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    z-index: 11;
+    text-align: center;
+}
+
+
 .resolve-container p {
     font-size: 1.25em;
     font-weight: 700;
@@ -197,8 +221,9 @@ table tbody tr:last-child {
 }
 
 
-form legend, .view-container h2{
-    text-align:center;
+form legend,
+.view-container h2 {
+    text-align: center;
     font-size: 25px;
     font-weight: bold;
 }
@@ -215,7 +240,7 @@ form legend, .view-container h2{
     /* Enable vertical scrolling */
 }
 
-.form-content .items{
+.form-content .items {
     display: flex;
     flex-direction: column;
     margin-left: -8px;
@@ -223,28 +248,30 @@ form legend, .view-container h2{
     margin-bottom: 15px;
 }
 
-.form-content .items input, select{
-    padding:10px;
+.form-content .items input,
+select {
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius:5px;
+    border-radius: 5px;
+    width: 100%
 }
 
 
-form .button{
-    display:flex;
-    margin-top:15px;
+form .button {
+    display: flex;
+    margin-top: 15px;
     padding: 15px;
     justify-content: space-between;
 }
 
-form .button .close-button button{
+form .button .close-button button {
     background-color: #fff;
     color: #333;
     border: 2px solid #333;
-    
+
 }
 
-form .button button{
+form .button button {
     border: none;
     width: 100%;
     padding: 10px 20px;
@@ -256,11 +283,11 @@ form .button button{
     transition: background-color 0.2s ease-in-out;
 }
 
-form .button .submit-button button{
+form .button .submit-button button {
     background-color: #333;
     color: #fff;
     border: none;
-    
+
 }
 
 .staffTable input {
@@ -269,10 +296,10 @@ form .button .submit-button button{
     margin-top: 5px;
 }
 
-.empty-container{
+.empty-container {
     height: 120px;
-    background-color:#ededf5;
-    width:100%;
+    background-color: #ededf5;
+    width: 100%;
 }
 
 /* Custom scrollbar styles */
@@ -355,7 +382,7 @@ form .button .submit-button button{
     transition: background-color 0.2s ease-in-out;
 }
 
-.deleteStaff-overlay {
+/* .deleteStaff-overlay {
     display: none;
     position: fixed;
     top: 50%;
@@ -368,9 +395,11 @@ form .button .submit-button button{
     max-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
     z-index: 11;
-}
+} */
 
-.deleteStaff-overlay p, .resolve-overlay p{
+
+.deleteStaff-overlay p,
+.resolve-overlay p {
     font-size: 1.25em;
     font-weight: 700;
     margin-bottom: 20px;
@@ -378,7 +407,8 @@ form .button .submit-button button{
     color: #333;
 }
 
-.deleteStaff-overlay button, .resolve-overlay button{
+.deleteStaff-overlay button,
+.resolve-overlay button {
     background-color: #333;
     color: #fff;
     border: none;
@@ -391,12 +421,12 @@ form .button .submit-button button{
     transition: background-color 0.2s ease-in-out;
 }
 
-.resolve-overlay .resolveButtonBox{
-    display:flex;
+.resolve-overlay .resolveButtonBox {
+    display: flex;
     justify-content: flex-end;
 }
 
-.resolve-overlay input{
+.resolve-overlay input {
     margin-bottom: 20px;
 }
 
