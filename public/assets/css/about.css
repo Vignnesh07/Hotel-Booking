@@ -1,28 +1,174 @@
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 /********** roomtype Section ***********/
 
-.roomtype{
+.about-roomtype {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
 }
 
-.roomtype div img{
-    width: 100%;
+.roomtype-grid-special {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.about-roomtype .roomtype-card {
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
-    filter: grayscale(20%);
-    opacity: 0.9;
+    box-sizing: border-box;
+    max-width: 450px;
+    margin-top: 70px;
+    background-color: var(--white);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 1, 0.6)
 }
 
-.roomtype div{
-    position: relative;
+.about-roomtype .special {
+    max-width: 600px;
+    width: 600px;
 }
 
-.roomtype div span{
+.about-roomtype .roomtype-image {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.about-roomtype .roomtype-image .room-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.about-roomtype .roomtype-information {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 40px;
+}
+
+.about-roomtype .roomtype-list-container {
+    font-weight: 300;
+}
+
+.about-roomtype .roomtype-information h5 {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.about-roomtype .roomtype-information p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.about-roomtype .roomtype-information ul {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.about-roomtype .roomtype-information ul li {
+    margin-bottom: 10px;
+}
+
+.about-roomtype .roomtype-information ul li div {
+    display: flex;
+    align-items: center;
+}
+
+.about-roomtype .roomtype-information ul li .fa {
+    margin-right: 20px;
+}
+
+ion-icon {
+    font-size: 20px;
+}
+
+.space {
+    margin-left: 30px;
+}
+
+
+
+
+
+/********** our team section ***********/
+
+
+.about-extra-container {
+    background-color: var(--lightblack);
+    padding: 0 7%;
+}
+
+.about-extra-subtitle {
+    margin-top: 100px;
+    color: var(--white);
+    padding-top: 80px;
+}
+
+.about-extra-description {
+    color: var(--white);
+}
+
+
+/* Our Team */
+
+.team-container {
+    display: flex;
+    gap: 16px;
+    padding: 64px 0;
+    justify-content: center;
+}
+
+
+.team-image {
+    opacity: 1;
+    display: block;
+    height: 244px; /* Adjust this value according to your desired height */
+    object-fit: cover;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     text-align: center;
-    color: var(--white);
+    width: 80%;
 }
 
+.card-text {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.card2:hover .team-image {
+    opacity: 0.3;
+}
+
+.card2:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.627), rgba(0, 0, 0, 0.6));
+}
+
+.card2:hover .middle {
+    opacity: 1;
+}
+
+.card2 {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    position: relative;
+}

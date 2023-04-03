@@ -1,19 +1,27 @@
-body{
-    background-color:#ededf5;
+:root {
+    --white: #fffafa;
+    --lightblack: #575656;
+    --darkcharcoal: #333;
 }
+
+.dashboard-body{
+    background-color: #ededf5;
+}
+
 .dashboard-item{
     background-color: white;
     position:static;
-    padding-top: 120px;
+    padding-top: 90px;
     margin-left: 340px;
     margin-right: 20px;
 }
 
 .dashboard-item .item-row-1{
     display:flex;
+    border-top: 50px solid #ededf5;
 }
 
-.dashboard-item .item-row-1 .item{
+.dashboard-item .item-row-1 .items{
     width: 390px;
     height: 250px;
     
@@ -23,7 +31,7 @@ body{
     display:flex;
 }
 
-.dashboard-item .item-row-2 .item{
+.dashboard-item .item-row-2 .items{
     width: 390px;
     height: 250px;
     
@@ -32,18 +40,110 @@ body{
 .dashboard-item .item-row-3{
     display:flex;
 }
-.dashboard-item .item-row-3 .item{
+.dashboard-item .item-row-3 .items{
     width: 780px;
     height: 250px;
     
 }
 
-.item{
+.dashboard-item .items{
     text-align: center;
     align-items: center;
     display:grid;
     border-width: 1px;
-    border-style:solid ;
+    border-style:solid;
+}
+
+.dashboard-item i{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.dashboard-item b{
+    font-size: 35px;
+}
+
+.dashboard-item p{
+    color:#575656;
+}
+
+.dashboard-body .flex-container{
+    margin-bottom: 50px;
+}
+
+input {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-top: 5px;
+}
+
+.item {
+    position: relative;
+    margin: 10px 0;
+    width: 50%;
+    margin-left: 10px;
 }
 
 
+.special {
+    width: 100%;
+}
+
+
+.item input:hover, .item select:hover {
+    border: 1px solid transparent;
+    box-shadow: 0 0 3px 0 #006622;
+    color: #006622;
+}
+
+
+/**** Error Span *****/
+.error-span {
+    position: relative;
+    margin: 0 0 10px 0;
+    width: 50%;
+}
+
+.error-email-password{
+    position: relative;
+    margin: 0px 0;
+    width: 310px;
+}
+
+.error-message{
+    font-size: 12px;
+    color: red;
+    
+}
+
+.error-message i{
+    font-size: 13px;
+    margin-right: 8px;
+    margin-left: 4px;
+
+}
+
+/* Custom scrollbar styles */
+.popup .content::-webkit-scrollbar {
+    width: 5px;
+    /* Adjust scrollbar width */
+}
+
+.popup .content::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Adjust track color */
+    border-radius: 10px;
+    /* Add border-radius to match the design */
+}
+
+.popup .content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Adjust thumb color */
+    border-radius: 0 8px 8px 0;
+    /* Create the shape */
+}
+
+.popup .content::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Adjust thumb color on hover */
+}

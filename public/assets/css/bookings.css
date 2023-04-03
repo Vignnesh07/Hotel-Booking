@@ -6,12 +6,14 @@
     --darkcharcoal: #333;
 }
 
-.entries-search{
+
+/*---------------------- search and entries -----------------------css */
+.entries-search {
     display: flex;
     justify-content: space-between;
 }
 
-.show-entries{
+.show-entries {
     width: 100%;
 }
 
@@ -28,20 +30,21 @@
     line-height: 22px;
 }
 
-.search-section{
+.search-section {
     display: flex;
 
 }
-.search-label{
+
+.search-label {
     padding-right: 5px;
 }
 
-.search{
+.search {
     display: flex;
     align-items: center;
 }
 
-.search-btn{
+.search-btn {
     border: 0;
     cursor: pointer;
     background: var(--white);
@@ -50,7 +53,7 @@
 }
 
 
-/* .container-table100 {
+/* .container-table{
     width: 100%;
     min-height: 100vh;
     background: #c850c0;
@@ -69,6 +72,8 @@
     padding: 33px 30px;
 } */
 
+
+/*---------------------- table -----------------------css */
 table {
     border-spacing: 1;
     border-collapse: collapse;
@@ -86,42 +91,53 @@ table thead tr {
     background: var(--darkcharcoal);
 }
 
-.table100-head th {
+.table-head th {
     font-size: 18px;
     color: var(--white);
     line-height: 1.2;
     font-weight: unset;
 }
 
-table td, table th {
+.bookings-column1 {
+    width: 207px;
+    padding-left: 30px;
     text-align: left;
-    padding-left: 8px;
 }
 
-.column1 {
+.bookings-column2 {
+    width: 139px;
+    text-align: left;
+}
+
+.bookings-column3 {
+    width: 206px;
+    text-align: left;
+}
+
+.bookings-column4 {
     width: 150px;
-    padding-left: 40px;
-}
-
-.column2 {
-    width: 240px;
-}
-
-.column3 {
-    width: 195px;
-}
-
-.column4 {
-    width: 165px;
+    text-align: left;
 
 }
 
-.column5 {
-    width: 154px;
+.bookings-column5 {
+    width: 148px;
+    text-align: right;
 }
 
-.column6 {
-    width: 150px;
+.bookings-column6 {
+    width: 183px;
+    text-align: right;
+
+}
+
+.bookings-column7 {
+    width: 205px;
+    text-align: center;
+}
+
+.bookings-column8 {
+    width: 191px;
     text-align: center;
 
 }
@@ -150,11 +166,12 @@ table tbody tr:last-child {
     border: 0;
 }
 
+/*---------------------- Pagination -----------------------css */
 
 .pagination {
     margin-top: 10px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .pagination button {
@@ -174,4 +191,289 @@ table tbody tr:last-child {
 .pagination button:disabled {
     background-color: #ccc;
     cursor: default;
+}
+
+.pagination .pagination-button {
+    display: flex;
+}
+
+
+
+
+/*---------------------- All buttons -----------------------css */
+.bookings-btn {
+    cursor: pointer;
+}
+
+.bookings-btn:hover {
+    opacity: 0.8;
+}
+
+.booked-btn {
+    padding: 8px 15px;
+    background-color: #ed1342;
+    font-size: 15px;
+    color: white;
+    border: 0;
+    font-weight: 400;
+    cursor: default;
+}
+
+.pay-btn {
+    padding: 8px 15px;
+    background-color: #159eed;
+    font-size: 15px;
+    color: white;
+    border: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.history-btn {
+    padding: 8px 15px;
+    background-color: #ed9613;
+    font-size: 15px;
+    color: white;
+    border: 0;
+    font-weight: 400;
+}
+
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: var(--darkcharcoal);
+}
+
+
+.actions button {
+    border: 0;
+    border-radius: 40px;
+    cursor: pointer;
+    padding: 8px 15px;
+    background-color: var(--white);
+}
+
+table td .actions button {
+    background-color: transparent;
+}
+
+.fa-pen-to-square:hover,
+.fa-eye:hover,
+.fa-trash:hover {
+    opacity: 0.7;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+/*---------------------- POPUP PAYMENT CSS -----------------------css */
+.popup-payment {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    z-index: 11;
+}
+
+.popup-payment p {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.popup-payment button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.popup-payment button:hover {
+    background-color: #555;
+}
+
+.popup-payment button:focus {
+    outline: none;
+}
+
+#paymentCancelBtn {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+}
+
+#paymentCancelBtn:hover {
+    border-color: #555;
+    color: #555;
+}
+
+/*---------------------- POPUP DELETe-----------------------css */
+
+.popup-delete {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    z-index: 11;
+}
+
+.popup-delete p {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.popup-delete button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.popup-delete button:hover {
+    background-color: #555;
+}
+
+.popup-delete button:focus {
+    outline: none;
+}
+
+#deleteCancelBtn {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+}
+
+#deleteCancelBtn:hover {
+    border-color: #555;
+    color: #555;
+}
+
+
+/*---------------------- POPUP edit-----------------------css */
+
+.popup .close-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+
+#editPopup .content{
+    margin-top: 20px;
+}
+
+
+.popup .addThings{
+    margin-top: 5px;
+    margin-left: 4px;
+    opacity: 0.7;
+    border-radius: 5px;
+}
+
+.popup .flexLabelInput span{
+    width: 92%;
+}
+
+.popup .flexLabelInput{
+    display: flex;
+    flex-direction: column;
+    margin-left: -8px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.flexLabelInput input{
+    width: calc(95% - 10px);
+}
+
+.popup .flexPen{
+    display: flex;
+    flex-direction: row-reverse;
+    transform: translate(0px, -33px);
+}
+
+
+.popup .flexPen i {
+    font-size: 18px;
+    cursor: pointer;
+} 
+
+
+.popup-edit{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.popup-edit button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.popup-edit button:hover {
+    background-color: #555;
+}
+
+.popup-edit button:focus {
+    outline: none;
+}
+
+#editCancelBtn {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+}
+
+#editCancelBtn:hover {
+    border-color: #555;
+    color: #555;
 }

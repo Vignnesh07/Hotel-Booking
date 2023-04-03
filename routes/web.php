@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 
 /*
@@ -16,7 +17,15 @@ use App\Http\Controllers\Auth\LoginController;
 
 Auth::routes();
 
+Route::view("clerkProfile",'clerkProfile');
+Route::view("complaints",'complaints');
 Route::view("bookings",'bookings');
+Route::get('/bookings-table', function () {
+    return redirect('/bookings#bookings-table');
+});
+Route::get('/reservation-form', function () {
+    return redirect('/home#submitReservationForm');
+});
 Route::view("about",'about');
 Route::get('/', function () {
     return redirect('/login/admin');
@@ -41,7 +50,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 Route::get('logout', [LoginController::class, 'logout']);
 
-Route::view("dashboard", 'dashboard');
+Route::view("/admin/dashboard", 'dashboard');
+
+Route::view('admin/staff', 'staff');
+
+Route::view("/admin/bookings",'adminBooking');
+
+Route::view("/admin/complaint",'adminComplaint');
+
+Route::view('/admin/profile', 'adminProfile');
 
 // Uncomment the below line to work on the homepage for development 
 // Make sure to remove before submitting as it allows unauthenticated users 

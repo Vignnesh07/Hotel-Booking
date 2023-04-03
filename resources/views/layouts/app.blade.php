@@ -19,50 +19,74 @@
         <link rel="stylesheet" href="/assets/css/home.css" >
         <link rel="stylesheet" href="/assets/css/about.css" >
         <link rel="stylesheet" href="/assets/css/bookings.css" >
+        <link rel="stylesheet" href="/assets/css/complaints.css" >
+        <link rel="stylesheet" href="/assets/css/clerkProfile.css" >
         <link rel="stylesheet" href="/assets/phone/css/intlTelInput.css" >
+
+        <!--preload/download image to reduce long rendering-->
+        <link rel="preload" href="/assets/img/home_bg.png" as="image">
+        <link rel="preload" href="/assets/img/about_bg.png" as="image">
+        <link rel="preload" href="/assets/img/bookings_bg.png" as="image">
+        <link rel="preload" href="/assets/img/complaints_bg.png" as="image">
+        <link rel="preload" href="/assets/img/profile_bg.png" as="image">
     </head>
     <body>
-        <div class="header" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('/assets/img/home_bg.png');">
-            <nav>
-                <div class="logo-title">
-                    <img class="logo" src="/assets/img/logo.png">
-                    <h2>Prestige Co.</h2>
+        <nav class="clerk-nav">
+
+            <a class="clerk-logo-title" href="home">               
+                <img class="logo" src="/assets/img/logo.png">
+                <h2>Prestige Co.</h2>
+            </a>
+
+
+            <ul class="nav-links" id="nav-links">
+                <li><a class="{{ Request::is('home') ? 'active' : '' }}" href="home">Home</a></li>
+                <li><a class="{{ Request::is('bookings*') ? 'active' : '' }}" href="bookings">Bookings</a></li>
+                <li><a class="{{ Request::is('about') ? 'active' : '' }}" href="about">About Us</a></li>
+                <li><a class="{{ Request::is('complaints') ? 'active' : '' }}" href="complaints">Complaints</a></li>
+            </ul>
+
+            <div class="dropdown">
+
+                <button class="dropbtn"> User
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="clerkProfile"> Profile </a>
+                    <a href="{{ route('logout') }}" 
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"> Logout </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
                 </div>
-
-                <ul class="nav-links">
-                    <li><a href='home' >Home</a></li>
-                    <li><a href="bookings" >Bookings</a></li>
-                    <li><a href="about" >About Us</a></li>
-                    <li><a href="#" >Complains</a></li>
-                </ul>
-
-                <div class="dropdown">
-
-                    <button class="dropbtn"> User
-                        <i class="fa-solid fa-caret-down"></i>
-                    </button>
-
-                    <div class="dropdown-content">
-                        <a href="#"> Profile </a>
-                        <a href="{{ route('logout') }}" 
-                            onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"> Logout </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                            @csrf
-                        </form>
-                    </div>
-                </div>
-            </nav>
-            <div class="container">
-                <h1> Book Luxury Stays Seamlessly </h1>
             </div>
-        </div>
-
+        </nav>
+        
         @yield('content')
+
+        <!--------------- Footer -------------->
+        <div class="footer">
+            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <div class="hr-box">
+                <hr class="hr">
+            </div>
+            <p>Copyright &copy; 2023, Prestige Co.</p>
+        </div>
+        
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+        <script src="https://unpkg.com/scrollreveal"></script>
+
         <script src="/assets/phone/js/intlTelInput.js"> </script>
         <script src="/assets/js/home.js"> </script>
         <script src="/assets/js/bookings.js"> </script>
+        <script src="/assets/js/scrollReveal.js"> </script>
     </body>
 </html>
