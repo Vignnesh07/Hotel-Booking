@@ -49,7 +49,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 Route::get('logout', [LoginController::class, 'logout']);
 
-Route::view("dashboard", 'dashboard');
+Route::view("/admin/dashboard", 'dashboard');
+
+Route::view('admin/staff', 'staff');
+
+Route::view("/admin/bookings",'adminBooking');
+
+Route::view("/admin/complaint",'adminComplaint');
+
+Route::view('/admin/profile', 'adminProfile');
 
 // Uncomment the below line to work on the homepage for development 
 // Make sure to remove before submitting as it allows unauthenticated users 

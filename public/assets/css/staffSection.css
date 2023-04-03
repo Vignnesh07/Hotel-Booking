@@ -1,0 +1,426 @@
+:root {
+    --white: #fffafa;
+    --whitesmoke: #f5f5f5;
+    --lightblack: #575656;
+    --gray: #808080;
+    --darkcharcoal: #333;
+}
+
+body{
+    background-color:#ededf5;
+}
+
+.entries-search{
+    display: flex;
+    justify-content: space-between;
+}
+
+.show-entries{
+    width: 100%;
+    margin-left: 20px;
+}
+
+
+.select-entries {
+    padding: 8px;
+    margin-top: 15px;
+    width: 10%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1vw;
+    color: var(--darkcharcoal);
+    line-height: 22px;
+}
+
+.search-section{
+    display: flex;
+    margin-right: 20px;
+
+}
+.search-label{
+    padding-right: 5px;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+}
+
+.search-btn{
+    border: 0;
+    cursor: pointer;
+    background: var(--white);
+    font-size: 1em;
+    padding-left: 8px;
+}
+
+.staffTable{
+    background-color: white;
+    position:static;
+    padding-top: 20px;
+    margin-left: 340px;
+    margin-right: 20px;
+    padding-bottom: 20px;
+}
+
+.staffTable .heading{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.staffTable .heading h1{
+    margin-left: 20px;
+}
+
+.staffTable .heading button{
+    height: 40px;
+    width: 100px;
+    border:none;
+    background-color: rgb(89, 126, 89);
+    color:white;
+    cursor:pointer;
+}
+
+.staffTable .heading button:hover{
+    opacity:0.7;
+}
+
+.staffTable table{
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 98%;
+    margin: 0 auto;
+    position:static;
+}
+
+.staffTable table .first-row{
+    height: 60px;
+    background: var(--darkcharcoal);
+    font-size: 18px;
+    color: var(--white);
+    line-height: 1.2;
+    font-weight: unset;
+}
+
+.staffTable table .column-1{
+    width: 150px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.staffTable table .column-2{
+    width: 300px;
+    text-align: left;
+}
+
+.staffTable table .column-3{
+    width:350px;
+    text-align: left;
+}
+
+.staffTable table .column-4{
+    width: 200px;
+    text-align: center;
+}
+
+.staffTable table .column-5{
+    width: 200px;
+    text-align: center;
+}
+
+.staffTable table .column-5 button{
+    border:none;
+    font-size: 20px;
+    margin-right: 20px;
+    background: transparent;
+    cursor:pointer;
+}
+
+.staffTable table tbody tr{
+    height: 50px;
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.2;
+    font-weight: unset;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--whitesmoke)
+}
+
+table tbody tr:last-child {
+    border: 0;
+}
+
+.staff-overlay, .editStaff-overlay, .viewStaff-overlay, .resolve-overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+}
+
+.staff-overlay.active{
+    display:block;
+}
+
+.staff-overlay form, .editStaff-overlay form, .view-container, .resolve-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    width: 50%;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    z-index: 11;
+}
+
+.resolve-container p {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+
+form legend, .view-container h2{
+    text-align:center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 400px;
+    /* Set max-height to an appropriate value */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+}
+
+.form-content .items{
+    display: flex;
+    flex-direction: column;
+    margin-left: -8px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.form-content .items input, select{
+    padding:10px;
+    border: 1px solid #ccc;
+    border-radius:5px;
+}
+
+
+form .button{
+    display:flex;
+    margin-top:15px;
+    padding: 15px;
+    justify-content: space-between;
+}
+
+form .button .close-button button{
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+    
+}
+
+form .button button{
+    border: none;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+form .button .submit-button button{
+    background-color: #333;
+    color: #fff;
+    border: none;
+    
+}
+
+.staffTable input {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-top: 5px;
+}
+
+.empty-container{
+    height: 120px;
+    background-color:#ededf5;
+    width:100%;
+}
+
+/* Custom scrollbar styles */
+.form-content::-webkit-scrollbar {
+    width: 5px;
+    /* Adjust scrollbar width */
+}
+
+.form-content::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Adjust track color */
+    border-radius: 10px;
+    /* Add border-radius to match the design */
+}
+
+.form-content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Adjust thumb color */
+    border-radius: 0 8px 8px 0;
+    /* Create the shape */
+}
+
+.form-content::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Adjust thumb color on hover */
+}
+
+.viewStaff-overlay .content-button {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.viewStaff-overlay .form-content .content p {
+    margin: 0;
+    padding: 10px;
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    box-sizing: border-box;
+    background-color: var(--darkcharcoal);
+    color: var(--white);
+    border: 1px solid #999;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* the align-items center show vignnesh later */
+}
+
+.viewStaff-overlay .form-content .content span {
+    width: 60%;
+    display: block;
+    padding: 10px;
+    margin: -10px;
+    border: 1px solid #999;
+    min-width: 65%;
+    box-sizing: border-box;
+    font-weight: 400;
+    color: var(--darkcharcoal);
+    background-color: var(--white);
+}
+
+/* #popup-name-response {
+    padding-left: 10px;
+} */
+
+.viewStaff-overlay .content-button button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.deleteStaff-overlay {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    z-index: 11;
+}
+
+.deleteStaff-overlay p, .resolve-overlay p{
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.deleteStaff-overlay button, .resolve-overlay button{
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.resolve-overlay .resolveButtonBox{
+    display:flex;
+    justify-content: flex-end;
+}
+
+.resolve-overlay input{
+    margin-bottom: 20px;
+}
+
+#resolveCancelBtn {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+}
+
+.deleteStaff-overlay button:hover {
+    background-color: #555;
+}
+
+.deleteStaff-overlay button:focus {
+    outline: none;
+}
+
+#deleteCancelBtn {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+}
+
+#deleteCancelBtn:hover {
+    border-color: #555;
+    color: #555;
+}

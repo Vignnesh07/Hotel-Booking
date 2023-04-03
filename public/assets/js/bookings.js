@@ -126,11 +126,6 @@ function updateTable(currentPage, rowsPerPage, searchInputValue = "") {
     }
 }
 
-//navigate back to home/reservation
-document.getElementById("backToReserve").addEventListener("click", function() {
-    window.location.href = "/reservation-form";
-});
-
 // --------------- Button Actions --------------------------------
 // Query DOM elements for buttons
 const bookedBtns = document.querySelectorAll(".booked-btn");
@@ -220,6 +215,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Generate table rows with booking data and update the table with pagination
     generateTableRows();
     updateTable(currentPage, rowsPerPage);
+    //navigate back to home/reservation
+    document.getElementById("backToReserve").addEventListener("click", function() {
+        window.location.href = "/reservation-form";
+    });
 });
 
 
@@ -284,6 +283,7 @@ document.querySelector("#bookings-table").addEventListener("click", (event) => {
         openHistoryOverlay(bookingId);
     }
 });
+
 
 
 function openEditOverlay(bookingId) {

@@ -19,22 +19,27 @@
         <!--Stylesheet-->
         <link rel="stylesheet" href="/assets/css/dashboard.css" >
         <link rel="stylesheet" href="/assets/css/navigation.css" >
+        <link rel="stylesheet" href="/assets/css/staffSection.css" >
+        <link rel="stylesheet" href="/assets/css/adminComplaint.css" >
+        <link rel="stylesheet" href="/assets/css/bookings.css" >
+        <link rel="stylesheet" href="/assets/css/adminBooking.css" >
+        <link rel="stylesheet" href="/assets/css/adminProfile.css" >
 
     </head>
     <body class="dashboard-body">
         <div>
             <div class='topNav'>
-                <div class="logo-title">               
+                <a href='/admin/dashboard' class="logo-title">               
                     <img class="logo" src="/assets/img/logo.png">
                     <h2>Prestige Co.</h2>
-                </div>
+                </a>
 
                 <div class="dropdown">
                     <div class="dropbtn">
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <div class="dropdown-content">
-                        <a href="#"> Profile </a>
+                        <a href="/admin/profile"> Profile </a>
                         <a href="#"> Logout </a>
                     </div>
                 </div>
@@ -44,25 +49,25 @@
             <div class='sidebar'>
                 <ul class ='nav-links'>
                     <li>
-                        <a href='#'>
+                        <a href='/admin/dashboard'>
                             <i class="ionicons ion-grid"></i>
                             <span class='link_name'>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href='#'>
+                        <a href='/admin/staff'>
                             <i class="ionicons ion-ios-people"></i>
                             <span class='link_name'>Staff Section</span>
                         </a>
                     </li>
                     <li>
-                        <a href='#'>
+                        <a href='/admin/bookings'>
                             <i class="ionicons ion-ios-list"></i>
                             <span class='link_name'>Booking List</span>
                         </a>
                     </li>
                     <li>
-                        <a href='#'>
+                        <a href='/admin/complaint'>
                             <i class="ionicons ion-ios-chatbubble"></i>
                             <span class='link_name'>Complaints</span>
                         </a>
@@ -79,5 +84,6 @@
         <script src="https://unpkg.com/scrollreveal"></script>
         <script src="/assets/js/home.js"> </script>
         <script src="/assets/js/bookings.js"> </script>
+        <script src="/assets/js/adminComplaint.js"> </script>
     </body>
 </html>
