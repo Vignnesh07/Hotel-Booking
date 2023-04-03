@@ -91,7 +91,7 @@ input {
 
 
 .item input:hover, .item select:hover {
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
     box-shadow: 0 0 3px 0 #006622;
     color: #006622;
 }

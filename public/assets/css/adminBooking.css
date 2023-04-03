@@ -111,3 +111,8 @@
     background-color: #555;
     /* Adjust thumb color on hover */
 }
+
+.add-colour{
+    border-top: 50px solid #ededf5;
+    margin-top: -70px;
+}

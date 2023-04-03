@@ -71,6 +71,19 @@
                                 </span>
                             </div> -->
                         </div>
+                        <div class='items'>
+                            <label for='confirmpassword'>Confirm Password:</label>
+                            <input type='confirmpassword' id='confirmpassword' placeholder='Confirm password'>
+                            <!-- FOR ERROR at dashboard.css-->
+                            <!-- <div class="error-span">
+                                <span class="invalid-feedback" role="alert">
+                                    <strong class="error-message">
+                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                                        Please fill in the required fill
+                                    </strong>
+                                </span>
+                            </div> -->
+                        </div>
                             
                         <div class="items">
                             <label for="joiningDate">Joining Date</label>
@@ -151,6 +164,7 @@
                     
                 </form>
             </div>
+            
             <hr>
 
             <div class="entries-search">
@@ -189,8 +203,25 @@
                     
                     <tr>
                         <td class='column-1'>1</td>
-                        <td>Chong Hau Yong</td>
-                        <td>hauyong@gmail.com</td>
+                        <td class='column-2'>Chong Hau Yong</td>
+                        <td class='column-3'>hauyong@gmail.com</td>
+                        <td class='column-4'>Admin</td>
+                        <td class='column-5'>
+                            <button type='button' class='editStaff'>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button type='button' class='viewStaff'>
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                            <button type='button' class='deleteStaff'>
+                                <i class="fa-sharp fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='column-1'>1</td>
+                        <td class='column-2'>Chong Hau Yong</td>
+                        <td class='column-3'>hauyong@gmail.com</td>
                         <td class='column-4'>Admin</td>
                         <td class='column-5'>
                             <button type='button' class='editStaff'>
@@ -207,8 +238,8 @@
 
                     <tr>
                         <td class='column-1'>1</td>
-                        <td>Chong Hau Yong</td>
-                        <td>hauyong@gmail.com</td>
+                        <td class='column-2'>Chong Hau Yong</td>
+                        <td class='column-3'>hauyong@gmail.com</td>
                         <td class='column-4'>Admin</td>
                         <td class='column-5'>
                             <button type='button' class='editStaff'>
@@ -223,41 +254,7 @@
                         </td>
                     </tr>
 
-                    <tr>
-                        <td class='column-1'>1</td>
-                        <td>Chong Hau Yong</td>
-                        <td>hauyong@gmail.com</td>
-                        <td class='column-4'>Admin</td>
-                        <td class='column-5'>
-                            <button type='button' class='editStaff'>
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button type='button' class='viewStaff'>
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                            <button type='button' class='deleteStaff'>
-                                <i class="fa-sharp fa-solid fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class='column-1'>1</td>
-                        <td>Chong Hau Yong</td>
-                        <td>hauyong@gmail.com</td>
-                        <td class='column-4'>Admin</td>
-                        <td class='column-5'>
-                            <button type='button' class='editStaff'>
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button type='button' class='viewStaff'>
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                            <button type='button' class='deleteStaff'>
-                                <i class="fa-sharp fa-solid fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
+                    
                 </table>
 
                 <div class="pagination">
@@ -292,36 +289,6 @@
                         <div class='items'>
                             <label for='email'>Email: </label>
                             <input type='text' id='fEmail' placeholder='Enter email'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
-                        </div>
-                    
-                        <div class='items'>
-                            <label for='authority'>Authority: </label>
-                            <select id='authority'>
-                                <option value='Admin'>Admin</option>
-                                <option value='Staff'>Staff</option>
-                            </select>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
-                        </div>
-                        <div class='items'>
-                            <label for='password'>Password:</label>
-                            <input type='password' id='password' placeholder='Enter password'>
                             <!-- FOR ERROR at dashboard.css-->
                             <!-- <div class="error-span">
                                 <span class="invalid-feedback" role="alert">
@@ -403,7 +370,7 @@
                     </div>
                     <div class='button'>
                         <div class='submit-button'>
-                            <button type='submit'>Add user</button>
+                            <button type='submit'>Save</button>
                         </div>
                         <div class='close-button'>
                             <button type='button'>Close</button>
@@ -420,7 +387,6 @@
                             <p id="staffName">Name <span></span></p>
                             <p id="staffEmail">Email <span></span></p>
                             <p id="staffAuthority">Authority <span></span></p>
-                            <p id="staffPassword">Password <span></span></p>
                             <p id="staffJoiningDate">Joining Date <span></span></p>
                             <p id="staffPhone">Phone <span></span></p>
                             <p id="staffAddress">Address <span></span></p>
