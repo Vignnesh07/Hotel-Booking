@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
-use App\Models\Clerk;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,16 +13,18 @@ class AuthSeeder extends Seeder {
      */
     public function run(): void
     {
-        DB::table('admins') -> insert([
+        DB::table('users') -> insert([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('123456'),
+            'role' => 'admin',
         ]);
 
-        DB::table('clerks') -> insert([
+        DB::table('users') -> insert([
             'name' => 'Clerk',
             'email' => 'clerk@gmail.com',
             'password' => Hash::make('123456'),
+            'role' => 'clerk',
         ]);
     }
 }
