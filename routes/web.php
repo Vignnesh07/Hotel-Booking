@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\StaffSection;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,11 @@ Route::get('logout', [LoginController::class, 'logout']);
 
 Route::view("/admin/dashboard", 'dashboard');
 
-Route::view('admin/staff', 'staff');
+Route::get("/admin/staff", [StaffSection::class, 'viewStaff']);
+Route::get("/admin/staff/{id}", [StaffSection::class, 'viewMore']);
+Route::post("/admin/addStaff", [StaffSection::class, 'addStaff'])->name('add.staff');
+Route::post("/admin/editStaff/{id}", [StaffSection::class, 'editStaff'])->name('edit.staff');
+Route::get("/admin/deleteStaff/{id}",[StaffSection::class,'deleteStaff']);
 
 Route::view("/admin/bookings",'adminBooking');
 

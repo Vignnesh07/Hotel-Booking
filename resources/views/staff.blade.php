@@ -1,6 +1,8 @@
 @extends('layouts.dash')
 
 @section('content')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <div>
     <div class='empty-container'>
     </div>
@@ -10,147 +12,65 @@
                 <h1>Employee Details:</h1>
                 <button type='button' class='addStaff'>Add Staff</button>
             </div>
-            <div class='staff-overlay'>    
-                <form>
+            <div class='staff-overlay'>
+                <form method='POST' action='{{ route("add.staff") }}'>
+                    @csrf
                     <legend>Add Staff</legend>
 
                     <div class='form-content'>
                         <div class='items'>
                             <label for='name'>Name: </label>
-                            <input type='text' id='fName' placeholder='Enter name'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='text' id='name' name="name" placeholder='Enter name' required>
+
                         </div>
 
                         <div class='items'>
                             <label for='email'>Email: </label>
-                            <input type='text' id='fEmail' placeholder='Enter email'>
-                            <!-- <div class="error-span">
-                            <span class="invalid-feedback" role="alert">
-                                <strong class="error-message">
-                                    <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                    Please fill in the required fill
-                                </strong>
-                            </span>
-                            </div> -->
-                        </div>      
-                        
+                            <input type='text' id='email' name="email" placeholder='Enter email' required>
+
+                        </div>
+
                         <div class='items'>
                             <label for='authority'>Authority: </label>
-                            <select id='authority'>
+                            <select id='authority' name='authority' equired>
                                 <option value='Admin'>Admin</option>
-                                <option value='Staff'>Staff</option>
+                                <option value='Clerk'>Clerk</option>
                             </select>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+
                         </div>
                         <div class='items'>
                             <label for='password'>Password:</label>
-                            <input type='password' id='password' placeholder='Enter password'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='password' id='password' name="password" placeholder='Enter password' required>
+
                         </div>
                         <div class='items'>
-                            <label for='confirmpassword'>Confirm Password:</label>
-                            <input type='confirmpassword' id='confirmpassword' placeholder='Confirm password'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <label for='conf_password'>Confirm Password:</label>
+                            <input type='password' id='conf_password' name="conf_password"
+                                placeholder='Confirm password' required>
+
                         </div>
-                            
+
                         <div class="items">
-                            <label for="joiningDate">Joining Date</label>
-                            <input id="joiningDate" type="date" name="joiningDate" />
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <label for="salary">Salary</label>
+                            <input id="salary" type="number" name="salary" required />
+
                         </div>
                         <div class='items'>
                             <label for='phone'>Phone:</label>
-                            <input type='tel' id='phone' placeholder='01x-xxxxxxx' pattern="[0-9]{3}-[0-9]{7}" required>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='tel' id='phone' name="phone" placeholder='01x-xxxxxxx'
+                                pattern="[0-9]{3}-[0-9]{7}" required>
+
                         </div>
-                                
+
                         <div class='items'>
                             <label for='address'>Address: </label>
-                            <input type='text' id='address' placeholder='Enter address'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='text' id='address' name="address" placeholder='Enter address' required>
+
                         </div>
                         <div class='items'>
                             <label for='zipCode'>Zip Code: </label>
-                            <input type='text' id='zipCode' placeholder='Enter zip code'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
-                        </div>
-                                
-                        <div class='items'>
-                            <label for='city'>City: </label>
-                            <input type='text' id='city' placeholder='Enter city'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='text' id='zipCode' name="zipCode" placeholder='Enter zip code' required>
+
                         </div>
                     </div>
                     <div class='button'>
@@ -161,10 +81,10 @@
                             <button>Close</button>
                         </div>
                     </div>
-                    
+
                 </form>
             </div>
-            
+
             <hr>
 
             <div class="entries-search">
@@ -200,172 +120,91 @@
                             <th class='column-5'>Action</th>
                         </tr>
                     </thead>
-                    
+                    @foreach($users as $user)
                     <tr>
-                        <td class='column-1'>1</td>
-                        <td class='column-2'>Chong Hau Yong</td>
-                        <td class='column-3'>hauyong@gmail.com</td>
-                        <td class='column-4'>Admin</td>
+                        <td class='column-1'>{{$user->id}}</td>
+                        <td class='column-2'>{{$user->name}}</td>
+                        <td class='column-3'>{{$user->email}}</td>
+                        <td class='column-4'>{{$user->authority}}</td>
                         <td class='column-5'>
-                            <button type='button' class='editStaff'>
+                            <button type='button' class='editStaff' data-user-id='{{$user->id}}'
+                                onclick="console.log('{{ $user->id }}');">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
-                            <button type='button' class='viewStaff'>
+                            <button type='button' class='viewStaff' data-user-id='{{$user->id}}'
+                                onclick="console.log('{{ $user->id }}');">
                                 <i class="fa-solid fa-eye"></i>
                             </button>
-                            <button type='button' class='deleteStaff'>
+                            <button type='button' class='deleteStaff' data-user-id='{{$user->id}}'
+                                onclick="console.log('{{ $user->id }}');">
                                 <i class="fa-sharp fa-solid fa-trash"></i>
                             </button>
                         </td>
                     </tr>
-                    <tr>
-                        <td class='column-1'>1</td>
-                        <td class='column-2'>Chong Hau Yong</td>
-                        <td class='column-3'>hauyong@gmail.com</td>
-                        <td class='column-4'>Admin</td>
-                        <td class='column-5'>
-                            <button type='button' class='editStaff'>
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button type='button' class='viewStaff'>
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                            <button type='button' class='deleteStaff'>
-                                <i class="fa-sharp fa-solid fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class='column-1'>1</td>
-                        <td class='column-2'>Chong Hau Yong</td>
-                        <td class='column-3'>hauyong@gmail.com</td>
-                        <td class='column-4'>Admin</td>
-                        <td class='column-5'>
-                            <button type='button' class='editStaff'>
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button type='button' class='viewStaff'>
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                            <button type='button' class='deleteStaff'>
-                                <i class="fa-sharp fa-solid fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-
-                    
+                    @endforeach
                 </table>
 
                 <div class="pagination">
-                
-                <div class="pagination-button">
-                <button id="previous">Previous</button>
-                <div id="page-numbers"></div>
-                <button id="next">Next</button>
+
+
+                    {{ $users->links('pagination::bootstrap-4') }}
+
                 </div>
-            </div>
 
             </div>
 
-            <div id="editStaff-overlay" class='editStaff-overlay'>    
-                <form>
+            @foreach($users as $user)
+            <div id="editStaff-overlay" class='editStaff-overlay'>
+                <form id="editStaffForm" method='POST' action='{{ route('edit.staff', ['id' => $user->id]) }}'>
+                    @csrf
                     <legend>Edit Staff</legend>
-
-                    <div class='form-content'>
+                    <div class=' form-content'>
                         <div class='items'>
                             <label for='name'>Name: </label>
-                            <input type='text' id='fName' placeholder='Enter name'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='text' id='name' name="name" placeholder='Enter name' value='{{$user->name}}'
+                                required>
                         </div>
                         <div class='items'>
                             <label for='email'>Email: </label>
-                            <input type='text' id='fEmail' placeholder='Enter email'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='text' id='email' name='email' placeholder='Enter email'
+                                value='{{$user->email}}' required>
                         </div>
-                        
-                        <div class="items">
-                            <label for="joiningDate">Joining Date</label>
-                            <input id="joiningDate" type="date" name="joiningDate" />
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                        <div class='items'>
+                            <label for='authority'>Authority: </label>
+                            <select id='authority' name='authority' value='{{$user->authority}}' required>
+                                <option value='Admin'>Admin
+                                </option>
+                                <option value='Clerk'>Clerk
+                                </option>
+                            </select>
+                        </div>
+                        <div class='items'>
+                            <label for='password'>Password:</label>
+                            <input type='password' id='password' name='password' placeholder='Enter password' required>
+                        </div>
+                        <div class='items'>
+                            <label for='conf_password'>Confirm Password:</label>
+                            <input type='password' id='conf_password' name='conf_password'
+                                placeholder='Confirm password' required>
+                        </div>
+                        <div class=" items">
+                            <label for="salary">Salary</label>
+                            <input id='salary' type='number' name='salary' value='{{$user->salary}}' required>
                         </div>
                         <div class='items'>
                             <label for='phone'>Phone:</label>
-                            <input type='tel' id='phone' placeholder='01x-xxxxxxx' pattern="[0-9]{3}-[0-9]{7}" required>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='tel' id='phone' name='phone' placeholder='01x-xxxxxxx'
+                                pattern='[0-9]{3}-[0-9]{7}' value='{{$user->phone}}' required>
                         </div>
-                            
                         <div class='items'>
                             <label for='address'>Address: </label>
-                            <input type='text' id='address' placeholder='Enter address'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='text' id='address' name='address' placeholder='Enter address'
+                                value='{{$user->address}}' required>
                         </div>
                         <div class='items'>
                             <label for='zipCode'>Zip Code: </label>
-                            <input type='text' id='zipCode' placeholder='Enter zip code'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
-                        </div>
-                            
-                        <div class='items'>
-                            <label for='city'>City: </label>
-                            <input type='text' id='city' placeholder='Enter city'>
-                            <!-- FOR ERROR at dashboard.css-->
-                            <!-- <div class="error-span">
-                                <span class="invalid-feedback" role="alert">
-                                    <strong class="error-message">
-                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-                                        Please fill in the required fill
-                                    </strong>
-                                </span>
-                            </div> -->
+                            <input type='text' id='zipCode' name='zipCode' placeholder='Enter zip code'
+                                value='{{$user->zipCode}}' required>
                         </div>
                     </div>
                     <div class='button'>
@@ -378,6 +217,7 @@
                     </div>
                 </form>
             </div>
+            @endforeach
 
             <div class="viewStaff-overlay" id='viewStaff-overlay'>
                 <div class='view-container'>
@@ -387,31 +227,35 @@
                             <p id="staffName">Name <span></span></p>
                             <p id="staffEmail">Email <span></span></p>
                             <p id="staffAuthority">Authority <span></span></p>
-                            <p id="staffJoiningDate">Joining Date <span></span></p>
+                            <p id="staffSalary">Salary <span></span></p>
                             <p id="staffPhone">Phone <span></span></p>
                             <p id="staffAddress">Address <span></span></p>
                             <p id="staffZipCode">Zip Code <span></span></p>
-                            <p id="staffCity">City <span></span></p>
                         </div>
                     </div>
                     <div class="content-button">
                         <button class="close-button" id="viewCloseBtn">Close</i></button>
                     </div>
                 </div>
-                
             </div>
 
             <div class="deleteStaff-overlay" id="deleteStaff-overlay">
                 <div class="delete-container">
                     <p>Confirm Delete?</p>
-                    <button id="confirmDeleteBtn">Confirm Delete</button>
-                    <button id="deleteCancelBtn">Cancel</button>
+
+                    <button id="confirmDeleteBtn"
+                        onclick="window.location.href='{{ url ("/admin/deleteStaff/{$user->id}")}}'">
+                        Confirm
+                        Delete</button>
+                    <button id=" deleteCancelBtn"
+                        onclick="window.location.href='{{ url ("/admin/staff")}}'">Cancel</button>
                 </div>
             </div>
         </div>
 
     </div>
 </div>
-<script src="/assets/js/staff.js"> </script>
+<script src="/assets/js/staff.js"></script>
+<script src="/assets/js/staffFunctions.js"></script>
 
 @endsection
