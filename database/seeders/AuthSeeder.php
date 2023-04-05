@@ -15,6 +15,7 @@ class AuthSeeder extends Seeder {
      */
     public function run(): void
     {
+<<<<<<< HEAD
         // DB::table('admins') -> insert([
         //     Admin::create([
         //         'name' => 'Admin',
@@ -22,13 +23,18 @@ class AuthSeeder extends Seeder {
         //         'password' => Hash::make('123456'),
         //     ]),
         // ]);
+=======
+        DB::table('admins') -> insert([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('123456'),
+        ]);
+>>>>>>> 3d513173ce9c6685506ecbf68cdfe44029df9380
 
         DB::table('clerks') -> insert([
-            Clerk::create([
-                'name' => 'Clerk',
-                'email' => 'clerk@gmail.com',
-                'password' => Hash::make('123456'),
-            ]),
+            'name' => 'Clerk',
+            'email' => 'clerk@gmail.com',
+            'password' => Hash::make('123456'),
         ]);
     }
 }
