@@ -72,7 +72,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href='/admin/complaint'>
+                        <a href='/admin/complaints'>
                             <i class="ionicons ion-ios-chatbubble"></i>
                             <span class='link_name'>Complaints</span>
                         </a>

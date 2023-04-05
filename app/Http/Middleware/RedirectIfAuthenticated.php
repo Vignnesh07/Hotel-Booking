@@ -14,15 +14,22 @@ class RedirectIfAuthenticated {
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next, $guard = null): Response {
-        if ($guard == "admin" && Auth::guard($guard)->check()) {
-            return redirect('/home');
-        }
-        if ($guard == "clerk" && Auth::guard($guard)->check()) {
-            return redirect('/clerk');
-        }
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
-        }
+            $role = Auth::user()->role; 
+        
+            switch ($role) {
+              case 'admin':
+                return redirect('/admin/dashboard');
+                break;
+              case 'clerk':
+                return redirect('/home');
+                break; 
+        
+              default:
+                return redirect('/home'); 
+                break;
+            }
+          }
         return $next($request);
     }
 }

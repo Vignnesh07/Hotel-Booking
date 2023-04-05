@@ -22,23 +22,13 @@ class LoginController extends Controller {
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    // protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = '/home';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
     {
-        // $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:clerk')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
 
     public function showAdminLoginForm() {
@@ -51,7 +41,7 @@ class LoginController extends Controller {
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->intended('/admin/dashboard');
         }
         return back()->withInput($request->only('email', 'remember'));
@@ -67,7 +57,7 @@ class LoginController extends Controller {
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('clerk')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->intended('/home');
         }
         return back()->withInput($request->only('email', 'remember'));

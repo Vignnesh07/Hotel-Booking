@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use DateTime;
 use App\Models\Complaint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ComplaintController extends Controller {
     // Function to add new complaints to the database
@@ -20,21 +20,35 @@ class ComplaintController extends Controller {
         $data['status'] = 'Unresolved';
         $data['budget'] = '';
         Complaint::create($data);
-        return redirect('complaints#complaints-table');
+        if (Auth::user() -> can('isAdmin')) {
+            return redirect('/admin/complaints#complaints-table');
+        } else {
+            return redirect('/complaints#complaints-table');
+        }
     }
 
     // Function to update complaints in the database
     function updateComplaint(Request $request) {
+        $this -> validate($request, [
+            'budget' => 'required',
+        ]);
+
         $data = Complaint::find($request -> id);
-        $data -> status = $request -> status;
+        $data -> status = 'Resolved';
         $data -> budget = $request -> budget;
         $data -> save();
-        return redirect('complaints');
+
+        return redirect('/admin/complaints#complaints-table');
     }
 
     // Function to retrieve and display all complaints 
     function viewComplaints() {
         $data = Complaint::paginate(5);
-        return view('complaints', ['complaints' => $data]);
+
+        if (Auth::user() -> can('isAdmin')) {
+            return view('/adminComplaint', ['complaints' => $data]);
+        } else {
+            return view('/complaints', ['complaints' => $data]);
+        }
     }
 }

@@ -82,21 +82,15 @@
                     <button type="submit" class="submitComplaint">{{ __('Submit') }}</button>
                     <button type="button" class="resetComplaint">Reset</button>
                 </div>
-
             </form>
-
         </div>
-
         <br>
 
-
         <div class="container-complaint-table">
-
             <h3>Complaint List</h3>
             <hr>
 
             <div class="complaints-table">
-
                 <div class="entries-search">
                     <div class="show-entries">
                         <label for="entries-per-page-complaints">Show:</label>
@@ -148,16 +142,13 @@
                         </td>
                     </tr>
                     @endforeach
-
                     </tbody>
                 </table>
 
                 {!! $complaints->links('vendor.pagination.custom') !!}
             </div>
-            
         </div>
-
     </div>
-
 </div>
+
 @endsection
