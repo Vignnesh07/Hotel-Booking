@@ -15,7 +15,7 @@
 
     <div class="form-box">
 
-        <form id="submitReservationForm" method="post">
+        <form  id="submitReservationForm"  action="{{ route('home.createBooking') }}" method="post">
 
             <fieldset>
 
@@ -306,7 +306,7 @@
                     <p id="popup-amount"> Total Amount <span></span></p>
                 </div>
                 <div class="content-button">
-                    <button class="confirmBtn" id="confirmBtn">Confirm</button>
+                    <button class="confirmBtn" id="confirmBtn" type="submit" >Confirm</button>
                     <button class="close-btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 

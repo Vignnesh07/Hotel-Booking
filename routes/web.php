@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Auth\LoginController;
 
 /*
@@ -57,13 +58,23 @@ Route::get('logout', [LoginController::class, 'logout']);
 
 // Incompleted routes 
 Route::view("clerkProfile",'clerkProfile');
+
+// View booking list
 Route::view("bookings",'bookings');
 Route::get('/bookings-table', function () {
     return redirect('/bookings#bookings-table');
 });
+
+// Get reservation-form
 Route::get('/reservation-form', function () {
     return redirect('/home#submitReservationForm');
 });
+
+/* Clerk createBooking routes */
+//Route::get('/complaints', [ComplaintController::class, 'viewComplaints']); view by default == home
+Route::post('/home', [BookingController::class, 'createBooking'])->name('home.createBooking');
+
+
 Route::view("about",'about');
 Route::view('/admin/staff', 'staff');
 Route::view("/admin/bookings",'adminBooking');
