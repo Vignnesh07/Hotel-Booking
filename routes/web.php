@@ -72,7 +72,7 @@ Route::get('/reservation-form', function () {
 
 /* Clerk createBooking routes */
 //Route::get('/complaints', [ComplaintController::class, 'viewComplaints']); view by default == home
-Route::post('/home', [BookingController::class, 'createBooking'])->name('home.createBooking');
+Route::post('/home', [BookingController::class, 'createBooking']);
 
 
 Route::view("about",'about');

@@ -15,7 +15,7 @@
 
     <div class="form-box">
 
-        <form  id="submitReservationForm"  action="{{ route('home.createBooking') }}" method="post">
+        <form  id="submitReservationForm" method="post">
 
             <fieldset>
 
@@ -24,7 +24,7 @@
 
                     <div class="item">
                         <label for="roomtype">Room Type</label>
-                        <select id="roomtype" onchange="filterRooms()">
+                        <select id="roomtype"  name="roomtype" onchange="filterRooms()">
                             <option value="" disabled selected>Select Room Type</option>
                             <option value="single">Single</option>
                             <option value="double">Double</option>

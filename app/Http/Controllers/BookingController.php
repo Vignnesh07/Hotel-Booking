@@ -29,6 +29,7 @@ class BookingController extends Controller
 
         $data = $request -> all();
         // Adding default data
+        //$data['roomtype'] = 'TEST';
         $data['paidmount'] = 0;
         $data['deposit'] = 0;
         $data['checkedin'] = false;
