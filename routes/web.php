@@ -39,17 +39,23 @@ Route::post('/login/admin', [LoginController::class, 'adminLogin']);
 Route::get('/login/clerk', [LoginController::class, 'showClerkLoginForm']);
 Route::post('/login/clerk', [LoginController::class, 'clerkLogin']);
 
-/* Clerk complaints routes */
-Route::get('/complaints', [ComplaintController::class, 'viewComplaints']);
-Route::post('/complaints', [ComplaintController::class, 'addComplaint']);
-
-/* Route Middlewares */
-Route::group(['middleware' => 'auth:clerk'], function () {
+/* Clerk route middlewares */
+Route::group(['middleware' => 'auth'], function () {
     Route::view('/home', 'home');
+
+    /* Clerk complaints routes */
+    Route::get('/complaints', [ComplaintController::class, 'viewComplaints']);
+    Route::post('/complaints', [ComplaintController::class, 'addComplaint']);
 }); 
 
-Route::group(['middleware' => 'auth:admin'], function () {
-    Route::view('/admin/dashboard', 'dashboard');
+/* Admin route middlewares */
+Route::group(['middleware' => 'auth'], function () {
+    Route::view('/admin/dashboard', 'dashboard')->middleware('can:isAdmin');
+
+    /* Admin complaints routes */
+    Route::get('/admin/complaints', [ComplaintController::class, 'viewComplaints'])->middleware('can:isAdmin');
+    Route::post('/admin/complaints', [ComplaintController::class, 'addComplaint'])->middleware('can:isAdmin');
+    Route::post('/admin/complaints/update', [ComplaintController::class, 'updateComplaint'])->middleware('can:isAdmin');
 }); 
 
 /* Logout route */
@@ -67,10 +73,4 @@ Route::get('/reservation-form', function () {
 Route::view("about",'about');
 Route::view('/admin/staff', 'staff');
 Route::view("/admin/bookings",'adminBooking');
-Route::view("/admin/complaint",'adminComplaint');
 Route::view('/admin/profile', 'adminProfile');
-
-// Uncomment the below line to work on the homepage for development 
-// Make sure to remove before submitting as it allows unauthenticated users 
-// to enter the home page
-// Route::view('home', 'home');
