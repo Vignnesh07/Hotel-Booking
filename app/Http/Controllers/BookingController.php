@@ -42,12 +42,12 @@ class BookingController extends Controller
 
     function editBooking(Request $request){
         $data = Booking::find($request->id);
-        $data ->name = $request->name;
-        $data ->email = $request->email;
-        $data ->role = $request->role;
-        $data ->address = $request->address;
-        $data ->zipCode = $request->zipCode;
-        $data ->phone = $request->phone;
+        // $data ->name = $request->name;
+        // $data ->email = $request->email;
+        // $data ->role = $request->role;
+        // $data ->address = $request->address;
+        // $data ->zipCode = $request->zipCode;
+        // $data ->phone = $request->phone;
         $data ->save();
         return redirect("");
     }
