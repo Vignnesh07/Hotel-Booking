@@ -40,7 +40,12 @@
                     </div>
                     <div class="dropdown-content">
                         <a href="/admin/profile"> Profile </a>
-                        <a href="#"> Logout </a>
+                        <a href="{{ route('logout') }}" 
+                            onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"> Logout </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
