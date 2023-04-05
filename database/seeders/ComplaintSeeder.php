@@ -17,7 +17,7 @@ class ComplaintSeeder extends Seeder
             'name' => 'Chong Hau Yong',
             'roomID' => 'SI001', 
             'complaint' => "Room windows are not closing properly.",
-            'status' => 'unresolved',
+            'status' => 'Unresolved',
             'budget' => '',
         ]);
 
@@ -25,7 +25,31 @@ class ComplaintSeeder extends Seeder
             'name' => 'Yong Li Jonn',
             'roomID' => 'TR005', 
             'complaint' => "The toilet is dirty and smells, can be cleaner.",
-            'status' => 'unresolved',
+            'status' => 'Unresolved',
+            'budget' => '',
+        ]);
+
+        DB::table('complaints') -> insert([
+            'name' => 'Vignnesh Ravindran',
+            'roomID' => 'ST010', 
+            'complaint' => "Air conditioner can be cooler.",
+            'status' => 'Unresolved',
+            'budget' => '',
+        ]);
+
+        DB::table('complaints') -> insert([
+            'name' => 'Joanne Lim',
+            'roomID' => 'QU007', 
+            'complaint' => "Water leakage from the air conditioner.",
+            'status' => 'Unresolved',
+            'budget' => '',
+        ]);
+
+        DB::table('complaints') -> insert([
+            'name' => 'Voo Keat Voon',
+            'roomID' => 'ES003', 
+            'complaint' => "The room is dirty, paints are coming off, and lights are dim.",
+            'status' => 'Unresolved',
             'budget' => '',
         ]);
     }
