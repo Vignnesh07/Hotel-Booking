@@ -13,23 +13,23 @@ class BookingSeeder extends Seeder {
     public function run(): void
     {
         DB::table('bookings') -> insert([
-            'fname' => 'Joanne',
-            'lname' => 'Lim',
-            'roomtype' => 'Single',
-            'roomnumber' => 'SI001',
+            'fName' => 'Joanne',
+            'lName' => 'Lim',
+            'roomType' => 'Single',
+            'roomNumber' => 'SI001',
             'email' => 'jlzy21@icloud.com',
-            'idcard' => '010121137899',
+            'idCard' => '010121137899',
             'phone' => '+60166638568',
-            'residentialaddress' => 'Lot 123, Jalan Tasik',
+            'address' => 'Lot 123, Jalan Tasik',
             'city' => 'Miri',
-            'zipcode' => '98000',
+            'zipCode' => '98000',
             'amount' => 800,
-            'paidamount' => 400,
+            'paidAmount' => 400,
             'deposit' => 200,
-            'checkindate' => '2023-03-28',
-            'checkoutdate' => '2023-04-03',
-            'checkedin' => true,
-            'checkedout' => false,
+            'checkInDate' => '2023-03-28',
+            'checkOutDate' => '2023-04-03',
+            'checkedIn' => true,
+            'checkedOut' => false,
         ]);
     }
 }

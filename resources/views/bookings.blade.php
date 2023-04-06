@@ -2,6 +2,8 @@
 
 @section('content')
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <div class="header">
     <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)), url('/assets/img/bookings_bg.png');"></div>
     <div class="container">
@@ -12,8 +14,8 @@
 <div class="container">
 
     <h2 class="sub-title">Bookings List</h2>
-    <div class="container-table">
 
+    <div class="container-table">
         <div class="bookings-table">
 
             <div class="entries-search">
@@ -51,21 +53,62 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- ----------- new bookings will be added here ---------- -->
-                    
+                    @foreach($bookings as $booking)
+                        <tr>
+                            <td class="bookings-column1" id="c-bookings1">{{ $booking['id'] }}</td>
+                            <td class="bookings-column2" id="c-bookings2">{{ $booking['roomNumber'] }}</td>
+                            <td class="bookings-column3" id="c-bookings3">
+                                @if($booking['roomType'] == 'single')
+                                    Single Room
+                                @elseif($booking['roomType'] == 'double')
+                                    Double Room
+                                @elseif($booking['roomType'] == 'triple')
+                                    Triple Room
+                                @elseif($booking['roomType'] == 'queen')
+                                    Queen Room
+                                @elseif($booking['roomType'] == 'king')
+                                    King Room
+                                @elseif($booking['roomType'] == 'studio')
+                                    Studio Room
+                                @elseif($booking['roomType'] == 'executive')
+                                    Executive Suite
+                                @else
+                                    Presidential Suite
+                                @endif
+                            </td>
+                            <td class="bookings-column4" id="c-bookings4">
+                                @if($booking['status'] == 'history')
+                                    <button class='history-btn bookings-btn'>History</button>
+                                @else
+                                    <button class='booked-btn bookings-btn'>Booked</button>
+                                @endif
+                            </td>
+                            <td class="bookings-column5" id="c-bookings5">{{ $booking['checkInDate'] }}</td>
+                            <td class="bookings-column6" id="c-bookings6">{{ $booking['checkOutDate'] }}</td>
+                            <td class="bookings-column7" id="c-bookings7">
+                                @if($booking['status'] == 'history')
+                                    -
+                                @else
+                                    <button class='pay-btn bookings-btn'>Pay</button>
+                                @endif
+                            </td>
+                            <td class="bookings-column8" id="c-bookings8">
+                                <div class="actions">
+                                    <button class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="viewBtn" data-user-id="{{ $booking['id'] }}"><i class="fa-solid fa-eye"></i></button>
+                                    <button class="delete-btn"><i class="fa-sharp fa-solid fa-trash delete-btn"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
 
             <div class="pagination">
-                <div class="backToReserve">
-                  <button id="backToReserve">Back to Reservations</button>
-                </div>
-                <div class="pagination-button">
-                  <button id="previous">Previous</button>
-                  <div id="page-numbers"></div>
-                  <button id="next">Next</button>
-                </div>
+                <button onclick="location.href='/home#submitReservationForm'">Back to Reservations</button>
             </div>
+
+            {!! $bookings->links('vendor.pagination.custom') !!}
         </div>
     </div>
 
@@ -77,13 +120,20 @@
       </div>
     </div>
 
-    <div class="overlay" id="deleteConfirmationOverlay">
-      <div class="popup-delete" id="deleteConfirmationPopup">
-        <p>Confirm Delete?</p>
-        <button id="confirmDeleteBtn">Confirm Delete</button>
-        <button id="deleteCancelBtn">Cancel</button>
-      </div>
+    
+    <div class="overlay" style="display:block;" id="deleteConfirmationOverlay">
+        <div class="popup-delete" id="deleteConfirmationPopup">
+            <p>Confirm Delete?</p>
+            <button form="deleteBooking" type="submit" id="confirmDeleteBtn">{{ __('Confirm Delete') }}</button>
+            <button id="deleteCancelBtn">Cancel</button>
+        </div>
     </div>
+    
+
+    <form id="deleteBooking" style="display:none;" method="POST" action="/bookings/delete" label="{{ __('Confirm Delete') }}">
+        @csrf
+        <input type="hidden" name="id" value="{{ session() -> get('selectedBooking') }}">
+    </form>
 
     <div class="overlay" id="editOverlay">
       <div class="popup" id="editPopup">
@@ -193,7 +243,7 @@
           <p id="popup-amount">Total Amount <span></span></p>
         </div>
         <div class="content-button">
-              <button class="close-button" id="viewCloseBtn">Close</i></button>
+            <button class="close-button" id="viewCloseBtn">Close</i></button>
         </div>
       </div>
     </div>

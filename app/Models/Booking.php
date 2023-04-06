@@ -5,28 +5,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
-{
+class Booking extends Model {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'id',
-        'fname',
-        'lname',
-        'roomtype',
-        'roomnumber',
+        'fName',
+        'lName',
+        'roomType',
+        'roomNumber',
         'email',
-        'idcard',
+        'idCard',
         'phone',
-        'residentialaddress',
+        'address',
         'city',
-        'zipcode',
+        'zipCode',
         'amount',
-        'paidamount',
+        'paidAmount',
         'deposit',
-        'checkindate',
-        'checkoutdate',
-        'checkedin',
-        'checkedout',
+        'checkInDate',
+        'checkOutDate',
+        'checkedIn',
+        'checkedOut',
     ];
 }

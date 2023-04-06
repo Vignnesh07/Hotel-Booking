@@ -1,4 +1,3 @@
-
 // Initialize the phone input with the intlTelInput library
 var input = document.querySelector("#phone");
 window.intlTelInput(input, {});
@@ -89,8 +88,8 @@ function filterRooms() {
 
 
 /* -------------------- Checkindate & Checkoutdate & PopUp----------------------------------  */
-    // Run the code inside this function when the DOM is ready
-    document.addEventListener("DOMContentLoaded", () => {
+// Run the code inside this function when the DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
     // Get references to the check-in and check-out date input fields
     const checkinDateInput = document.getElementById("checkindate");
     const checkoutDateInput = document.getElementById("checkoutdate");
@@ -105,8 +104,8 @@ function filterRooms() {
         format: "YYYY-MM-DD",
         minDate: new Date(),
         tooltipText: {
-        one: "night",
-        other: "days",
+            one: "night",
+            other: "days",
         },
     });
 
@@ -119,130 +118,85 @@ function filterRooms() {
 
     // Calculate the total number of nights between the check-in and check-out dates
     function updateTotalNights() {
-            const checkinDate = new Date(checkinDateInput.value);
-            const checkoutDate = new Date(checkoutDateInput.value);
-            totalNights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
+        const checkinDate = new Date(checkinDateInput.value);
+        const checkoutDate = new Date(checkoutDateInput.value);
+        totalNights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
 
-            if (!isNaN(totalNights) && totalNights > 0) {
-                const roomType = document.getElementById("roomtype").value;
-                
-
-                if (roomType === "single") {
-                    price = 150;
-                } else if (roomType === "double") {
-                    price = 250;
-                }else if (roomType === "triple") {
-                    price = 350;
-                }else if (roomType === "queen") {
-                    price = 250;
-                }else if (roomType === "king") {
-                    price = 300;
-                }else if (roomType === "studio") {
-                    price = 400;
-                }else if (roomType === "executive") {
-                    price = 600;
-                }else if (roomType === "presidential") {
-                    price = 1000;
-                }
-
-                amount = price * totalNights;
-
-                document.getElementById("stays").textContent = `Total Stays: ${totalNights} nights`;
-                document.getElementById("prices").textContent = `Prices: $${price} x ${totalNights} nights`;
-                document.getElementById("amount").textContent = `Total Amount: $${amount}`;
-            } else {
-                document.getElementById("stays").textContent = "Total Stays:";
-                document.getElementById("prices").textContent = "Prices:";
-                document.getElementById("amount").textContent = "Total Amount:";
-            }
-        }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-
-            updateTotalNights();
-
-            const roomNumber = roomnumber.value;
-            const checkInDate = checkindate.value;
-            const checkOutDate = checkoutdate.value;
-            const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-
-            // Check if there is an existing booking with the same room number and overlapping dates
-            const hasExistingBooking = bookings.some((booking) =>
-                booking.roomNumber === roomNumber &&
-                ((checkInDate >= booking.checkInDate &&
-                checkInDate < booking.checkOutDate) ||
-                (checkOutDate > booking.checkInDate &&
-                    checkOutDate <= booking.checkOutDate))
-            );
-
-            if (hasExistingBooking) {
-                alert("This room is already booked for the selected dates.");
-            return;
-            }
-
+        if (!isNaN(totalNights) && totalNights > 0) {
+            const roomType = document.getElementById("roomtype").value;
             
-            document.getElementById("popup-name").querySelector('span').textContent = `${fname.value} ${lname.value}`;
-            document.getElementById("popup-roomtype").querySelector('span').textContent = `${roomtype.value.charAt(0).toUpperCase() + roomtype.value.slice(1)}`;
-            document.getElementById("popup-roomnumber").querySelector('span').textContent = `${roomnumber.value}`;
-            document.getElementById("popup-checkindate").querySelector('span').textContent = `${checkinDateInput.value}`;
-            document.getElementById("popup-checkoutdate").querySelector('span').textContent = `${checkoutDateInput.value}`;
-            document.getElementById("popup-stays").querySelector('span').textContent = `${totalNights} nights`;
-            document.getElementById("popup-prices").querySelector('span').textContent = `$${price} x ${totalNights} nights`;
-            document.getElementById("popup-amount").querySelector('span').textContent = `$${amount}`;
-            document.getElementById("overlay").style.display = "block";
+            if (roomType === "single") {
+                price = 150;
+            } else if (roomType === "double") {
+                price = 250;
+            } else if (roomType === "triple") {
+                price = 350;
+            } else if (roomType === "queen") {
+                price = 250;
+            } else if (roomType === "king") {
+                price = 300;
+            } else if (roomType === "studio") {
+                price = 400;
+            } else if (roomType === "executive") {
+                price = 600;
+            } else if (roomType === "presidential") {
+                price = 1000;
+            }
+
+            amount = price * totalNights;
+
+            document.getElementById("stays").textContent = `Total Stays: ${totalNights} nights`;
+            document.getElementById("prices").textContent = `Prices: $${price} x ${totalNights} nights`;
+            document.getElementById("amount").textContent = `Total Amount: $${amount}`;
+            document.getElementById("amount-field").value = `${amount}`;
+        } else {
+            document.getElementById("stays").textContent = "Total Stays:";
+            document.getElementById("prices").textContent = "Prices:";
+            document.getElementById("amount").textContent = "Total Amount:";
+        }
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+
+        updateTotalNights();
+
+        const roomNumber = roomnumber.value;
+        const checkInDate = checkindate.value;
+        const checkOutDate = checkoutdate.value;
+        const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+        // Check if there is an existing booking with the same room number and overlapping dates
+        const hasExistingBooking = bookings.some((booking) =>
+            booking.roomNumber === roomNumber &&
+            ((checkInDate >= booking.checkInDate &&
+            checkInDate < booking.checkOutDate) ||
+            (checkOutDate > booking.checkInDate &&
+                checkOutDate <= booking.checkOutDate))
+        );
+
+        if (hasExistingBooking) {
+            alert("This room is already booked for the selected dates.");
+            return;
         }
 
-        // Inside the handleConfirm function
-        function handleConfirm() {
-            const totalStaysText = document.getElementById("stays").textContent;
-            const pricesText = document.getElementById("prices").textContent;
-            const amountText = document.getElementById("amount").textContent;
+        
+        document.getElementById("popup-name").querySelector('span').textContent = `${fname.value} ${lname.value}`;
+        document.getElementById("popup-roomtype").querySelector('span').textContent = `${roomtype.value.charAt(0).toUpperCase() + roomtype.value.slice(1)}`;
+        document.getElementById("popup-roomnumber").querySelector('span').textContent = `${roomnumber.value}`;
+        document.getElementById("popup-checkindate").querySelector('span').textContent = `${checkinDateInput.value}`;
+        document.getElementById("popup-checkoutdate").querySelector('span').textContent = `${checkoutDateInput.value}`;
+        document.getElementById("popup-stays").querySelector('span').textContent = `${totalNights} nights`;
+        document.getElementById("popup-prices").querySelector('span').textContent = `$${price} x ${totalNights} nights`;
+        document.getElementById("popup-amount").querySelector('span').textContent = `$${amount}`;
+        document.getElementById("overlay").style.display = "block";
+    }
 
+    function handleCancel() {
+        document.getElementById("overlay").style.display = "none";
+    }
 
-            // Extract the total stays, prices, and amount values as integers from their respective text content
-            const totalStays = parseInt(totalStaysText.match(/(\d+)/)[0], 10);
-            const prices = parseInt(pricesText.match(/\$(\d+)/)[1], 10);
-            const amount = parseInt(amountText.match(/\$(\d+)/)[1], 10);
-            // Get the phone number without the '+' symbol
-            const phoneNumber = phone.value.replace('+', '');
-
-            const newBooking = {
-                fName: fname.value,
-                lName: lname.value,
-                idCard: idcard.value,
-                emailAddress: email.value,
-                phoneNumber,
-                residentialAddress: residentialaddress.value,
-                city: city.value,
-                zipCode: zipcode.value,
-                bookingId: Date.now().toString(),
-                roomNumber: roomnumber.value,
-                roomType: roomtype.value,
-                checkInDate: checkindate.value,
-                checkOutDate: checkoutdate.value,
-                totalStays,
-                prices,
-                amount,
-            };
-
-            // Retrieve existing bookings from local storage or create a new array
-            let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-
-            // Add the new booking to the array and save it to local storage
-            bookings.push(newBooking);
-            localStorage.setItem("bookings", JSON.stringify(bookings));
-
-            // Redirect
-            window.location.href = "/bookings-table";
-        }
-
-        function handleCancel() {
-            document.getElementById("overlay").style.display = "none";
-        }
-
-        // Add event listeners to the form and confirmation buttons
-        document.getElementById("submitReservationForm").addEventListener("submit", handleFormSubmit);
-        document.getElementById("confirmBtn").addEventListener("click", handleConfirm);
-        document.getElementById("close-btn").addEventListener("click", handleCancel);
-    });
+    // Add event listeners to the form and confirmation buttons
+    document.getElementById("newBookingButton").addEventListener("click", handleFormSubmit);
+    document.getElementById("close-btn").addEventListener("click", handleCancel);
+});

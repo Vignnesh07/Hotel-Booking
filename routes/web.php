@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\Auth\LoginController;
 
 /*
@@ -43,6 +43,15 @@ Route::post('/login/clerk', [LoginController::class, 'clerkLogin']);
 /* Clerk route middlewares */
 Route::group(['middleware' => 'auth'], function () {
     Route::view('/home', 'home');
+    Route::post('/home/addBookings', [BookingController::class, 'addBooking']);
+
+    /* Clerk booking routes */
+    Route::get('/bookings', [BookingController::class, 'viewBookings']);
+    Route::get("/bookings/{id}", [BookingController::class, 'viewBookingDetails']);
+    Route::get('/bookings-table', function () {
+        return redirect('/bookings#bookings-table');
+    });
+    Route::post('/bookings/delete', [BookingController::class, 'deleteBooking']);
 
     /* Clerk complaints routes */
     Route::get('/complaints', [ComplaintController::class, 'viewComplaints']);
@@ -52,6 +61,9 @@ Route::group(['middleware' => 'auth'], function () {
 /* Admin route middlewares */
 Route::group(['middleware' => 'auth'], function () {
     Route::view('/admin/dashboard', 'dashboard')->middleware('can:isAdmin');
+
+    /* Admin booking routes */
+    Route::get('/admin/bookings', [BookingController::class, 'viewBookings'])->middleware('can:isAdmin');
 
     /* Admin complaints routes */
     Route::get('/admin/complaints', [ComplaintController::class, 'viewComplaints'])->middleware('can:isAdmin');
@@ -65,23 +77,7 @@ Route::get('logout', [LoginController::class, 'logout']);
 // Incompleted routes 
 Route::view("clerkProfile",'clerkProfile');
 
-// View booking list
-Route::view("bookings",'bookings');
-Route::get('/bookings-table', function () {
-    return redirect('/bookings#bookings-table');
-});
-
-// Get reservation-form
-Route::get('/reservation-form', function () {
-    return redirect('/home#submitReservationForm');
-});
-
-/* Clerk createBooking routes */
-//Route::get('/complaints', [ComplaintController::class, 'viewComplaints']); view by default == home
-Route::post('/home', [BookingController::class, 'createBooking']);
-
 
 Route::view("about",'about');
 Route::view('/admin/staff', 'staff');
-Route::view("/admin/bookings",'adminBooking');
 Route::view('/admin/profile', 'adminProfile');

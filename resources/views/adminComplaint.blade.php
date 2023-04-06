@@ -118,33 +118,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($complaints as $complaint)
-                    <tr>
-                        <td class="complaint-column1">{{$complaint['id']}}</td>
-                        <td class="complaint-column2">{{$complaint['name']}}</td>
-                        <td class="complaint-column3">{{$complaint['roomID']}}</td>
-                        <td class="complaint-column4">{{$complaint['complaint']}}</td>
-                        <td class="complaint-column5">{{$complaint['created_at'] -> format('d.m.Y')}}</td>
-                        <td class="complaint-column6">
-                            @if($complaint['status'] == 'Unresolved')
-                                <span id="dateBtn"> 
-                                    <button onclick="
-                                        {{ Session::put('selectedComplaint', $complaint['id']) }}
-                                    " class='resolve-btn'>Resolve</button>
-                                </span>
-                            @else
-                                {{$complaint['status']}}
-                            @endif
-                        </td>
-                        <td class="complaint-column7">
-                            @if($complaint['budget'] == '')
-                                -
-                            @else
-                                RM {{$complaint['budget']}}
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach       
+                        @foreach($complaints as $complaint)
+                            <tr>
+                                <td class="complaint-column1">{{$complaint['id']}}</td>
+                                <td class="complaint-column2">{{$complaint['name']}}</td>
+                                <td class="complaint-column3">{{$complaint['roomID']}}</td>
+                                <td class="complaint-column4">{{$complaint['complaint']}}</td>
+                                <td class="complaint-column5">{{$complaint['created_at'] -> format('d.m.Y')}}</td>
+                                <td class="complaint-column6">
+                                    @if($complaint['status'] == 'Unresolved')
+                                        <span id="dateBtn"> 
+                                            <button onclick="
+                                                {{ Session::put('selectedComplaint', $complaint['id']) }}
+                                            " class='resolve-btn'>Resolve</button>
+                                        </span>
+                                    @else
+                                        {{$complaint['status']}}
+                                    @endif
+                                </td>
+                                <td class="complaint-column7">
+                                    @if($complaint['budget'] == '')
+                                        -
+                                    @else
+                                        RM {{$complaint['budget']}}
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
