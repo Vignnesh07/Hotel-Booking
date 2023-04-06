@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::create('complaints', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('name');
-        //     $table->string('roomID');
-        //     $table->string('complaint');
-        //     $table->string('status');
-        //     $table->string('budget');
-        //     $table->timestamps();
-        // });
+        Schema::create('complaints', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('roomID');
+            $table->string('complaint');
+            $table->string('status');
+            $table->string('budget');
+            $table->timestamps();
+        });
     }
 
     /**

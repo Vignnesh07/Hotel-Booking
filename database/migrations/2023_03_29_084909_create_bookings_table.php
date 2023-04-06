@@ -13,23 +13,23 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('fname');
-            $table->string('lname');
-            $table->string('roomtype');
-            $table->string('roomnumber');
+            $table->string('fName');
+            $table->string('lName');
+            $table->string('roomType');
+            $table->string('roomNumber');
             $table->string('email');
-            $table->string('idcard');
+            $table->string('idCard');
             $table->string('phone');
-            $table->string('residentialaddress');
+            $table->string('address');
             $table->string('city');
-            $table->string('zipcode');
+            $table->string('zipCode');
             $table->double('amount');
-            $table->double('paidamount');
+            $table->double('paidAmount');
             $table->double('deposit');
-            $table->date('checkindate');
-            $table->date('checkoutdate');
-            $table->boolean('checkedin')->default(false);
-            $table->boolean('checkedout')->default(false);
+            $table->date('checkInDate');
+            $table->date('checkOutDate');
+            $table->boolean('checkedIn')->default(false);
+            $table->boolean('checkedOut')->default(false);
             
             $table->timestamps();
         });
