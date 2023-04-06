@@ -20,7 +20,6 @@ body {
     margin-left: 20px;
 }
 
-
 .select-entries {
     padding: 8px;
     margin-top: 15px;
@@ -36,7 +35,6 @@ body {
 .search-section {
     display: flex;
     margin-right: 20px;
-
 }
 
 .search-label {
@@ -153,7 +151,7 @@ body {
 }
 
 tbody tr:nth-child(even) {
-    background-color: var(--whitesmoke)
+    background-color: var(--whitesmoke);
 }
 
 table tbody tr:last-child {
@@ -164,7 +162,7 @@ table tbody tr:last-child {
 .editStaff-overlay,
 .viewStaff-overlay,
 .resolve-overlay,
-.deleteStaff-overlay{
+.deleteStaff-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -211,7 +209,6 @@ table tbody tr:last-child {
     text-align: center;
 }
 
-
 .resolve-container p {
     font-size: 1.25em;
     font-weight: 700;
@@ -220,12 +217,20 @@ table tbody tr:last-child {
     color: #333;
 }
 
-
 form legend,
 .view-container h2 {
     text-align: center;
     font-size: 25px;
     font-weight: bold;
+}
+
+.edit-form-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+    margin-top: 100px;
 }
 
 .form-content {
@@ -253,9 +258,15 @@ select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%
+    width: 100%;
 }
 
+form .edit-button {
+    display: flex;
+    margin-left: 500px;
+    margin-top: 15px;
+    padding: 15px;
+}
 
 form .button {
     display: flex;
@@ -268,10 +279,10 @@ form .button .close-button button {
     background-color: #fff;
     color: #333;
     border: 2px solid #333;
-
 }
 
-form .button button {
+form .button button,
+form .edit-button button {
     border: none;
     width: 100%;
     padding: 10px 20px;
@@ -283,11 +294,11 @@ form .button button {
     transition: background-color 0.2s ease-in-out;
 }
 
-form .button .submit-button button {
+form .button .submit-button button,
+form .edit-button .submit-button button {
     background-color: #333;
     color: #fff;
     border: none;
-
 }
 
 .staffTable input {
@@ -396,7 +407,6 @@ form .button .submit-button button {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
     z-index: 11;
 } */
-
 
 .deleteStaff-overlay p,
 .resolve-overlay p {
