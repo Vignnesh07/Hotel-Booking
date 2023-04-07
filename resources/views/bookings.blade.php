@@ -77,8 +77,8 @@
                                 @endif
                             </td>
                             <td class="bookings-column4" id="c-bookings4">
-                                @if($booking['status'] == 'history')
-                                    <button class='history-btn bookings-btn'>History</button>
+                                @if($booking['bookingStatus'] == 'completed')
+                                    <button class='history-btn bookings-btn' data-booking-id="{{ $booking['id'] }}">History</button>
                                 @else
                                     <button class='booked-btn bookings-btn'>Booked</button>
                                 @endif
@@ -86,16 +86,28 @@
                             <td class="bookings-column5" id="c-bookings5">{{ $booking['checkInDate'] }}</td>
                             <td class="bookings-column6" id="c-bookings6">{{ $booking['checkOutDate'] }}</td>
                             <td class="bookings-column7" id="c-bookings7">
-                                @if($booking['status'] == 'history')
-                                    -
+                                @if($booking['paidAmount'] == $booking['bookingAmount'])
+                                    RM {{ $booking['paidAmount'] }}
                                 @else
-                                    <button class='pay-btn bookings-btn'>Pay</button>
+                                    <button class='pay-btn bookings-btn' onclick="
+                                        if (confirm('Confirm payment for booking ID ({{ $booking['id'] }})?') == true) {
+                                            location.href='/bookings/pay/{{ $booking['id'] }}'
+                                        }
+                                    ">
+                                        Pay
+                                    </button>
                                 @endif
                             </td>
                             <td class="bookings-column8" id="c-bookings8">
                                 <div class="actions">
-                                    <button class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="viewBtn" data-user-id="{{ $booking['id'] }}"><i class="fa-solid fa-eye"></i></button>
+                                    @if($booking['bookingStatus'] != 'completed')
+                                        <button class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    @else 
+                                        <button disabled class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    @endif
+                                    <button class="viewBtn" data-booking-id="{{ $booking['id'] }}">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
                                     <button class="delete-btn" type="submit" onclick="
                                         if (confirm('Are you sure about deleting booking ID ({{ $booking['id'] }}) by: {{ $booking['fName'] }} {{ $booking['lName'] }}?') == true) {
                                             location.href='/bookings/delete/{{ $booking['id'] }}'
@@ -224,14 +236,14 @@
       <div class="popup" id="viewPopup">
         <h2>Customer Information</h2>
         <div class="content">
-          <p id="popup-customername">Customer Name <span></span></p>
-          <p id="popup-idcardnumber">ID Card Number <span></span></p>
-          <p id="popup-emailaddress">Email Address <span></span></p>
-          <p id="popup-phonenumber">Phone Number <span></span></p>
-          <p id="popup-residentialaddress">Address <span></span></p>
-          <p id="popup-city">City <span></span></p>
-          <p id="popup-zipcode">Zip Code <span></span></p>
-          <p id="popup-amount">Total Amount <span></span></p>
+            <p id="popup-customername">Customer Name <span></span></p>
+            <p id="popup-idcardnumber">ID Card Number <span></span></p>
+            <p id="popup-emailaddress">Email Address <span></span></p>
+            <p id="popup-phonenumber">Phone Number <span></span></p>
+            <p id="popup-residentialaddress">Address <span></span></p>
+            <p id="popup-city">City <span></span></p>
+            <p id="popup-zipcode">Zip Code <span></span></p>
+            <p id="popup-amount">Total Amount <span></span></p>
         </div>
         <div class="content-button">
             <button class="close-button" id="viewCloseBtn">Close</i></button>
@@ -243,14 +255,13 @@
       <div class="popup" id="historyPopup">
         <h2>Booking History</h2>
         <div class="content">
-          <p id="popup-customername">Customer Name <span></span></p>
-          <p id="popup-roomtype">Room Type <span></span></p>
-          <p id="popup-roomnumber">Room Number <span></span></p>
-          <p id="popup-checkindate">Check In <span></span></p>
-          <p id="popup-checkoutdate">Check Out <span></span></p>
-          <p id="popup-stays">Total Stays <span></span></p>
-          <p id="popup-prices">Prices <span></span></p>
-          <p id="popup-amount">Total Amount <span></span></p>
+            <p id="popup-bookedAt">Booked At <span></span></p>
+            <p id="popup-customername">Customer Name <span></span></p>
+            <p id="popup-roomtype">Room Type <span></span></p>
+            <p id="popup-roomnumber">Room Number <span></span></p>
+            <p id="popup-checkindate">Check In <span></span></p>
+            <p id="popup-checkoutdate">Check Out <span></span></p>
+            <p id="popup-amount">Total Amount <span></span></p>
         </div>
 
         <div class="content-button">

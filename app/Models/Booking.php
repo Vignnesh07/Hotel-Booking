@@ -14,7 +14,6 @@ class Booking extends Model {
      * @var array<int, string>
      */
     protected $fillable = [
-        'id',
         'fName',
         'lName',
         'roomType',
@@ -25,12 +24,10 @@ class Booking extends Model {
         'address',
         'city',
         'zipCode',
-        'amount',
+        'bookingAmount',
         'paidAmount',
-        'deposit',
         'checkInDate',
         'checkOutDate',
-        'checkedIn',
-        'checkedOut',
+        'bookingStatus'
     ];
 }

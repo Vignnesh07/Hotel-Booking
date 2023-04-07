@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,7 @@ class BookingSeeder extends Seeder {
      */
     public function run(): void
     {
+        $date = Carbon::now()->format('Y-m-d H:i:s');
         DB::table('bookings') -> insert([
             'fName' => 'Joanne',
             'lName' => 'Lim',
@@ -23,13 +25,13 @@ class BookingSeeder extends Seeder {
             'address' => 'Lot 123, Jalan Tasik',
             'city' => 'Miri',
             'zipCode' => '98000',
-            'amount' => 800,
+            'bookingAmount' => 800,
             'paidAmount' => 400,
-            'deposit' => 200,
             'checkInDate' => '2023-03-28',
             'checkOutDate' => '2023-04-03',
-            'checkedIn' => true,
-            'checkedOut' => false,
+            'bookingStatus' => 'booked',
+            'created_at' => $date,
+            'updated_at' => $date,
         ]);
     }
 }

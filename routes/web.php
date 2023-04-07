@@ -42,12 +42,14 @@ Route::post('/login/clerk', [LoginController::class, 'clerkLogin']);
 
 /* Clerk route middlewares */
 Route::group(['middleware' => 'auth'], function () {
+    /* Clerk home routes */
     Route::view('/home', 'home');
     Route::post('/home/addBookings', [BookingController::class, 'addBooking']);
-
+    
     /* Clerk booking routes */
     Route::get('/bookings', [BookingController::class, 'viewBookings']);
     Route::get('/bookings/{id}', [BookingController::class, 'viewBookingDetails']);
+    Route::get('/bookings/pay/{id}', [BookingController::class, 'payBooking']);
     Route::get('/bookings-table', function () {
         return redirect('/bookings#bookings-table');
     });

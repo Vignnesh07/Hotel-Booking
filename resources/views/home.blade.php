@@ -126,7 +126,7 @@
                     <h3 id="stays">Total Stays:</h3>
                     <h3 id="prices">Prices:</h3>
                     <h3 id="amount">Total Amount:</h3>
-                    <input type="hidden" id="amount-field" name="amount">
+                    <input type="hidden" id="bookingAmount-field" name="bookingAmount">
                 </div>
 
                 <br>

@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("stays").textContent = `Total Stays: ${totalNights} nights`;
             document.getElementById("prices").textContent = `Prices: $${price} x ${totalNights} nights`;
             document.getElementById("amount").textContent = `Total Amount: $${amount}`;
-            document.getElementById("amount-field").value = `${amount}`;
+            document.getElementById("bookingAmount-field").value = `${amount}`;
         } else {
             document.getElementById("stays").textContent = "Total Stays:";
             document.getElementById("prices").textContent = "Prices:";

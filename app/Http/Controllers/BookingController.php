@@ -21,17 +21,15 @@ class BookingController extends Controller {
             'address' => 'required',
             'city' => 'required',
             'zipCode' => 'required',
-            'amount' => 'required',
+            'bookingAmount' => 'required',
             'checkInDate' => 'required',
             'checkOutDate' => 'required',
         ]);
 
         $data = $request -> all();
         // Adding default data
+        $data['bookingStatus'] = 'booked';
         $data['paidAmount'] = 0;
-        $data['deposit'] = 0;
-        $data['checkedIn'] = false;
-        $data['checkedOut'] = false;
 
         Booking::create($data);
         return redirect('/bookings#bookings-table');
@@ -47,6 +45,18 @@ class BookingController extends Controller {
         // $data ->phone = $request->phone;
         $data ->save();
         return redirect("");
+    }
+
+    function payBooking(Request $request){
+        $data = Booking::findOrFail($request -> id);
+        $data -> paidAmount = $data -> bookingAmount;
+        $data -> bookingStatus = 'completed';
+        $data -> save();
+        if (Auth::user() -> can('isAdmin')) {
+            return redirect('/adminBooking#bookings-table');
+        } else {
+            return redirect('/bookings#bookings-table');
+        }
     }
     
     function deleteBooking(Request $request) {

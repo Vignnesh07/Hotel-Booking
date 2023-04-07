@@ -23,13 +23,11 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('zipCode');
-            $table->double('amount');
+            $table->double('bookingAmount');
             $table->double('paidAmount');
-            $table->double('deposit');
             $table->date('checkInDate');
             $table->date('checkOutDate');
-            $table->boolean('checkedIn')->default(false);
-            $table->boolean('checkedOut')->default(false);
+            $table->string('bookingStatus');
             
             $table->timestamps();
         });

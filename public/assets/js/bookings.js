@@ -236,7 +236,8 @@
 //     if (event.target.closest(".viewBtn")) {const bookingId = event.target.closest("tr").querySelector("#c-bookings1").textContent;
 //         openViewOverlay(bookingId);
 //     }
-//     if (event.target.closest(".history-btn")) {const bookingId = event.target.closest("tr").querySelector("#c-bookings1").textContent;
+//     if (event.target.closest(".history-btn")) {
+//         const bookingId = event.target.closest("tr").querySelector("#c-bookings1").textContent;
 //         openHistoryOverlay(bookingId);
 //     }
 // });
@@ -498,57 +499,16 @@
 // }
 
 
-// --------------- Payment --------------------------------
-// Add event listener to Pay buttons
-document.querySelector("#bookings-table").addEventListener("click", (event) => {
-    if (event.target.classList.contains("pay-btn")) {
-        const payBtn = event.target;
-        document.querySelector("#paymentConfirmationOverlay").style.display ="block";
-        document.querySelector("#paymentConfirmationOverlay").dataset.rowIndex = payBtn.closest("tr").rowIndex; // Store the rowIndex
-    }
-});
 
-// After clicking confirm payment button, the booked will become history and pay button will become "-"
-// document.querySelector("#confirmPaymentBtn").addEventListener("click", () => {
-//     const rowIndex = document.querySelector("#paymentConfirmationOverlay").dataset.rowIndex;
-//     const row = document.querySelector("#bookings-table").rows[rowIndex];
-
-//     row.querySelector("#c-bookings7").innerHTML = "-";
-//     row.querySelector("#c-bookings4").innerHTML ="<button class='history-btn bookings-btn'>History</button>";
-
-//     const bookingId = row.querySelector("#c-bookings1").textContent;
-//     let bookings = JSON.parse(localStorage.getItem("bookings"));
-//     const index = bookings.findIndex(
-//         (booking) => booking.bookingId === bookingId
-//     );
-
-//     if (index !== -1) {
-//         bookings[index].status = "history";
-//         localStorage.setItem("bookings", JSON.stringify(bookings));
-//         disableEditBtn(row); 
-//     }
-
-//     disableEditBtn(row);
-
-//     document.querySelector("#paymentConfirmationOverlay").style.display = "none";
-    
-// });
-
-document.querySelector("#paymentCancelBtn").addEventListener("click", () => {
-    document.querySelector("#paymentConfirmationOverlay").style.display = "none";
-});
-
-
-
-// --------------- View Bookings --------------------------------
+// --------------- View Customer Information --------------------------------
 $(document).ready(function () {
     // Attach click event handler to view button
     $(".viewBtn").click(function () {
         // Get user id from data attribute
-        var userId = $(this).data("user-id");
+        var bookingId = $(this).data("booking-id");
         // Make AJAX request to get booking details
         $.ajax({
-            url: "/bookings/" + userId,
+            url: "/bookings/" + bookingId,
             type: "GET",
             success: function (data) {
                 // Populate viewOverlay div with booking details
@@ -559,7 +519,7 @@ $(document).ready(function () {
                 $("#popup-residentialaddress span").text(data.address);
                 $("#popup-city span").text(data.city);
                 $("#popup-zipcode span").text(data.zipCode);
-                $("#popup-amount span").text(data.amount);
+                $("#popup-amount span").text(`RM ${data.bookingAmount}`);
 
                 // Show viewOverlay div
                 $("#viewOverlay").show();
@@ -576,5 +536,46 @@ $(document).ready(function () {
     $("#viewCloseBtn").click(function () {
         // Hide viewStaff-overlay div
         $("#viewOverlay").hide();
+    });
+});
+
+
+
+// --------------- View Booking History --------------------------------
+$(document).ready(function () {
+    // Attach click event handler to view button
+    $(".history-btn").click(function () {
+        // Get user id from data attribute
+        var bookingId = $(this).data("booking-id");
+        // Make AJAX request to get booking details
+        $.ajax({
+            url: "/bookings/" + bookingId,
+            type: "GET",
+            success: function (data) {
+                var formattedDate = new Date(data.created_at).toISOString().slice(0, 19).replace('T', ' ');
+                // Populate viewOverlay div with booking details
+                $("#popup-bookedAt span").text(formattedDate);
+                $("#popup-customername span").text(`${data.fName} ${data.lName}`);
+                $("#popup-roomtype span").text(data.roomType);
+                $("#popup-roomnumber span").text(data.roomNumber);
+                $("#popup-checkindate span").text(data.checkInDate);
+                $("#popup-checkoutdate span").text(data.checkOutDate);
+                $("#popup-amount span").text(`RM ${data.bookingAmount}`);
+
+                // Show viewOverlay div
+                $("#historyOverlay").show();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // Handle error
+                console.log("Error: " + errorThrown);
+                console.log("Text Status: " + textStatus);
+            },
+        });
+    });
+
+    // Attach click event handler to close button
+    $("#historyCloseBtn").click(function () {
+        // Hide viewStaff-overlay div
+        $("#historyOverlay").hide();
     });
 });
