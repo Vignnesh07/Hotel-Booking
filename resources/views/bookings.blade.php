@@ -97,8 +97,9 @@
                                     <button class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
                                     <button class="viewBtn" data-user-id="{{ $booking['id'] }}"><i class="fa-solid fa-eye"></i></button>
                                     <button class="delete-btn" type="submit" onclick="
-                                        confirm('Confirm Delete?')
-                                        location.href='/bookings/delete/{{ $booking['id'] }}'
+                                        if (confirm('Are you sure about deleting booking ID ({{ $booking['id'] }}) by: {{ $booking['fName'] }} {{ $booking['lName'] }}?') == true) {
+                                            location.href='/bookings/delete/{{ $booking['id'] }}'
+                                        }
                                     ">
                                       <i class="fa-sharp fa-solid fa-trash delete-btn"></i>
                                     </button>

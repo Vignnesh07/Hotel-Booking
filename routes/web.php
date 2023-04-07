@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Clerk booking routes */
     Route::get('/bookings', [BookingController::class, 'viewBookings']);
-    Route::get("/bookings/{id}", [BookingController::class, 'viewBookingDetails']);
+    Route::get('/bookings/{id}', [BookingController::class, 'viewBookingDetails']);
     Route::get('/bookings-table', function () {
         return redirect('/bookings#bookings-table');
     });
