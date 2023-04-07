@@ -223,49 +223,6 @@
 
 
 
-// --------------- DELETE --------------------------------
-// Add event listener to Delete buttons
-document.querySelector("#bookings-table").addEventListener("click", (event) => {
-    if (event.target.classList.contains("delete-btn")) {
-        const deleteBtn = event.target;
-        document.querySelector("#deleteConfirmationOverlay").style.display ="block";
-        document.querySelector("#deleteConfirmationOverlay").dataset.rowIndex = deleteBtn.closest("tr").rowIndex; // Store the rowIndex
-    }
-});
-
-// // Add event listener to confirm Delete table row with the selected booking id
-// document.querySelector("#confirmDeleteBtn").addEventListener("click", () => {
-//     const rowIndex = document.querySelector("#deleteConfirmationOverlay").dataset.rowIndex;
-//     const row = document.querySelector("#bookings-table").rows[rowIndex];
-
-//     const bookingId = row.querySelector("#c-bookings1").textContent;
-//     let bookings = JSON.parse(localStorage.getItem("bookings"));
-//     const index = bookings.findIndex(
-//         (booking) => booking.bookingId === bookingId
-//     );
-
-//     if (index !== -1) {
-//         bookings.splice(index, 1); // Remove the booking from the array
-//         localStorage.setItem("bookings", JSON.stringify(bookings));
-//         row.remove();
-//         generateTableRows();
-//         updateTable(currentPage, rowsPerPage);
-//     }
-
-//     document.querySelector("#deleteConfirmationOverlay").style.display = "none";
-    
-// });
-
-// Add event listener to cancel Delete table row with the selected booking id
-//just close the overlay
-document.querySelector("#deleteCancelBtn").addEventListener("click", () => {
-    document.querySelector("#deleteConfirmationOverlay").style.display = "none";
-});
-
-
-
-
-
 // // -------------------- View, History, Edit, --------------------------------
 
 // // Add event listener to handle clicks on the bookings table

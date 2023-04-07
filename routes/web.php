@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/bookings-table', function () {
         return redirect('/bookings#bookings-table');
     });
-    Route::post('/bookings/delete', [BookingController::class, 'deleteBooking']);
+    Route::get('/bookings/delete/{bookingId}', [BookingController::class, 'deleteBooking']);
 
     /* Clerk complaints routes */
     Route::get('/complaints', [ComplaintController::class, 'viewComplaints']);

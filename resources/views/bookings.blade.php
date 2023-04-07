@@ -96,7 +96,12 @@
                                 <div class="actions">
                                     <button class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
                                     <button class="viewBtn" data-user-id="{{ $booking['id'] }}"><i class="fa-solid fa-eye"></i></button>
-                                    <button class="delete-btn"><i class="fa-sharp fa-solid fa-trash delete-btn"></i></button>
+                                    <button class="delete-btn" type="submit" onclick="
+                                        confirm('Confirm Delete?')
+                                        location.href='/bookings/delete/{{ $booking['id'] }}'
+                                    ">
+                                      <i class="fa-sharp fa-solid fa-trash delete-btn"></i>
+                                    </button>
                                 </div>
                             </td>
                         </tr>
@@ -119,21 +124,6 @@
         <button id="paymentCancelBtn">Cancel</button>
       </div>
     </div>
-
-    
-    <div class="overlay" style="display:block;" id="deleteConfirmationOverlay">
-        <div class="popup-delete" id="deleteConfirmationPopup">
-            <p>Confirm Delete?</p>
-            <button form="deleteBooking" type="submit" id="confirmDeleteBtn">{{ __('Confirm Delete') }}</button>
-            <button id="deleteCancelBtn">Cancel</button>
-        </div>
-    </div>
-    
-
-    <form id="deleteBooking" style="display:none;" method="POST" action="/bookings/delete" label="{{ __('Confirm Delete') }}">
-        @csrf
-        <input type="hidden" name="id" value="{{ session() -> get('selectedBooking') }}">
-    </form>
 
     <div class="overlay" id="editOverlay">
       <div class="popup" id="editPopup">

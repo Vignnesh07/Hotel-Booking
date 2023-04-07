@@ -50,7 +50,7 @@ class BookingController extends Controller {
     }
     
     function deleteBooking(Request $request) {
-        $data = Booking::find($request -> id);
+        $data = Booking::findOrFail($request -> bookingId);
         $data -> delete();
 
         if (Auth::user() -> can('isAdmin')) {
