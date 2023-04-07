@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Complaint;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ComplaintSeeder extends Seeder
-{
+class ComplaintSeeder extends Seeder {
     /**
      * Run the database seeds.
      */

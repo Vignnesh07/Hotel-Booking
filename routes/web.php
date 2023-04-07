@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -52,6 +53,15 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::view('/admin/dashboard', 'dashboard')->middleware('can:isAdmin');
 
+    /* Admin staff routes */
+    Route::get('/admin/staff', [StaffController::class, 'viewStaffs'])->middleware('can:isAdmin');
+    Route::get('/admin/staff/{id}', [StaffController::class, 'viewStaffInfo'])->middleware('can:isAdmin');
+    Route::post('/admin/addStaff', [StaffController::class, 'addStaff'])->middleware('can:isAdmin')->name('add.staff');
+    Route::get('/admin/editStaff/{id}', [StaffController::class, 'showUpdate'])->middleware('can:isAdmin')->name('edit.staff');
+    Route::post('/admin/editStaff/{id}', [StaffController::class, 'updateStaff'])->middleware('can:isAdmin')->name('update.staff');
+    Route::post('/admin/deleteStaff',[StaffController::class,'deleteStaff'])->middleware('can:isAdmin');
+    Route::get('/admin/deleteStaff/{id}',[StaffController::class,'deleteStaff'])->middleware('can:isAdmin');
+
     /* Admin complaints routes */
     Route::get('/admin/complaints', [ComplaintController::class, 'viewComplaints'])->middleware('can:isAdmin');
     Route::post('/admin/complaints', [ComplaintController::class, 'addComplaint'])->middleware('can:isAdmin');
@@ -71,6 +81,6 @@ Route::get('/reservation-form', function () {
     return redirect('/home#submitReservationForm');
 });
 Route::view("about",'about');
-Route::view('/admin/staff', 'staff');
+
 Route::view("/admin/bookings",'adminBooking');
 Route::view('/admin/profile', 'adminProfile');
