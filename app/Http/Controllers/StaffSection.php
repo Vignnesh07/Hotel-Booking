@@ -39,8 +39,8 @@ class StaffSection extends Controller
         
     }
 
-    function editStaff(Request $request, $id){
-        $data = Staff::find($id);
+    function editStaff(Request $request){
+        $data = Staff::find($request ->id);
         $data ->name = $request->name;
         $data ->email = $request->email;
         $data ->authority = $request->authority;
@@ -53,10 +53,11 @@ class StaffSection extends Controller
         $data ->save();
         return redirect("/admin/staff");
     }
-    //  function showUpdate($id){
-    //     $data = Staff::find($id);
-    //     return view("editStaff", ['data'=>$data]);
-    // }
+    
+     function showUpdate($id){
+        $data = Staff::find($id);
+        return view("staffUpdate",['user'=>$data]);
+    }
     
     function deleteStaff($id){
 
