@@ -161,8 +161,7 @@ table tbody tr:last-child {
 .staff-overlay,
 .editStaff-overlay,
 .viewStaff-overlay,
-.resolve-overlay,
-.deleteStaff-overlay {
+.resolve-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -194,21 +193,6 @@ table tbody tr:last-child {
     z-index: 11;
 }
 
-.delete-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 10px;
-    padding: 40px;
-    width: 80%;
-    max-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-    z-index: 11;
-    text-align: center;
-}
-
 .resolve-container p {
     font-size: 1.25em;
     font-weight: 700;
@@ -222,15 +206,6 @@ form legend,
     text-align: center;
     font-size: 25px;
     font-weight: bold;
-}
-
-.edit-form-content {
-    display: flex;
-    flex-direction: column;
-    max-width: 1000px;
-    width: 100%;
-    margin: auto;
-    margin-top: 100px;
 }
 
 .form-content {
@@ -261,13 +236,6 @@ select {
     width: 100%;
 }
 
-form .edit-button {
-    display: flex;
-    margin-left: 500px;
-    margin-top: 15px;
-    padding: 15px;
-}
-
 form .button {
     display: flex;
     margin-top: 15px;
@@ -281,8 +249,7 @@ form .button .close-button button {
     border: 2px solid #333;
 }
 
-form .button button,
-form .edit-button button {
+form .button button {
     border: none;
     width: 100%;
     padding: 10px 20px;
@@ -294,8 +261,7 @@ form .edit-button button {
     transition: background-color 0.2s ease-in-out;
 }
 
-form .button .submit-button button,
-form .edit-button .submit-button button {
+form .button .submit-button button {
     background-color: #333;
     color: #fff;
     border: none;
@@ -376,10 +342,6 @@ form .edit-button .submit-button button {
     background-color: var(--white);
 }
 
-/* #popup-name-response {
-    padding-left: 10px;
-} */
-
 .viewStaff-overlay .content-button button {
     font-size: 16px;
     padding: 10px 20px;
@@ -393,22 +355,6 @@ form .edit-button .submit-button button {
     transition: background-color 0.2s ease-in-out;
 }
 
-/* .deleteStaff-overlay {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 10px;
-    padding: 40px;
-    width: 80%;
-    max-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-    z-index: 11;
-} */
-
-.deleteStaff-overlay p,
 .resolve-overlay p {
     font-size: 1.25em;
     font-weight: 700;
@@ -417,7 +363,6 @@ form .edit-button .submit-button button {
     color: #333;
 }
 
-.deleteStaff-overlay button,
 .resolve-overlay button {
     background-color: #333;
     color: #fff;
@@ -444,23 +389,4 @@ form .edit-button .submit-button button {
     background-color: #fff;
     color: #333;
     border: 2px solid #333;
-}
-
-.deleteStaff-overlay button:hover {
-    background-color: #555;
-}
-
-.deleteStaff-overlay button:focus {
-    outline: none;
-}
-
-#deleteCancelBtn {
-    background-color: #fff;
-    color: #333;
-    border: 2px solid #333;
-}
-
-#deleteCancelBtn:hover {
-    border-color: #555;
-    color: #555;
 }

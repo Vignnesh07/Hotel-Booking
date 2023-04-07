@@ -47,23 +47,3 @@ closeViewButtons.forEach((button) => {
         overlay.style.display = "none";
     });
 });
-
-const deleteButtons = document.querySelectorAll(".deleteStaff");
-
-deleteButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        // display the viewStaff overlay
-        const overlay = document.getElementById("deleteStaff-overlay");
-        overlay.style.display = "block";
-    });
-});
-
-const closeDeleteButtons = document.querySelectorAll("#deleteCancelBtn");
-
-closeDeleteButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        // display the editStaff overlay
-        const overlay = document.getElementById("deleteStaff-overlay");
-        overlay.style.display = "none";
-    });
-});

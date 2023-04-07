@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="/assets/css/dashboard.css" >
         <link rel="stylesheet" href="/assets/css/navigation.css" >
         <link rel="stylesheet" href="/assets/css/staffSection.css" >
+        <link rel="stylesheet" href="/assets/css/staffEdit.css" >
         <link rel="stylesheet" href="/assets/css/adminComplaint.css" >
         <link rel="stylesheet" href="/assets/css/bookings.css" >
         <link rel="stylesheet" href="/assets/css/adminBooking.css" >
@@ -83,7 +84,6 @@
         
         @yield('content')
 
-        
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="https://unpkg.com/scrollreveal"></script>

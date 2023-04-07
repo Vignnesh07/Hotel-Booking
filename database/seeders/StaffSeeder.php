@@ -2,26 +2,21 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use App\Models\Staff;
+use Faker\Factory as Faker;
 use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Faker\Factory as Faker;
 
-class StaffSeeder extends Seeder
-{
+class StaffSeeder extends Seeder {
     /**
      * Run the database seeds.
      */
-    public function run()
-    {
+    public function run() {
         $faker = Faker::create();
         
         for($i = 1; $i <5 ;$i++){
-        DB::table('staff') -> insert([
-            Staff::create([
+            DB::table('staff') -> insert([
                 'name' => Str::random(10),
                 'email' => Str::random(10).'@gmail.com',
                 'authority' => 'Admin',
@@ -31,8 +26,6 @@ class StaffSeeder extends Seeder
                 'address' => Str::random(50),
                 'zipCode' => mt_rand(0,9999),
                 'phone' => $faker->phoneNumber,
-                
-                ]),
             ]);
         }
     }

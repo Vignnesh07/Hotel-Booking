@@ -13,7 +13,7 @@
                 <button type='button' class='addStaff'>Add Staff</button>
             </div>
             <div class='staff-overlay'>
-                <form method='POST' action='{{ route("add.staff") }}'>
+                <form method='POST' action="{{ route('add.staff') }}" label="{{ __('Add Staff') }}">
                     @csrf
                     <legend>Add Staff</legend>
 
@@ -23,33 +23,27 @@
                             <input type='text' id='name' name="name" placeholder='Enter name' required>
 
                         </div>
-
                         <div class='items'>
                             <label for='email'>Email: </label>
-                            <input type='text' id='email' name="email" placeholder='Enter email' required>
+                            <input type='email' id='email' name="email" placeholder='Enter email' required>
 
                         </div>
-
                         <div class='items'>
                             <label for='authority'>Authority: </label>
                             <select id='authority' name='authority' equired>
                                 <option value='Admin'>Admin</option>
                                 <option value='Clerk'>Clerk</option>
                             </select>
-
                         </div>
                         <div class='items'>
                             <label for='password'>Password:</label>
                             <input type='password' id='password' name="password" placeholder='Enter password' required>
-
                         </div>
                         <div class='items'>
                             <label for='conf_password'>Confirm Password:</label>
                             <input type='password' id='conf_password' name="conf_password"
                                 placeholder='Confirm password' required>
-
                         </div>
-
                         <div class="items">
                             <label for="salary">Salary</label>
                             <input id="salary" type="number" name="salary" required />
@@ -61,34 +55,29 @@
                                 pattern="[0-9]{3}-[0-9]{7}" required>
 
                         </div>
-
                         <div class='items'>
                             <label for='address'>Address: </label>
                             <input type='text' id='address' name="address" placeholder='Enter address' required>
-
                         </div>
                         <div class='items'>
                             <label for='zipCode'>Zip Code: </label>
                             <input type='text' id='zipCode' name="zipCode" placeholder='Enter zip code' required>
-
                         </div>
                     </div>
                     <div class='button'>
                         <div class='submit-button'>
-                            <button type='submit'>Add user</button>
+                            <button type='submit'>{{ __('Add Staff') }}</button>
                         </div>
                         <div class='close-button'>
                             <button>Close</button>
                         </div>
                     </div>
-
                 </form>
             </div>
 
             <hr>
 
             <div class="entries-search">
-
                 <div class="show-entries">
                     <label for="entries-per-page">Show:</label>
                     <select id="entries-per-page" class="select-entries">
@@ -120,35 +109,34 @@
                             <th class='column-5'>Action</th>
                         </tr>
                     </thead>
-                    @foreach($users as $user)
-                    <tr>
-                        <td class='column-1'>{{$user->id}}</td>
-                        <td class='column-2'>{{$user->name}}</td>
-                        <td class='column-3'>{{$user->email}}</td>
-                        <td class='column-4'>{{$user->authority}}</td>
-                        <td class='column-5'>
-                            <button type='button' class='editStaff' data-user-id='{{$user->id}}'
-                                onclick="window.location='{{ route("edit.staff", ['id' => $user->id]) }}'">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button type='button' class='viewStaff' data-user-id='{{$user->id}}'>
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                            <button type='button' class='deleteStaff' data-user-id='{{$user->id}}'>
-                                <i class="fa-sharp fa-solid fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
+                    @foreach($staffs as $staff)
+                        <tr>
+                            <td class='column-1'>{{ $staff['id']  }}</td>
+                            <td class='column-2'>{{ $staff['name']  }}</td>
+                            <td class='column-3'>{{ $staff['email']  }}</td>
+                            <td class='column-4'>{{ $staff['authority']  }}</td>
+                            <td class='column-5'>
+                                <button type='button' class='editStaff' onclick="
+                                    window.location='{{ route('edit.staff', ['id' => $staff['id']]) }}'
+                                ">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button type='button' class='viewStaff' data-user-id="{{ $staff['id'] }}">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                <button type='button' class='deleteStaff' onclick="
+                                    if (confirm('Are you sure about deleting staff ID ({{ $staff['id'] }}): {{ $staff['name'] }}?') == true) {
+                                        location.href='/admin/deleteStaff/{{ $staff['id'] }}'
+                                    }
+                                ">
+                                    <i class="fa-sharp fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
                     @endforeach
                 </table>
-
-                <div class="pagination">
-
-
-                    {{ $users->links('pagination::bootstrap-4') }}
-
-                </div>
-
+                
+                {!! $staffs->links('vendor.pagination.custom') !!}
             </div>
 
             <div class="viewStaff-overlay" id='viewStaff-overlay'>
@@ -171,20 +159,7 @@
                 </div>
             </div>
 
-            <div class="deleteStaff-overlay" id="deleteStaff-overlay">
-                <div class="delete-container">
-                    <p>Confirm Delete?</p>
-
-                    <button id="confirmDeleteBtn"
-                        onclick="window.location.href='{{ url ("/admin/deleteStaff/{$user->id}")}}'">
-                        Confirm
-                        Delete</button>
-                    <button id=" deleteCancelBtn"
-                        onclick="window.location.href='{{ url ("/admin/staff")}}'">Cancel</button>
-                </div>
-            </div>
         </div>
-
     </div>
 </div>
 <script src="/assets/js/staff.js"></script>
