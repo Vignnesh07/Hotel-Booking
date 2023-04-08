@@ -3,12 +3,13 @@
 @section('content')
 
 <div class="container">
-
     <div class="container-all-complaint">
         <div class="container-complaint-form">
             <div class="add-colour"></div>
             <br ><br><br>
+
             <h2 class="sub-title">Complaint Management</h2>
+            
             <form method="POST" label="{{ __('Submit') }}" id="submitComplaintForm">
                 @csrf
                 <h3>Complaint Form</h3>

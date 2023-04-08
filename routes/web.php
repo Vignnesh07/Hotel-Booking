@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\Auth\LoginController;
@@ -50,9 +51,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/bookings', [BookingController::class, 'viewBookings']);
     Route::get('/bookings/{id}', [BookingController::class, 'viewBookingDetails']);
     Route::get('/bookings/pay/{id}', [BookingController::class, 'payBooking']);
-    // Route::get('/bookings-table', function () {
-    //     return redirect('/bookings#bookings-table');
-    // });
     Route::get('/bookings/update/{id}', [BookingController::class, 'viewUpdateBooking']);
     Route::post('/bookings/update/{id}', [BookingController::class, 'updateBooking']);
     Route::get('/bookings/delete/{bookingId}', [BookingController::class, 'deleteBooking']);
@@ -69,6 +67,15 @@ Route::group(['middleware' => 'auth'], function () {
     /* Admin booking routes */
     Route::get('/admin/bookings', [BookingController::class, 'viewBookings'])->middleware('can:isAdmin');
 
+    /* Admin staff routes */
+    Route::get('/admin/staff', [StaffController::class, 'viewStaffs'])->middleware('can:isAdmin');
+    Route::get('/admin/staff/{id}', [StaffController::class, 'viewStaffInfo'])->middleware('can:isAdmin');
+    Route::post('/admin/addStaff', [StaffController::class, 'addStaff'])->middleware('can:isAdmin')->name('add.staff');
+    Route::get('/admin/editStaff/{id}', [StaffController::class, 'showUpdate'])->middleware('can:isAdmin')->name('edit.staff');
+    Route::post('/admin/editStaff/{id}', [StaffController::class, 'updateStaff'])->middleware('can:isAdmin')->name('update.staff');
+    Route::post('/admin/deleteStaff',[StaffController::class,'deleteStaff'])->middleware('can:isAdmin');
+    Route::get('/admin/deleteStaff/{id}',[StaffController::class,'deleteStaff'])->middleware('can:isAdmin');
+
     /* Admin complaints routes */
     Route::get('/admin/complaints', [ComplaintController::class, 'viewComplaints'])->middleware('can:isAdmin');
     Route::post('/admin/complaints', [ComplaintController::class, 'addComplaint'])->middleware('can:isAdmin');
@@ -80,8 +87,8 @@ Route::get('logout', [LoginController::class, 'logout']);
 
 // Incompleted routes 
 Route::view("clerkProfile",'clerkProfile');
-
-
 Route::view("about",'about');
 Route::view('/admin/staff', 'staff');
+Route::view("/admin/bookings",'adminBooking');
 Route::view('/admin/profile', 'adminProfile');
+

@@ -20,7 +20,6 @@ body {
     margin-left: 20px;
 }
 
-
 .select-entries {
     padding: 8px;
     margin-top: 15px;
@@ -36,7 +35,6 @@ body {
 .search-section {
     display: flex;
     margin-right: 20px;
-
 }
 
 .search-label {
@@ -153,7 +151,7 @@ body {
 }
 
 tbody tr:nth-child(even) {
-    background-color: var(--whitesmoke)
+    background-color: var(--whitesmoke);
 }
 
 table tbody tr:last-child {
@@ -163,8 +161,7 @@ table tbody tr:last-child {
 .staff-overlay,
 .editStaff-overlay,
 .viewStaff-overlay,
-.resolve-overlay,
-.deleteStaff-overlay{
+.resolve-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -196,22 +193,6 @@ table tbody tr:last-child {
     z-index: 11;
 }
 
-.delete-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 10px;
-    padding: 40px;
-    width: 80%;
-    max-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-    z-index: 11;
-    text-align: center;
-}
-
-
 .resolve-container p {
     font-size: 1.25em;
     font-weight: 700;
@@ -219,7 +200,6 @@ table tbody tr:last-child {
     text-align: center;
     color: #333;
 }
-
 
 form legend,
 .view-container h2 {
@@ -253,9 +233,8 @@ select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%
+    width: 100%;
 }
-
 
 form .button {
     display: flex;
@@ -268,7 +247,6 @@ form .button .close-button button {
     background-color: #fff;
     color: #333;
     border: 2px solid #333;
-
 }
 
 form .button button {
@@ -287,7 +265,6 @@ form .button .submit-button button {
     background-color: #333;
     color: #fff;
     border: none;
-
 }
 
 .staffTable input {
@@ -365,10 +342,6 @@ form .button .submit-button button {
     background-color: var(--white);
 }
 
-/* #popup-name-response {
-    padding-left: 10px;
-} */
-
 .viewStaff-overlay .content-button button {
     font-size: 16px;
     padding: 10px 20px;
@@ -382,23 +355,6 @@ form .button .submit-button button {
     transition: background-color 0.2s ease-in-out;
 }
 
-/* .deleteStaff-overlay {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 10px;
-    padding: 40px;
-    width: 80%;
-    max-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-    z-index: 11;
-} */
-
-
-.deleteStaff-overlay p,
 .resolve-overlay p {
     font-size: 1.25em;
     font-weight: 700;
@@ -407,7 +363,6 @@ form .button .submit-button button {
     color: #333;
 }
 
-.deleteStaff-overlay button,
 .resolve-overlay button {
     background-color: #333;
     color: #fff;
@@ -434,23 +389,4 @@ form .button .submit-button button {
     background-color: #fff;
     color: #333;
     border: 2px solid #333;
-}
-
-.deleteStaff-overlay button:hover {
-    background-color: #555;
-}
-
-.deleteStaff-overlay button:focus {
-    outline: none;
-}
-
-#deleteCancelBtn {
-    background-color: #fff;
-    color: #333;
-    border: 2px solid #333;
-}
-
-#deleteCancelBtn:hover {
-    border-color: #555;
-    color: #555;
 }
