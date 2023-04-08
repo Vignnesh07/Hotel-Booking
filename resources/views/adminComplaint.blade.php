@@ -148,7 +148,7 @@
                     </tbody>
                 </table>
 
-                {!! $complaints->links('vendor.pagination.custom') !!}
+                {!! $complaints->links('vendor.pagination.custom', ['tableID' => 'complaints-table']) !!}
 
                 <div class="resolve-overlay" id="resolve-overlay">
                     <div class="resolve-container">

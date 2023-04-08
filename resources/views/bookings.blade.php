@@ -124,9 +124,9 @@
 
             <div class="pagination">
                 <button onclick="location.href='/home#submitReservationForm'">Back to Reservations</button>
+                {!! $bookings->links('vendor.pagination.custom', ['tableID' => 'bookings-table']) !!}
             </div>
 
-            {!! $bookings->links('vendor.pagination.custom') !!}
         </div>
     </div>
 
