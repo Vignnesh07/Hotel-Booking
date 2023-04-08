@@ -2,8 +2,6 @@
 var input = document.querySelector("#phone");
 window.intlTelInput(input, {});
 
-
-
 function filterRooms() {
     // Get the selected room type
     const roomType = document.getElementById("roomtype").value;
@@ -84,6 +82,45 @@ function filterRooms() {
 
     // Show the room number select box
     roomNumberSelect.style.display = "block";
+
+    if (document.getElementById("checkindate").value !== '' && document.getElementById("checkoutdate").value !== '') {
+        const checkinDate = new Date(document.getElementById("checkindate").value);
+        const checkoutDate = new Date(document.getElementById("checkoutdate").value);
+        totalNights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
+
+        if (!isNaN(totalNights) && totalNights > 0) {
+            const roomType = document.getElementById("roomtype").value;
+            
+            if (roomType === "single") {
+                price = 150;
+            } else if (roomType === "double") {
+                price = 250;
+            } else if (roomType === "triple") {
+                price = 350;
+            } else if (roomType === "queen") {
+                price = 250;
+            } else if (roomType === "king") {
+                price = 300;
+            } else if (roomType === "studio") {
+                price = 400;
+            } else if (roomType === "executive") {
+                price = 600;
+            } else if (roomType === "presidential") {
+                price = 1000;
+            }
+
+            amount = price * totalNights;
+
+            document.getElementById("stays").textContent = `Total Stays: ${totalNights} nights`;
+            document.getElementById("prices").textContent = `Prices: $${price} x ${totalNights} nights`;
+            document.getElementById("amount").textContent = `Total Amount: $${amount}`;
+            document.getElementById("bookingAmount-field").value = `${amount}`;
+        } else {
+            document.getElementById("stays").textContent = "Total Stays:";
+            document.getElementById("prices").textContent = "Prices:";
+            document.getElementById("amount").textContent = "Total Amount:";
+        }
+    }
 }
 
 
@@ -195,6 +232,9 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleCancel() {
         document.getElementById("overlay").style.display = "none";
     }
+
+    // Run function when the DOM first loads for edit bookings view 
+    updateTotalNights()
 
     // Add event listeners to the form and confirmation buttons
     document.getElementById("newBookingButton").addEventListener("click", handleFormSubmit);

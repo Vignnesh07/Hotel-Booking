@@ -58,19 +58,19 @@
                             <td class="bookings-column1" id="c-bookings1">{{ $booking['id'] }}</td>
                             <td class="bookings-column2" id="c-bookings2">{{ $booking['roomNumber'] }}</td>
                             <td class="bookings-column3" id="c-bookings3">
-                                @if($booking['roomType'] == 'single')
+                                @if(strtolower($booking['roomType']) == 'single')
                                     Single Room
-                                @elseif($booking['roomType'] == 'double')
+                                @elseif(strtolower($booking['roomType']) == 'double')
                                     Double Room
-                                @elseif($booking['roomType'] == 'triple')
+                                @elseif(strtolower($booking['roomType']) == 'triple')
                                     Triple Room
-                                @elseif($booking['roomType'] == 'queen')
+                                @elseif(strtolower($booking['roomType']) == 'queen')
                                     Queen Room
-                                @elseif($booking['roomType'] == 'king')
+                                @elseif(strtolower($booking['roomType']) == 'king')
                                     King Room
-                                @elseif($booking['roomType'] == 'studio')
+                                @elseif(strtolower($booking['roomType']) == 'studio')
                                     Studio Room
-                                @elseif($booking['roomType'] == 'executive')
+                                @elseif(strtolower($booking['roomType']) == 'executive')
                                     Executive Suite
                                 @else
                                     Presidential Suite
@@ -101,7 +101,11 @@
                             <td class="bookings-column8" id="c-bookings8">
                                 <div class="actions">
                                     @if($booking['bookingStatus'] != 'completed')
-                                        <button class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button class="editBtn" onclick="
+											location.href='/bookings/update/{{ $booking['id'] }}'
+										">
+											<i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
                                     @else 
                                         <button disabled class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
                                     @endif
@@ -113,7 +117,7 @@
                                             location.href='/bookings/delete/{{ $booking['id'] }}'
                                         }
                                     ">
-                                      <i class="fa-sharp fa-solid fa-trash delete-btn"></i>
+										<i class="fa-sharp fa-solid fa-trash delete-btn"></i>
                                     </button>
                                 </div>
                             </td>

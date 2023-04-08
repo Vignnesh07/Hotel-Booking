@@ -50,9 +50,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/bookings', [BookingController::class, 'viewBookings']);
     Route::get('/bookings/{id}', [BookingController::class, 'viewBookingDetails']);
     Route::get('/bookings/pay/{id}', [BookingController::class, 'payBooking']);
-    Route::get('/bookings-table', function () {
-        return redirect('/bookings#bookings-table');
-    });
+    // Route::get('/bookings-table', function () {
+    //     return redirect('/bookings#bookings-table');
+    // });
+    Route::get('/bookings/update/{id}', [BookingController::class, 'viewUpdateBooking']);
+    Route::post('/bookings/update/{id}', [BookingController::class, 'updateBooking']);
     Route::get('/bookings/delete/{bookingId}', [BookingController::class, 'deleteBooking']);
 
     /* Clerk complaints routes */
