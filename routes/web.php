@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ComplaintController;
@@ -44,6 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
     /* Clerk home routes */
     Route::view('/home', 'home');
     Route::post('/home/addBookings', [BookingController::class, 'addBooking']);
+
+    /* Clerk profile route */
+    Route::get('/profile', [UserController::class, 'viewUserInfo']);
     
     /* Clerk booking routes */
     Route::get('/bookings', [BookingController::class, 'viewBookings']);
@@ -61,6 +65,9 @@ Route::group(['middleware' => 'auth'], function () {
 /* Admin route middlewares */
 Route::group(['middleware' => 'auth'], function () {
     Route::view('/admin/dashboard', 'dashboard')->middleware('can:isAdmin');
+
+    /* Admin profile routes */
+    Route::get('/admin/profile', [UserController::class, 'viewUserInfo'])->middleware('can:isAdmin');;
 
     /* Admin booking routes */
     Route::get('/admin/bookings', [BookingController::class, 'viewBookings'])->middleware('can:isAdmin');
@@ -88,6 +95,4 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('logout', [LoginController::class, 'logout']);
 
 // Incompleted routes 
-Route::view("clerkProfile",'clerkProfile');
 Route::view("about",'about');
-Route::view('/admin/profile', 'adminProfile');

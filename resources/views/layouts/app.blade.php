@@ -47,12 +47,12 @@
             </ul>
 
             <div class="dropdown">
-                <button class="dropbtn"> User
+                <button class="dropbtn"> {{ Auth::user() -> name }}
                     <i class="fa-solid fa-caret-down"></i>
                 </button>
 
                 <div class="dropdown-content">
-                    <a href="clerkProfile"> Profile </a>
+                    <a href="/profile"> Profile </a>
                     <a href="{{ route('logout') }}" 
                         onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();"> Logout </a>
