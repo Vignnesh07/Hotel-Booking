@@ -36,7 +36,7 @@ class BookingController extends Controller {
         $bookingDetails = Booking::where('id', $id) -> first();
 
         if (Auth::user() -> can('isAdmin')) {
-            return redirect('/adminBooking#bookings-table', ['bookingDetails' => $bookingDetails]);
+            return view('/adminBookingUpdate', ['bookingDetails' => $bookingDetails]);
         } else {
             return view('/bookingsUpdate', ['bookingDetails' => $bookingDetails]);
         }
@@ -88,7 +88,11 @@ class BookingController extends Controller {
         $data -> zipCode = $request -> zipCode;
         $data -> save();
 
-        return redirect('bookings#bookings-table');
+        if (Auth::user() -> can('isAdmin')) {
+            return redirect('/admin/bookings#bookings-table');
+        } else {
+            return redirect('/bookings#bookings-table');
+        }
     }
 
     // Function to update booking payment in the database
@@ -98,7 +102,7 @@ class BookingController extends Controller {
         $data -> bookingStatus = 'completed';
         $data -> save();
         if (Auth::user() -> can('isAdmin')) {
-            return redirect('/adminBooking#bookings-table');
+            return redirect('/admin/bookings#bookings-table');
         } else {
             return redirect('/bookings#bookings-table');
         }
@@ -110,7 +114,7 @@ class BookingController extends Controller {
         $data -> delete();
 
         if (Auth::user() -> can('isAdmin')) {
-            return redirect('/adminBooking#bookings-table');
+            return redirect('/admin/bookings#bookings-table');
         } else {
             return redirect('/bookings#bookings-table');
         }

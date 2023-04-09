@@ -20,8 +20,6 @@ use App\Http\Controllers\Auth\LoginController;
 
 Auth::routes();
 
-// Completed routes 
-
 /* Initial route */
 Route::get('/', function () {
     return redirect('/login/admin');
@@ -66,6 +64,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Admin booking routes */
     Route::get('/admin/bookings', [BookingController::class, 'viewBookings'])->middleware('can:isAdmin');
+    Route::get('/admin/bookings/pay/{id}', [BookingController::class, 'payBooking'])->middleware('can:isAdmin');
+    Route::get('/admin/bookings/update/{bookingId}', [BookingController::class, 'viewUpdateBooking'])->middleware('can:isAdmin');
+    Route::post('/admin/bookings/update/{bookingId}', [BookingController::class, 'updateBooking'])->middleware('can:isAdmin');
+    Route::get('/admin/bookings/delete/{bookingId}', [BookingController::class, 'deleteBooking'])->middleware('can:isAdmin');
 
     /* Admin staff routes */
     Route::get('/admin/staff', [StaffController::class, 'viewStaffs'])->middleware('can:isAdmin');
@@ -88,7 +90,4 @@ Route::get('logout', [LoginController::class, 'logout']);
 // Incompleted routes 
 Route::view("clerkProfile",'clerkProfile');
 Route::view("about",'about');
-Route::view('/admin/staff', 'staff');
-Route::view("/admin/bookings",'adminBooking');
 Route::view('/admin/profile', 'adminProfile');
-

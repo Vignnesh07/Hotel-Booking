@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="/assets/css/bookings.css" >
         <link rel="stylesheet" href="/assets/css/adminBooking.css" >
         <link rel="stylesheet" href="/assets/css/adminProfile.css" >
-
+        <link rel="stylesheet" href="/assets/phone/css/intlTelInput.css" >
     </head>
     <body class="dashboard-body">
         <div>
@@ -86,7 +86,11 @@
 
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
         <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script src="/assets/phone/js/intlTelInput.js"> </script>
         <script src="/assets/js/home.js"> </script>
         <script src="/assets/js/bookings.js"> </script>
         <script src="/assets/js/adminComplaint.js"> </script>

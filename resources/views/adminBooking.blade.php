@@ -4,14 +4,13 @@
 
 <div class='booking-sizing'>
     <div class="container">
-
         <div class="add-colour"></div>
         <br ><br><br>
+
         <h2 class="sub-title">Bookings List</h2>
+
         <div class="container-table">
-
             <div class="bookings-table">
-
                 <div class="entries-search">
                     <div class="show-entries">
                         <label for="entries-per-page-bookings">Show:</label>
@@ -47,129 +46,82 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- ----------- new bookings will be added here ---------- -->
-
+                        @foreach($bookings as $booking)
+                            <tr>
+                                <td class="bookings-column1" id="c-bookings1">{{ $booking['id'] }}</td>
+                                <td class="bookings-column2" id="c-bookings2">{{ $booking['roomNumber'] }}</td>
+                                <td class="bookings-column3" id="c-bookings3">
+                                    @if(strtolower($booking['roomType']) == 'single')
+                                        Single Room
+                                    @elseif(strtolower($booking['roomType']) == 'double')
+                                        Double Room
+                                    @elseif(strtolower($booking['roomType']) == 'triple')
+                                        Triple Room
+                                    @elseif(strtolower($booking['roomType']) == 'queen')
+                                        Queen Room
+                                    @elseif(strtolower($booking['roomType']) == 'king')
+                                        King Room
+                                    @elseif(strtolower($booking['roomType']) == 'studio')
+                                        Studio Room
+                                    @elseif(strtolower($booking['roomType']) == 'executive')
+                                        Executive Suite
+                                    @else
+                                        Presidential Suite
+                                    @endif
+                                </td>
+                                <td class="bookings-column4" id="c-bookings4">
+                                    @if($booking['bookingStatus'] == 'completed')
+                                        <button class='history-btn bookings-btn' data-booking-id="{{ $booking['id'] }}">History</button>
+                                    @else
+                                        <button class='booked-btn bookings-btn'>Booked</button>
+                                    @endif
+                                </td>
+                                <td class="bookings-column5" id="c-bookings5">{{ $booking['checkInDate'] }}</td>
+                                <td class="bookings-column6" id="c-bookings6">{{ $booking['checkOutDate'] }}</td>
+                                <td class="bookings-column7" id="c-bookings7">
+                                    @if($booking['paidAmount'] == $booking['bookingAmount'])
+                                        RM {{ $booking['paidAmount'] }}
+                                    @else
+                                        <button class='pay-btn bookings-btn' onclick="
+                                            if (confirm('Confirm payment for booking ID ({{ $booking['id'] }})?') == true) {
+                                                location.href='/admin/bookings/pay/{{ $booking['id'] }}'
+                                            }
+                                        ">
+                                            Pay
+                                        </button>
+                                    @endif
+                                </td>
+                                <td class="bookings-column8" id="c-bookings8">
+                                    <div class="actions">
+                                        @if($booking['bookingStatus'] != 'completed')
+                                            <button class="editBtn" onclick="
+                                                location.href='/admin/bookings/update/{{ $booking['id'] }}'
+                                            ">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+                                        @else 
+                                            <button disabled class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        @endif
+                                        <button class="viewBtn" data-booking-id="{{ $booking['id'] }}">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                        <button class="delete-btn" type="submit" onclick="
+                                            if (confirm('Are you sure about deleting booking ID ({{ $booking['id'] }}) by: {{ $booking['fName'] }} {{ $booking['lName'] }}?') == true) {
+                                                location.href='/admin/bookings/delete/{{ $booking['id'] }}'
+                                            }
+                                        ">
+                                            <i class="fa-sharp fa-solid fa-trash delete-btn"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
                 <div class="pagination">
-
-                    <div class="pagination-button">
-                        <button id="previous">Previous</button>
-                        <div id="page-numbers"></div>
-                        <button id="next">Next</button>
-                    </div>
+                    {!! $bookings->links('vendor.pagination.custom', ['tableID' => 'bookings-table']) !!}
                 </div>
-            </div>
-        </div>
-
-        <div class="overlay" id="paymentConfirmationOverlay">
-            <div class="popup-payment" id="paymentConfirmationPopup">
-                <p>Confirm Payment?</p>
-                <button id="confirmPaymentBtn">Confirm Payment</button>
-                <button id="paymentCancelBtn">Cancel</button>
-            </div>
-        </div>
-
-        <div class="overlay" id="deleteConfirmationOverlay">
-            <div class="popup-delete" id="deleteConfirmationPopup">
-                <p>Confirm Delete?</p>
-                <button id="confirmDeleteBtn">Confirm Delete</button>
-                <button id="deleteCancelBtn">Cancel</button>
-            </div>
-        </div>
-
-        <div class="overlay" id="editOverlay">
-            <div class="popup" id="editPopup">
-                <h2>Edit Customer Information</h2>
-
-                <div class="content">
-                    <div class="inputdiv">
-                        <div class="flexLabelInput">
-                            <label id="popup-fname-label">First Name: <span class="addThings"></span></label>
-                            <input type="text" id="popup-fname-input" style="display: none" />
-                        </div>
-                        <div class="flexPen">
-                            <i class="fa-solid fa-pen-to-square" id="editFNameIcon"></i>
-                        </div>
-                    </div>
-
-                    <div class="inputdiv">
-                        <div class="flexLabelInput">
-                            <label id="popup-lname-label">Last Name: <span class="addThings"></span></label>
-                            <input type="text" id="popup-lname-input" style="display: none" />
-                        </div>
-                        <div class="flexPen">
-                            <i class="fa-solid fa-pen-to-square" id="editLNameIcon"></i>
-                        </div>
-                    </div>
-
-                    <div class="inputdiv">
-                        <div class="flexLabelInput">
-                            <label id="popup-idcard-label">ID Card Number: <span class="addThings"></span></label>
-                            <input type="text" id="popup-idcard-input" style="display: none" />
-                        </div>
-                        <div class="flexPen">
-                            <i class="fa-solid fa-pen-to-square" id="editIdCardIcon"></i>
-                        </div>
-                    </div>
-
-                    <div class="inputdiv">
-                        <div class="flexLabelInput">
-                            <label id="popup-email-label">Email Address: <span class="addThings"></span></label>
-                            <input type="email" id="popup-email-input" style="display: none" />
-                        </div>
-                        <div class="flexPen">
-                            <i class="fa-solid fa-pen-to-square" id="editEmailIcon"></i>
-                        </div>
-                    </div>
-
-                    <div class="inputdiv">
-                        <div class="flexLabelInput">
-                            <label id="popup-phonenumber-label">Phone Number: <span class="addThings"></span></label>
-                            <input type="number" id="popup-phonenumber-input" style="display: none" />
-                        </div>
-                        <div class="flexPen">
-                            <i class="fa-solid fa-pen-to-square" id="editPhoneNumberIcon"></i>
-                        </div>
-                    </div>
-
-                    <div class="inputdiv">
-                        <div class="flexLabelInput">
-                            <label id="popup-residentialaddress-label">Residential Address: <span class="addThings"></span></label>
-                            <input type="text" id="popup-residentialaddress-input" style="display: none" />
-                        </div>
-                        <div class="flexPen">
-                            <i class="fa-solid fa-pen-to-square" id="editResidentialAddressIcon"></i>
-                        </div>
-                    </div>
-
-                    <div class="inputdiv">
-                        <div class="flexLabelInput">
-                            <label id="popup-city-label">City: <span class="addThings"></span></label>
-                            <input type="text" id="popup-city-input" style="display: none" />
-                        </div>
-                        <div class="flexPen">
-                            <i class="fa-solid fa-pen-to-square" id="editCityIcon"></i>
-                        </div>
-                    </div>
-
-                    <div class="inputdiv">
-                        <div class="flexLabelInput">
-                            <label id="popup-zipcode-label">Zip Code: <span class="addThings"></span></label>
-                            <input type="text" id="popup-zipcode-input" style="display: none" />
-                        </div>
-                        <div class="flexPen">
-                            <i class="fa-solid fa-pen-to-square" id="editZipCodeIcon"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="popup-edit">
-                    <button id="editSaveBtn">Save</button>
-                    <button id="editCancelBtn">Cancel</button>
-                </div>
-
             </div>
         </div>
 
@@ -201,8 +153,6 @@
                     <p id="popup-roomnumber">Room Number <span></span></p>
                     <p id="popup-checkindate">Check In <span></span></p>
                     <p id="popup-checkoutdate">Check Out <span></span></p>
-                    <p id="popup-stays">Total Stays <span></span></p>
-                    <p id="popup-prices">Prices <span></span></p>
                     <p id="popup-amount">Total Amount <span></span></p>
                 </div>
 

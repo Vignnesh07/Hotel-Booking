@@ -1,23 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.dash')
 
 @section('content')
-        
-<div class="header">
-    <div class="header-bg" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)), url('/assets/img/home_bg.png');"></div>
-    <div class="container">
-        <h1 class="text-background"> Book Luxury Stays Seamlessly </h1>
-    </div>
-</div>
 
 <div class="container">
-    <h2 class="sub-title">{{ $bookingDetails['fName'] }} {{ $bookingDetails['lName'] }}</h2>
+    <div class="container-all-complaint">
+        <div class="container-complaint-form">
+            <div class="add-colour"></div>
+            <br ><br><br>
 
-    <div class="form-box">
-        <form method="POST" label="{{ __('Update') }}" id="update-booking-form">
-            @csrf
-            <fieldset>
-                <legend>Room Information</legend>
-                <div class="columns">
+            <h2 class="sub-title">{{ $bookingDetails['fName'] }} {{ $bookingDetails['lName'] }}</h2>
+
+            <form method="POST" label="{{ __('Update') }}" id="submitComplaintForm">
+                @csrf
+
+                <h3>Room Information</h3>
+                <hr>
+                
+                <div class="columns c-column">
                     <div class="item">
                         <input type="hidden" id='id' name="id" value="{{ $bookingDetails['id'] }}">
                         <label for="roomtype">Room Type</label>
@@ -33,6 +32,7 @@
                             <option value="presidential">Presidential Suite</option>
                         </select>
                     </div>
+
                     <div class="item">
                         <label for="roomnumber">Room Number</label>
                         <select id="roomnumber" name="roomNumber" required>
@@ -64,8 +64,8 @@
                     </div>
                     @enderror
                 </div>
-
-                <div class="columns">
+                
+                <div class="columns c-column">
                     <div class="item">
                         <label for="checkindate">Check-in Date</label>
                         <div class="datepicker-container">
@@ -78,7 +78,7 @@
                                 value="{{ $bookingDetails['checkInDate'] }}"
                                 required
                             />
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-calendar-alt" style="position: absolute; top: 40px; right: 3%; z-index: 1;"></i>
                         </div>
                     </div>
 
@@ -94,7 +94,7 @@
                                 value="{{ $bookingDetails['checkOutDate'] }}"
                                 required
                             />
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-calendar-alt" style="position: absolute; top: 40px; right: 3%; z-index: 1;"></i>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                     </div>
                     @enderror
                 </div>
-
+                
                 <br>
 
                 <div class="results">
@@ -132,14 +132,11 @@
                     <input type="hidden" id="bookingAmount-field" name="bookingAmount" value="{{ $bookingDetails['bookingAmount'] }}">
                 </div>
 
-                <br>
-            </fieldset>
+                <br><br>
 
-            <br><br>
-
-            <fieldset>
-                <legend>Customer Information</legend>
-                <div class="columns">
+                <h3>Customer Information</h3>
+                <hr>
+                <div class="columns c-column">
                     <div class="item">
                         <label for="fname"> First Name </label>
                         <input id="fname" type="text" placeholder="First Name" name="fName" value="{{ $bookingDetails['fName'] }}" required/>
@@ -150,7 +147,7 @@
                     </div>
                 </div>
                 <!-- FOR ERROR -->
-                <div class="columns">
+                <div class="columns ">
                     @error('fName')
                     <div class="error-span">
                         <span class="invalid-feedback" role="alert">
@@ -174,7 +171,7 @@
                     @enderror
                 </div>
 
-                <div class="columns">
+                <div class="columns c-column">
                     <div class="item">
                         <label for="idcard"> ID Card Number </label>
                         <input type="text" id="idcard" placeholder="ID Card Number" name="idCard" value="{{ $bookingDetails['idCard'] }}" required/>
@@ -184,9 +181,8 @@
                         <input id="email" type="email" placeholder="Email Address" name="email" value="{{ $bookingDetails['email'] }}" required/>
                     </div>
                 </div>
-
                 <!-- FOR ERROR -->
-                <div class="columns">
+                <div class="columns ">
                     @error('idCard')
                     <div class="error-span">
                         <span class="invalid-feedback" role="alert">
@@ -210,14 +206,18 @@
                     @enderror
                 </div>
 
-                <div class="columns">
+                <div class="columns c-column">
                     <div class="item">
                         <label for="phone"> Phone Number </label>
                         <input type="tel" id="phone" placeholder="Phone Number" name="phone" value="{{ $bookingDetails['phone'] }}" required/>
                     </div>
+                    <div class="item">
+                        <label for="residentialaddress"> Residential Address </label>
+                        <input type="text" id="residentialaddress" placeholder="Address" name="address" value="{{ $bookingDetails['address'] }}" required/>
+                    </div>
                 </div>
                 <!-- FOR ERROR -->
-                <div class="columns">
+                <div class="columns ">
                     @error('phone')
                     <div class="error-span">
                         <span class="invalid-feedback" role="alert">
@@ -228,16 +228,7 @@
                         </span>
                     </div>
                     @enderror
-                </div>
 
-                <div class="columns">
-                    <div class="item special">
-                        <label for="residentialaddress"> Residential Address </label>
-                        <input type="text" id="residentialaddress" placeholder="Address" name="address" value="{{ $bookingDetails['address'] }}" required/>
-                    </div>
-                </div>
-                <!-- FOR ERROR -->
-                <div class="columns">
                     @error('address')
                     <div class="error-span">
                         <span class="invalid-feedback" role="alert">
@@ -250,7 +241,7 @@
                     @enderror
                 </div>
 
-                <div class="columns">
+                <div class="columns c-column">
                     <div class="item">
                         <label for="city">City</label>
                         <input id="city" type="text" placeholder="City" name="city" value="{{ $bookingDetails['city'] }}" required/>
@@ -284,12 +275,13 @@
                     </div>
                     @enderror
                 </div>
-            </fieldset>
 
-            <div class="btn-block">
-                <button class="btn" type="submit">Update</button>
-            </div>
-        </form>
+                <div class="button-complaint">
+                    <button type="submit" class="submitComplaint">{{ __('Update') }}</button>
+                </div>
+            </form>
+        </div>
+        <br>
     </div>
 </div>
 

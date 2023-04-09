@@ -102,9 +102,9 @@
                                 <div class="actions">
                                     @if($booking['bookingStatus'] != 'completed')
                                         <button class="editBtn" onclick="
-											location.href='/bookings/update/{{ $booking['id'] }}'
-										">
-											<i class="fa-solid fa-pen-to-square"></i>
+                                            location.href='/bookings/update/{{ $booking['id'] }}'
+                                        ">
+                                            <i class="fa-solid fa-pen-to-square"></i>
                                         </button>
                                     @else 
                                         <button disabled class="editBtn"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -117,7 +117,7 @@
                                             location.href='/bookings/delete/{{ $booking['id'] }}'
                                         }
                                     ">
-										<i class="fa-sharp fa-solid fa-trash delete-btn"></i>
+                                        <i class="fa-sharp fa-solid fa-trash delete-btn"></i>
                                     </button>
                                 </div>
                             </td>
@@ -134,148 +134,43 @@
         </div>
     </div>
 
-    <div class="overlay" id="paymentConfirmationOverlay">
-      <div class="popup-payment" id="paymentConfirmationPopup">
-        <p>Confirm Payment?</p>
-        <button id="confirmPaymentBtn">Confirm Payment</button>
-        <button id="paymentCancelBtn">Cancel</button>
-      </div>
-    </div>
-
-    <div class="overlay" id="editOverlay">
-      <div class="popup" id="editPopup">
-        <h2>Edit Customer Information</h2>
-        
-        <div class="content">
-          <div class="inputdiv">
-            <div class="flexLabelInput">
-              <label id="popup-fname-label">First Name: <span class="addThings"></span></label>
-              <input type="text" id="popup-fname-input" style="display: none" />
-            </div>
-            <div class="flexPen">
-              <i class="fa-solid fa-pen-to-square" id="editFNameIcon"></i>
-            </div>
-          </div>
-
-          <div class="inputdiv">
-            <div class="flexLabelInput">
-              <label id="popup-lname-label">Last Name: <span class="addThings"></span></label>
-              <input type="text" id="popup-lname-input" style="display: none" />
-            </div>
-            <div class="flexPen">
-              <i class="fa-solid fa-pen-to-square" id="editLNameIcon"></i>
-            </div>
-          </div>
-
-          <div class="inputdiv">
-            <div class="flexLabelInput">
-              <label id="popup-idcard-label">ID Card Number: <span class="addThings"></span></label>
-              <input type="text" id="popup-idcard-input" style="display: none" />
-            </div>
-            <div class="flexPen">
-              <i class="fa-solid fa-pen-to-square" id="editIdCardIcon"></i>
-            </div>
-          </div>
-
-          <div class="inputdiv">
-            <div class="flexLabelInput">
-              <label id="popup-email-label">Email Address: <span class="addThings"></span></label>
-              <input type="email" id="popup-email-input" style="display: none" />
-            </div>
-            <div class="flexPen">
-              <i class="fa-solid fa-pen-to-square" id="editEmailIcon"></i>
-            </div>
-          </div>
-
-          <div class="inputdiv">
-            <div class="flexLabelInput">
-              <label id="popup-phonenumber-label">Phone Number: <span class="addThings"></span></label>
-              <input type="number" id="popup-phonenumber-input" style="display: none" />
-            </div>
-            <div class="flexPen">
-              <i class="fa-solid fa-pen-to-square" id="editPhoneNumberIcon"></i>
-            </div>
-          </div>
-
-          <div class="inputdiv">
-            <div class="flexLabelInput">
-              <label id="popup-residentialaddress-label">Residential Address: <span class="addThings"></span></label>
-              <input type="text" id="popup-residentialaddress-input" style="display: none" />
-              </div>
-            <div class="flexPen">
-              <i class="fa-solid fa-pen-to-square" id="editResidentialAddressIcon"></i>
-            </div>
-          </div>
-
-          <div class="inputdiv">
-            <div class="flexLabelInput">
-              <label id="popup-city-label">City: <span class="addThings"></span></label>
-              <input type="text" id="popup-city-input" style="display: none" />
-            </div>
-            <div class="flexPen">
-              <i class="fa-solid fa-pen-to-square" id="editCityIcon"></i>
-            </div>
-          </div>
-
-          <div class="inputdiv">
-            <div class="flexLabelInput">
-              <label id="popup-zipcode-label">Zip Code: <span class="addThings"></span></label>
-              <input type="text" id="popup-zipcode-input" style="display: none" />
-            </div>
-            <div class="flexPen">
-              <i class="fa-solid fa-pen-to-square" id="editZipCodeIcon"></i>
-              </div>
-            </div>
-          </div>
-
-        <div class="popup-edit">
-          <button id="editSaveBtn">Save</button>
-          <button id="editCancelBtn">Cancel</button>
-        </div>
-
-      </div>
-    </div>
-
     <div class="overlay" id="viewOverlay">
-      <div class="popup" id="viewPopup">
-        <h2>Customer Information</h2>
-        <div class="content">
-            <p id="popup-customername">Customer Name <span></span></p>
-            <p id="popup-idcardnumber">ID Card Number <span></span></p>
-            <p id="popup-emailaddress">Email Address <span></span></p>
-            <p id="popup-phonenumber">Phone Number <span></span></p>
-            <p id="popup-residentialaddress">Address <span></span></p>
-            <p id="popup-city">City <span></span></p>
-            <p id="popup-zipcode">Zip Code <span></span></p>
-            <p id="popup-amount">Total Amount <span></span></p>
+        <div class="popup" id="viewPopup">
+            <h2>Customer Information</h2>
+            <div class="content">
+                <p id="popup-customername">Customer Name <span></span></p>
+                <p id="popup-idcardnumber">ID Card Number <span></span></p>
+                <p id="popup-emailaddress">Email Address <span></span></p>
+                <p id="popup-phonenumber">Phone Number <span></span></p>
+                <p id="popup-residentialaddress">Address <span></span></p>
+                <p id="popup-city">City <span></span></p>
+                <p id="popup-zipcode">Zip Code <span></span></p>
+                <p id="popup-amount">Total Amount <span></span></p>
+            </div>
+            <div class="content-button">
+                <button class="close-button" id="viewCloseBtn">Close</i></button>
+            </div>
         </div>
-        <div class="content-button">
-            <button class="close-button" id="viewCloseBtn">Close</i></button>
-        </div>
-      </div>
     </div>
 
     <div class="overlay" id="historyOverlay">
-      <div class="popup" id="historyPopup">
-        <h2>Booking History</h2>
-        <div class="content">
-            <p id="popup-bookedAt">Booked At <span></span></p>
-            <p id="popup-customername">Customer Name <span></span></p>
-            <p id="popup-roomtype">Room Type <span></span></p>
-            <p id="popup-roomnumber">Room Number <span></span></p>
-            <p id="popup-checkindate">Check In <span></span></p>
-            <p id="popup-checkoutdate">Check Out <span></span></p>
-            <p id="popup-amount">Total Amount <span></span></p>
-        </div>
+        <div class="popup" id="historyPopup">
+            <h2>Booking History</h2>
+            <div class="content">
+                <p id="popup-bookedAt">Booked At <span></span></p>
+                <p id="popup-customername">Customer Name <span></span></p>
+                <p id="popup-roomtype">Room Type <span></span></p>
+                <p id="popup-roomnumber">Room Number <span></span></p>
+                <p id="popup-checkindate">Check In <span></span></p>
+                <p id="popup-checkoutdate">Check Out <span></span></p>
+                <p id="popup-amount">Total Amount <span></span></p>
+            </div>
 
-        <div class="content-button">
-              <button class="close-button" id="historyCloseBtn">Close</i></button>
+            <div class="content-button">
+                <button class="close-button" id="historyCloseBtn">Close</i></button>
+            </div>
         </div>
-
-      </div>
     </div>
-
-      
-
 </div>
+
 @endsection
