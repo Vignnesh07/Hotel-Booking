@@ -17,28 +17,6 @@
 
     <div class="container-table">
         <div class="bookings-table">
-
-            <div class="entries-search">
-                <div class="show-entries">
-                    <label for="entries-per-page-bookings">Show:</label>
-                    <select id="entries-per-page-bookings" class="select-entries">
-                        <option value="5">5</option>
-                        <option value="10" selected>10</option>
-                        <option value="15">15</option>
-                    </select>
-                    <span>entries</span>
-                </div>
-                <div class="search-section">
-                    <div class="search">
-                        <label class="search-label" for="search-bar-bookings">Search</label>
-                        <input type="search" id="search-bar-bookings" class="search-bar" />
-                    </div>
-                    <button type="button" class="search-btn" id="search-btn-bookings">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-
             <table id="bookings-table">
                 <thead>
                     <tr class="table-head">
@@ -127,7 +105,7 @@
             </table>
 
             <div class="pagination">
-                <button onclick="location.href='/home#submitReservationForm'">Back to Reservations</button>
+                <button style="margin-top: 10px;" onclick="location.href='/home#submitReservationForm'">Back to Reservations</button>
                 {!! $bookings->links('vendor.pagination.custom', ['tableID' => 'bookings-table']) !!}
             </div>
 

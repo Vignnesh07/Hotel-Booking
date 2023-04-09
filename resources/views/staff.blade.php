@@ -67,29 +67,8 @@
                 </form>
             </div>
 
-            <hr>
+            <hr><br>
 
-            <div class="entries-search">
-                <div class="show-entries">
-                    <label for="entries-per-page">Show:</label>
-                    <select id="entries-per-page" class="select-entries">
-                        <option value="5">5</option>
-                        <option value="10" selected>10</option>
-                        <option value="15">15</option>
-                    </select>
-                    <span>entries</span>
-                </div>
-
-                <div class="search-section">
-                    <div class="search">
-                        <label class="search-label" for="search-bar">Search</label>
-                        <input type="search" id="search-bar" class="search-bar" />
-                    </div>
-                    <button type="button" class="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
             <div>
                 <table>
                     <thead>

@@ -91,27 +91,6 @@
             <hr>
 
             <div class="complaints-table">
-                <div class="entries-search">
-                    <div class="show-entries">
-                        <label for="entries-per-page-complaints">Show:</label>
-                        <select id="entries-per-page-complaints" class="select-entries">
-                            <option value="5" selected>5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                        </select>
-                        <span>entries</span>
-                    </div>
-                    <div class="search-section">
-                        <div class="search">
-                            <label class="search-label" for="search-bar-complaints">Search</label>
-                            <input type="search" id="search-bar-complaints" class="search-bar" />
-                        </div>
-                        <button type="button" class="search-btn" id="search-btn-complaints">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-
                 <table id="complaints-table">
                     <thead>
                         <tr class="table-head">
