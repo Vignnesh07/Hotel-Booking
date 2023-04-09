@@ -16,14 +16,10 @@
         <p class="sub-description">Prestige Co. offers 125 rooms and suites spread over 9 floors, with a taste of luxury, and views of the city.
             <br>Each room has its own unique charm and comes with an oversized soaking tub, or relaxation pool, offering perfection for modern 
             <br>travellers looking for a stylish urban getaway.</p>
-
     </div>
     
-
     <div class="about-roomtype roomtype-grid1">
-
         <div class="roomtype-card">
-
             <div class="roomtype-image">
                 <img class="room-img" src="assets/img/room/room1.png">
             </div>
@@ -50,12 +46,11 @@
                 </div>
             </div>
         </div>
-        <div class="roomtype-card">
 
+        <div class="roomtype-card">
             <div class="roomtype-image">
                 <img class="room-img" src="assets/img/room/room2.png">
             </div>
-            
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Double</h5>
                 <p class="roomtype-description">Experience a comfortable stay in our spacious double room, 
@@ -77,14 +72,12 @@
                     </ul>
                 </div>
             </div>
-
         </div>
-        <div class="roomtype-card">
 
+        <div class="roomtype-card">
             <div class="roomtype-image">
                 <img class="room-img" src="assets/img/room/room3.png">
             </div>
-            
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Triple</h5>
                 <p class="roomtype-description">Designed for three guests, our triple room offers 
@@ -106,19 +99,14 @@
                     </ul>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <div class="about-roomtype roomtype-grid2 ">
-
         <div class="roomtype-card">
-
             <div class="roomtype-image">
                 <img class="room-img" src="assets/img/room/room4.png">
             </div>
-            
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Executive</h5>
                 <p class="roomtype-description">Indulge in luxury with our executive room, featuring a 
@@ -140,14 +128,12 @@
                     </ul>
                 </div>
             </div>
-
         </div>
-        <div class="roomtype-card">
 
+        <div class="roomtype-card">
             <div class="roomtype-image">
                 <img class="room-img" src="assets/img/room/room5.png">
             </div>
-            
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Presidential</h5>
                 <p class="roomtype-description">Experience unparalleled opulence in our presidential suite, 
@@ -169,15 +155,12 @@
                     </ul>
                 </div>
             </div>
-
         </div>
 
         <div class="roomtype-card">
-
             <div class="roomtype-image">
                 <img class="room-img" src="assets/img/room/room6.png">
             </div>
-            
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - Studio</h5>
                 <p class="roomtype-description">Enjoy the comfort and functionality of our studio room, 
@@ -199,17 +182,14 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
 
     <div class="about-roomtype roomtype-grid-special">
         <div class="roomtype-card special">
-
             <div class="roomtype-image">
                 <img class="room-img" src="assets/img/room/room7.png">
             </div>
-
             <div class="roomtype-information">
                 <h5 class="roomtype-title">Prestige - King</h5>
                 <p class="roomtype-description">Relax in our spacious king room, boasting a 
@@ -235,36 +215,34 @@
             </div>
 
             <div class="roomtype-card special">
-
-            <div class="roomtype-image">
-                <img class="room-img" src="assets/img/room/room8.png">
-            </div>
-
-            <div class="roomtype-information">
-                <h5 class="roomtype-title">Prestige - Queen</h5>
-                <p class="roomtype-description">Unwind in our elegant queen room, designed to provide a 
-                    perfect blend of comfort and style for discerning travelers.</p>
-                <div class="roomtype-list-container">
-                    <ul class="roomtype-list">
-                        <li class="list-pax">
-                            <div><i class="fa-solid fa-people-group fa"></i><span>2</span></div>
-                        </li>
-                        <li class="list-bed">
-                            <div><i class="fa-solid fa-bed fa"></i><span>Queen</span></div>
-                        </li>
-                        <li class="list-sqft">
-                            <div><ion-icon class="fa" name="move"></ion-icon>68-74 sqm / 726-775 sqft</div>
-                        </li>
-                        <li class="list-city">
-                            <div><i class="fa-sharp fa-solid fa-city fa"></i>City</div>
-                        </li>
-                    </ul>
+                <div class="roomtype-image">
+                    <img class="room-img" src="assets/img/room/room8.png">
                 </div>
-            </div>
+                <div class="roomtype-information">
+                    <h5 class="roomtype-title">Prestige - Queen</h5>
+                    <p class="roomtype-description">Unwind in our elegant queen room, designed to provide a 
+                        perfect blend of comfort and style for discerning travelers.</p>
+                    <div class="roomtype-list-container">
+                        <ul class="roomtype-list">
+                            <li class="list-pax">
+                                <div><i class="fa-solid fa-people-group fa"></i><span>2</span></div>
+                            </li>
+                            <li class="list-bed">
+                                <div><i class="fa-solid fa-bed fa"></i><span>Queen</span></div>
+                            </li>
+                            <li class="list-sqft">
+                                <div><ion-icon class="fa" name="move"></ion-icon>68-74 sqm / 726-775 sqft</div>
+                            </li>
+                            <li class="list-city">
+                                <div><i class="fa-sharp fa-solid fa-city fa"></i>City</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
+            </div>
         </div>
     </div>
-
 </div>
 
 <div class="about-extra-container">
@@ -275,12 +253,8 @@
         Come and experience the sophistication of our hotel for yourself.
     </p>
 
-
-
     <div class="container-our-team">
-
         <div class="team-container">
-
             <div class="team1">
                 <div class="card2">
                     <img class="team-image" src="assets/img/team/team1.png" style="width:100%">
@@ -330,11 +304,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
-
 </div>
+
 @endsection

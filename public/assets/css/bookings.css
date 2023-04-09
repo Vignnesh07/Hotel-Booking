@@ -52,27 +52,6 @@
     padding-left: 8px;
 }
 
-
-/* .container-table{
-    width: 100%;
-    min-height: 100vh;
-    background: #c850c0;
-    background: -webkit-linear-gradient(45deg,#4158d0,#c850c0);
-    background: -o-linear-gradient(45deg,#4158d0,#c850c0);
-    background: -moz-linear-gradient(45deg,#4158d0,#c850c0);
-    background: linear-gradient(45deg,#4158d0,#c850c0);
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 33px 30px;
-} */
-
-
 /*---------------------- table -----------------------css */
 table {
     border-spacing: 1;
@@ -116,7 +95,7 @@ table thead tr {
 
 .bookings-column4 {
     width: 150px;
-    text-align: left;
+    text-align: center;
 
 }
 
@@ -271,124 +250,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
-
-
-/*---------------------- POPUP PAYMENT CSS -----------------------css */
-.popup-payment {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 10px;
-    padding: 40px;
-    width: 80%;
-    max-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-    z-index: 11;
-}
-
-.popup-payment p {
-    font-size: 1.25em;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
-}
-
-.popup-payment button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    font-weight: 700;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 5px;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.popup-payment button:hover {
-    background-color: #555;
-}
-
-.popup-payment button:focus {
-    outline: none;
-}
-
-#paymentCancelBtn {
-    background-color: #fff;
-    color: #333;
-    border: 2px solid #333;
-}
-
-#paymentCancelBtn:hover {
-    border-color: #555;
-    color: #555;
-}
-
-/*---------------------- POPUP DELETe-----------------------css */
-
-.popup-delete {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 10px;
-    padding: 40px;
-    width: 80%;
-    max-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-    z-index: 11;
-    text-align: center;
-}
-
-.popup-delete p {
-    font-size: 1.25em;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
-}
-
-.popup-delete button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    font-weight: 700;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 5px;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.popup-delete button:hover {
-    background-color: #555;
-}
-
-.popup-delete button:focus {
-    outline: none;
-}
-
-#deleteCancelBtn {
-    background-color: #fff;
-    color: #333;
-    border: 2px solid #333;
-}
-
-#deleteCancelBtn:hover {
-    border-color: #555;
-    color: #555;
-}
-
-
-/*---------------------- POPUP edit-----------------------css */
-
-.popup .close-button {
+.close-button {
     font-size: 16px;
     padding: 10px 20px;
     background-color: #333;
@@ -399,83 +261,4 @@ button:disabled {
     margin-top: auto;
     width: 100%;
     text-transform: uppercase;
-}
-
-
-#editPopup .content{
-    margin-top: 20px;
-}
-
-
-.popup .addThings{
-    margin-top: 5px;
-    margin-left: 4px;
-    opacity: 0.7;
-    border-radius: 5px;
-}
-
-.popup .flexLabelInput span{
-    width: 92%;
-}
-
-.popup .flexLabelInput{
-    display: flex;
-    flex-direction: column;
-    margin-left: -8px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.flexLabelInput input{
-    width: calc(95% - 10px);
-}
-
-.popup .flexPen{
-    display: flex;
-    flex-direction: row-reverse;
-    transform: translate(0px, -33px);
-}
-
-
-.popup .flexPen i {
-    font-size: 18px;
-    cursor: pointer;
-} 
-
-
-.popup-edit{
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-.popup-edit button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    font-weight: 700;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 5px;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.popup-edit button:hover {
-    background-color: #555;
-}
-
-.popup-edit button:focus {
-    outline: none;
-}
-
-#editCancelBtn {
-    background-color: #fff;
-    color: #333;
-    border: 2px solid #333;
-}
-
-#editCancelBtn:hover {
-    border-color: #555;
-    color: #555;
 }

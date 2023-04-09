@@ -145,7 +145,7 @@
                     </tbody>
                 </table>
 
-                {!! $complaints->links('vendor.pagination.custom') !!}
+                {!! $complaints->links('vendor.pagination.custom', ['tableID' => 'complaints-table']) !!}
             </div>
         </div>
     </div>

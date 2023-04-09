@@ -40,10 +40,10 @@
 
 
             <ul class="nav-links" id="nav-links">
-                <li><a class="{{ Request::is('home') ? 'active' : '' }}" href="home">Home</a></li>
-                <li><a class="{{ Request::is('bookings*') ? 'active' : '' }}" href="bookings">Bookings</a></li>
-                <li><a class="{{ Request::is('about') ? 'active' : '' }}" href="about">About Us</a></li>
-                <li><a class="{{ Request::is('complaints') ? 'active' : '' }}" href="complaints">Complaints</a></li>
+                <li><a class="{{ Request::is('home') ? 'active' : '' }}" href="/home">Home</a></li>
+                <li><a class="{{ Request::is('bookings*') ? 'active' : '' }}" href="/bookings">Bookings</a></li>
+                <li><a class="{{ Request::is('about') ? 'active' : '' }}" href="/about">About Us</a></li>
+                <li><a class="{{ Request::is('complaints') ? 'active' : '' }}" href="/complaints">Complaints</a></li>
             </ul>
 
             <div class="dropdown">
