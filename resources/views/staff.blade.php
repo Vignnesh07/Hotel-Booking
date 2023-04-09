@@ -30,34 +30,26 @@
                         </div>
                         <div class='items'>
                             <label for='authority'>Authority: </label>
-                            <select id='authority' name='authority' equired>
-                                <option value='Admin'>Admin</option>
-                                <option value='Clerk'>Clerk</option>
+                            <select id='authority' name='authority' required>
+                                <option value='admin'>Admin</option>
+                                <option value='clerk'>Clerk</option>
                             </select>
                         </div>
                         <div class='items'>
                             <label for='password'>Password:</label>
-                            <input type='password' id='password' name="password" placeholder='Enter password' required>
-                        </div>
-                        <div class='items'>
-                            <label for='conf_password'>Confirm Password:</label>
-                            <input type='password' id='conf_password' name="conf_password"
-                                placeholder='Confirm password' required>
-                        </div>
-                        <div class="items">
-                            <label for="salary">Salary</label>
-                            <input id="salary" type="number" name="salary" required />
-
+                            <input type='password' id='password' name="password" minlength="6" placeholder='Enter password' required>
                         </div>
                         <div class='items'>
                             <label for='phone'>Phone:</label>
-                            <input type='tel' id='phone' name="phone" placeholder='01x-xxxxxxx'
-                                pattern="[0-9]{3}-[0-9]{7}" required>
-
+                            <input type='tel' id='phone' name="phone" placeholder='+x01xxxxxxxx' required>
                         </div>
                         <div class='items'>
                             <label for='address'>Address: </label>
                             <input type='text' id='address' name="address" placeholder='Enter address' required>
+                        </div>
+                        <div class="items">
+                            <label for="city">City</label>
+                            <input type="test" id="city" name="city" placeholder='Enter city' required />
                         </div>
                         <div class='items'>
                             <label for='zipCode'>Zip Code: </label>
@@ -114,7 +106,7 @@
                             <td class='column-1'>{{ $staff['id']  }}</td>
                             <td class='column-2'>{{ $staff['name']  }}</td>
                             <td class='column-3'>{{ $staff['email']  }}</td>
-                            <td class='column-4'>{{ $staff['authority']  }}</td>
+                            <td class='column-4'>{{ ucfirst($staff['role'])  }}</td>
                             <td class='column-5'>
                                 <button type='button' class='editStaff' onclick="
                                     window.location='{{ route('edit.staff', ['id' => $staff['id']]) }}'
@@ -147,9 +139,9 @@
                             <p id="staffName">Name <span></span></p>
                             <p id="staffEmail">Email <span></span></p>
                             <p id="staffAuthority">Authority <span></span></p>
-                            <p id="staffSalary">Salary <span></span></p>
                             <p id="staffPhone">Phone <span></span></p>
                             <p id="staffAddress">Address <span></span></p>
+                            <p id="staffCity">City <span></span></p>
                             <p id="staffZipCode">Zip Code <span></span></p>
                         </div>
                     </div>

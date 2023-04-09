@@ -10,7 +10,7 @@
 
             <h2 class="sub-title">{{ $staff['name'] }}</h2>
 
-            <form method="POST" action="editStaff" label="{{ __('Save') }}" id="submitComplaintForm">
+            <form method="POST" label="{{ __('Save') }}" id="submitComplaintForm">
                 @csrf
                 <h3>Edit Staff</h3>
 
@@ -56,15 +56,15 @@
                 <div class="columns c-column">
                     <div class="item">
                         <label for='authority'>Authority: </label>
-                        <select id='authority' name='authority' value="{{ $staff['authority'] }}" required>
-                            <option value='Admin'>Admin</option>
-                            <option value='Clerk'>Clerk</option>
+                        <select id='authority' name='authority' value="{{ $staff['role'] }}" required>
+                            <option value='admin'>Admin</option>
+                            <option value='clerk'>Clerk</option>
                         </select>
                     </div>
 
                     <div class="item">
-                        <label for="salary">Salary</label>
-                        <input id='salary' type='number' name='salary' value="{{ $staff['salary'] }}" required>
+                        <label for='phone'>Phone:</label>
+                        <input type='tel' id='phone' name='phone' placeholder='+01xxxxxxxx' value="{{ $staff['phone'] }}" required>
                     </div>
                 </div>
                 <!-- FOR ERROR -->
@@ -80,7 +80,7 @@
                     </div>
                     @enderror
 
-                    @error('salary')
+                    @error('phone')
                     <div class="error-span">
                         <span class="invalid-feedback" role="alert">
                             <strong class="error-message">
@@ -94,18 +94,18 @@
 
                 <div class="columns c-column">
                     <div class="item">
-                        <label for='phone'>Phone:</label>
-                        <input type='tel' id='phone' name='phone' placeholder='01x-xxxxxxx' pattern='[0-9]{3}-[0-9]{7}' value="{{ $staff['phone'] }}" required>
+                        <label for='address'>Address: </label>
+                        <input type='text' id='address' name='address' placeholder='Enter address' value="{{ $staff['address'] }}"required>
                     </div>
 
                     <div class="item">
-                        <label for='address'>Address: </label>
-                        <input type='text' id='address' name='address' placeholder='Enter address' value="{{ $staff['address'] }}"required>
+                        <label for="city">City</label>
+                        <input id='city' type='test' name='city' value="{{ $staff['city'] }}" required>
                     </div>
                 </div>
                 <!-- FOR ERROR -->
                 <div class="columns ">
-                    @error('phone')
+                    @error('address')
                     <div class="error-span">
                         <span class="invalid-feedback" role="alert">
                             <strong class="error-message">
@@ -116,7 +116,7 @@
                     </div>
                     @enderror
 
-                    @error('address')
+                    @error('city')
                     <div class="error-span">
                         <span class="invalid-feedback" role="alert">
                             <strong class="error-message">

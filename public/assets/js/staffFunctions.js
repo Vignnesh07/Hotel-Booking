@@ -12,10 +12,10 @@ $(document).ready(function () {
                 // Populate viewStaff-overlay div with user details
                 $("#staffName span").text(data.name);
                 $("#staffEmail span").text(data.email);
-                $("#staffAuthority span").text(data.authority);
-                $("#staffSalary span").text(data.salary);
+                $("#staffAuthority span").text(data.role);
                 $("#staffPhone span").text(data.phone);
                 $("#staffAddress span").text(data.address);
+                $("#staffCity span").text(data.city);
                 $("#staffZipCode span").text(data.zipCode);
 
                 // Show viewStaff-overlay div
