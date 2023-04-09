@@ -13,7 +13,7 @@
                     <div class="columns">
                         <div class="item special item-clerk">
                             <label for="clerk-name">Name</label>
-                            <p  class="clerk-name">{{ $userData['fName'] }} {{ $userData['lName'] }}</p>
+                            <p  class="clerk-name">{{ $userData['name'] }}</p>
                         </div>
                     </div>
                     <div class="columns">
