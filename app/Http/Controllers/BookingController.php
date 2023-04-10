@@ -65,8 +65,22 @@ class BookingController extends Controller {
         $data['bookingStatus'] = 'booked';
         $data['paidAmount'] = 0;
 
-        Booking::create($data);
-        return redirect('/bookings#bookings-table');
+        // Check all previous bookings to ensure room is available 
+        $allBookings = Booking::all();
+
+        $requestedDate = date('Y-m-d');
+        $requestedDate = date('Y-m-d', strtotime($request -> checkInDate));
+
+        foreach($allBookings as $booking) { 
+            $checkInDate = date('Y-m-d', strtotime($booking -> checkInDate));
+            $checkOutDate = date('Y-m-d', strtotime($booking -> checkOutDate));
+            if (($requestedDate >= $checkInDate) && ($requestedDate <= $checkOutDate) && ($booking -> bookingStatus == 'booked') && ($booking -> roomNumber == $request -> roomNumber)) {
+                return redirect() -> back() -> with('error', 'Room Unavailable');
+            } else {
+                Booking::create($data);
+                return redirect('/bookings#bookings-table');
+            }
+        }
     }
 
     // Function to update booking details in the database

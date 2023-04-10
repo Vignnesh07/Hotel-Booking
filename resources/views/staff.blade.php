@@ -87,15 +87,15 @@
                             <td class='column-3'>{{ $staff['email']  }}</td>
                             <td class='column-4'>{{ ucfirst($staff['role'])  }}</td>
                             <td class='column-5'>
-                                <button type='button' class='editStaff' onclick="
+                                <button type='button' class='editStaff' style="margin-right: 0px; margin-left: 0px;" onclick="
                                     window.location='{{ route('edit.staff', ['id' => $staff['id']]) }}'
                                 ">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button type='button' class='viewStaff' data-user-id="{{ $staff['id'] }}">
+                                <button type='button' class='viewStaff' style="margin-right: 0px; margin-left: 0px;" data-user-id="{{ $staff['id'] }}">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
-                                <button type='button' class='deleteStaff' onclick="
+                                <button type='button' class='deleteStaff' style="margin-right: 0px; margin-left: 0px;" onclick="
                                     if (confirm('Are you sure about deleting staff ID ({{ $staff['id'] }}): {{ $staff['name'] }}?') == true) {
                                         location.href='/admin/deleteStaff/{{ $staff['id'] }}'
                                     }
