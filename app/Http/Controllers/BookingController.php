@@ -65,22 +65,29 @@ class BookingController extends Controller {
         $data['bookingStatus'] = 'booked';
         $data['paidAmount'] = 0;
 
-        // Check all previous bookings with the same roomNumber to ensure room is available 
-        $allBookings = Booking::where('roomNumber', '=', $request -> roomNumber) 
-            -> where('bookingStatus', '!=', 'completed')
-            -> get();
-        $requestedDate = date('Y-m-d');
-        $requestedDate = date('Y-m-d', strtotime($request -> checkInDate));
-
-        foreach($allBookings as $booking) { 
-            $checkInDate = date('Y-m-d', strtotime($booking -> checkInDate));
-            $checkOutDate = date('Y-m-d', strtotime($booking -> checkOutDate));
-            if (($requestedDate >= $checkInDate) && ($requestedDate <= $checkOutDate)) {
-                return redirect() -> back() -> with('error', 'Error! Requested room has been booked.');
-            } else {
-                Booking::create($data);
-                return redirect('/bookings#bookings-table') -> with('success', 'Booking has been placed successfully!');
+        // Check if requested room exists in the bookings table
+        if (Booking::where([['roomNumber', $request -> roomNumber], ['bookingStatus', 'booked']]) -> exists()) {
+            // Check all previous bookings with the same roomNumber to ensure room is available on requested date 
+            $allBookings = Booking::where([
+                ['roomNumber', $request -> roomNumber], 
+                ['bookingStatus', 'booked'],
+            ]) -> get();
+            $requestedDate = date('Y-m-d');
+            $requestedDate = date('Y-m-d', strtotime($request -> checkInDate));
+    
+            foreach($allBookings as $booking) { 
+                $checkInDate = date('Y-m-d', strtotime($booking -> checkInDate));
+                $checkOutDate = date('Y-m-d', strtotime($booking -> checkOutDate));
+                if (($requestedDate >= $checkInDate) && ($requestedDate <= $checkOutDate)) {
+                    return redirect() -> back() -> with('error', 'Error! Requested room has been booked.');
+                } else {
+                    Booking::create($data);
+                    return redirect('/bookings#bookings-table') -> with('success', 'Booking has been placed successfully!');
+                }
             }
+        } else {
+            Booking::create($data);
+            return redirect('/bookings#bookings-table') -> with('success', 'Booking has been placed successfully!');
         }
     }
 
