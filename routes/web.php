@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/home/addBookings', [BookingController::class, 'addBooking']);
 
     /* Clerk profile route */
-    Route::get('/profile', [UserController::class, 'viewUserInfo']);
+    Route::get('/profile', [UserController::class, 'viewProfileInfo']);
     
     /* Clerk booking routes */
     Route::get('/bookings', [BookingController::class, 'viewBookings']);
@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/bookings/update/{id}', [BookingController::class, 'updateBooking']);
     Route::get('/bookings/delete/{bookingId}', [BookingController::class, 'deleteBooking']);
 
+    /* Clerk about route */
+    Route::view('about', 'about');
+
     /* Clerk complaints routes */
     Route::get('/complaints', [ComplaintController::class, 'viewComplaints']);
     Route::post('/complaints', [ComplaintController::class, 'addComplaint']);
@@ -63,10 +66,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 /* Admin route middlewares */
 Route::group(['middleware' => 'auth'], function () {
-    Route::view('/admin/dashboard', 'dashboard')->middleware('can:isAdmin');
+    Route::get('/admin/dashboard', [UserController::class, 'viewDashboard'])->middleware('can:isAdmin');
 
     /* Admin profile routes */
-    Route::get('/admin/profile', [UserController::class, 'viewUserInfo'])->middleware('can:isAdmin');;
+    Route::get('/admin/profile', [UserController::class, 'viewProfileInfo'])->middleware('can:isAdmin');;
 
     /* Admin booking routes */
     Route::get('/admin/bookings', [BookingController::class, 'viewBookings'])->middleware('can:isAdmin');
@@ -79,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/staff', [UserController::class, 'viewStaffs'])->middleware('can:isAdmin');
     Route::get('/admin/staff/{id}', [UserController::class, 'viewStaffInfo'])->middleware('can:isAdmin');
     Route::post('/admin/addStaff', [UserController::class, 'addStaff'])->middleware('can:isAdmin')->name('add.staff');
-    Route::get('/admin/editStaff/{id}', [UserController::class, 'showUpdate'])->middleware('can:isAdmin')->name('edit.staff');
+    Route::get('/admin/editStaff/{id}', [UserController::class, 'showStaffUpdate'])->middleware('can:isAdmin')->name('edit.staff');
     Route::post('/admin/editStaff/{id}', [UserController::class, 'updateStaff'])->middleware('can:isAdmin')->name('update.staff');
     Route::post('/admin/deleteStaff',[UserController::class,'deleteStaff'])->middleware('can:isAdmin');
     Route::get('/admin/deleteStaff/{id}',[UserController::class,'deleteStaff'])->middleware('can:isAdmin');
@@ -92,6 +95,3 @@ Route::group(['middleware' => 'auth'], function () {
 
 /* Logout route */
 Route::get('/logout', [LoginController::class, 'logout']);
-
-// Incompleted routes 
-Route::view("about",'about');

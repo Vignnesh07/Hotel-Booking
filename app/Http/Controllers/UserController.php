@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Booking;
+use App\Models\Complaint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller {
     
     // Function to retrieve and display logged in user's information
-    function viewUserInfo(){
+    function viewProfileInfo(){
         $userData = User::findOrFail(Auth::user() -> id);
 
         if (Auth::user() -> can('isAdmin')) {
@@ -33,9 +35,32 @@ class UserController extends Controller {
     }
 
     // Function to view staffUpdate page
-    function showUpdate($id){
+    function showStaffUpdate($id){
         $data = User::find($id);
         return view("/staffUpdate", ['staff' => $data]);
+    }
+
+    // Function to retrieve and display all relevant dashboard details
+    function viewDashboard() {
+        $bookedRooms = Booking::select('roomNumber') -> distinct('roomNumber') -> where('bookingStatus', '=', 'booked') -> count();
+        $availableRooms = 61 - $bookedRooms;
+        $staffs = User::count();
+        $complaints = Complaint::count();
+        $unresolvedComplaints = Complaint::where('status', '=', 'Unresolved') -> count();
+        $pendingPayments = Booking::where('bookingStatus', '=', 'booked') -> count();
+        $totalPendingPayments = Booking::where('bookingStatus', '=', 'booked') -> sum('bookingAmount');
+        $revenue = Booking::where('bookingStatus', '=', 'completed') -> sum('paidAmount');
+        
+        return view("/dashboard", [
+            'bookedRooms' => $bookedRooms,
+            'availableRooms' => $availableRooms,
+            'staffs' => $staffs, 
+            'complaints' => $complaints, 
+            'unresolvedComplaints' => $unresolvedComplaints,
+            'pendingPayments' => $pendingPayments,
+            'totalPendingPayments' => $totalPendingPayments,
+            'revenue' => $revenue,
+        ]);
     }
 
     // Function to add new staff to the database
