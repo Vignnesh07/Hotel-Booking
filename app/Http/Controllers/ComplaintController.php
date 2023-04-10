@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ComplaintController extends Controller {
+
+    // Function to retrieve and display all complaints 
+    function viewComplaints() {
+        $data = Complaint::paginate(5);
+
+        if (Auth::user() -> can('isAdmin')) {
+            return view('/adminComplaint', ['complaints' => $data]);
+        } else {
+            return view('/complaints', ['complaints' => $data]);
+        }
+    }
+    
     // Function to add new complaints to the database
     function addComplaint(Request $request) {
         $this -> validate($request, [
@@ -21,9 +33,9 @@ class ComplaintController extends Controller {
         $data['budget'] = '';
         Complaint::create($data);
         if (Auth::user() -> can('isAdmin')) {
-            return redirect('/admin/complaints#complaints-table');
+            return redirect('/admin/complaints#complaints-table') -> with('success', 'Complaint has been submitted successfully!');
         } else {
-            return redirect('/complaints#complaints-table');
+            return redirect('/complaints#complaints-table') -> with('success', 'Complaint has been submitted successfully!');
         }
     }
 
@@ -38,17 +50,6 @@ class ComplaintController extends Controller {
         $data -> budget = $request -> budget;
         $data -> save();
 
-        return redirect('/admin/complaints#complaints-table');
-    }
-
-    // Function to retrieve and display all complaints 
-    function viewComplaints() {
-        $data = Complaint::paginate(5);
-
-        if (Auth::user() -> can('isAdmin')) {
-            return view('/adminComplaint', ['complaints' => $data]);
-        } else {
-            return view('/complaints', ['complaints' => $data]);
-        }
+        return redirect('/admin/complaints#complaints-table') -> with('success', 'Complaint has been resolved successfully!');
     }
 }

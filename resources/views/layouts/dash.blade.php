@@ -81,6 +81,9 @@
                 </ul>
             </div>
         </div>
+
+        <!-- To display flash session messages -->
+        <x-flash admin="true"/>
         
         @yield('content')
 
@@ -88,6 +91,7 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
         <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="//unpkg.com/alpinejs" defer></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <script src="/assets/phone/js/intlTelInput.js"> </script>

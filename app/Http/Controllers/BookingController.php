@@ -65,20 +65,21 @@ class BookingController extends Controller {
         $data['bookingStatus'] = 'booked';
         $data['paidAmount'] = 0;
 
-        // Check all previous bookings to ensure room is available 
-        $allBookings = Booking::all();
-
+        // Check all previous bookings with the same roomNumber to ensure room is available 
+        $allBookings = Booking::where('roomNumber', '=', $request -> roomNumber) 
+            -> where('bookingStatus', '!=', 'completed')
+            -> get();
         $requestedDate = date('Y-m-d');
         $requestedDate = date('Y-m-d', strtotime($request -> checkInDate));
 
         foreach($allBookings as $booking) { 
             $checkInDate = date('Y-m-d', strtotime($booking -> checkInDate));
             $checkOutDate = date('Y-m-d', strtotime($booking -> checkOutDate));
-            if (($requestedDate >= $checkInDate) && ($requestedDate <= $checkOutDate) && ($booking -> bookingStatus == 'booked') && ($booking -> roomNumber == $request -> roomNumber)) {
-                return redirect() -> back() -> with('error', 'Room Unavailable');
+            if (($requestedDate >= $checkInDate) && ($requestedDate <= $checkOutDate)) {
+                return redirect() -> back() -> with('error', 'Error! Requested room has been booked.');
             } else {
                 Booking::create($data);
-                return redirect('/bookings#bookings-table');
+                return redirect('/bookings#bookings-table') -> with('success', 'Booking has been placed successfully!');
             }
         }
     }
@@ -100,12 +101,36 @@ class BookingController extends Controller {
         $data -> address = $request -> address;
         $data -> city = $request -> city;
         $data -> zipCode = $request -> zipCode;
-        $data -> save();
+
+        // Check all previous bookings to ensure room is available 
+        $canUpdateDate = true;
+        $allBookings = Booking::where('id', '!=', $request -> id) -> get();
+
+        $requestedDate = date('Y-m-d');
+        $requestedDate = date('Y-m-d', strtotime($request -> checkInDate));
+
+        foreach($allBookings as $booking) { 
+            $checkInDate = date('Y-m-d', strtotime($booking -> checkInDate));
+            $checkOutDate = date('Y-m-d', strtotime($booking -> checkOutDate));
+            if (($requestedDate >= $checkInDate) && ($requestedDate <= $checkOutDate) && ($booking -> bookingStatus == 'booked') && ($booking -> roomNumber == $request -> roomNumber)) {
+                $canUpdateDate = false;
+            }
+        }
 
         if (Auth::user() -> can('isAdmin')) {
-            return redirect('/admin/bookings#bookings-table');
+            if ($canUpdateDate) {
+                $data -> save();
+                return redirect('/admin/bookings#bookings-table') -> with('success', 'Booking has been updated successfully!');
+            } else {
+                return redirect() -> back() -> with('error', 'Error! Requested booking date has been booked.');
+            }
         } else {
-            return redirect('/bookings#bookings-table');
+            if ($canUpdateDate) {
+                $data -> save();
+                return redirect('/bookings#bookings-table') -> with('success', 'Booking has been updated successfully!');
+            } else {
+                return redirect() -> back() -> with('error', 'Error! Requested booking date has been booked.');
+            }
         }
     }
 
@@ -116,9 +141,9 @@ class BookingController extends Controller {
         $data -> bookingStatus = 'completed';
         $data -> save();
         if (Auth::user() -> can('isAdmin')) {
-            return redirect('/admin/bookings#bookings-table');
+            return redirect('/admin/bookings#bookings-table') -> with('success', 'Payment details has been updated successfully!');
         } else {
-            return redirect('/bookings#bookings-table');
+            return redirect('/bookings#bookings-table') -> with('success', 'Payment details has been updated successfully!');
         }
     }
     
@@ -128,9 +153,9 @@ class BookingController extends Controller {
         $data -> delete();
 
         if (Auth::user() -> can('isAdmin')) {
-            return redirect('/admin/bookings#bookings-table');
+            return redirect('/admin/bookings#bookings-table') -> with('success', 'Booking has been deleted successfully!');
         } else {
-            return redirect('/bookings#bookings-table');
+            return redirect('/bookings#bookings-table') -> with('success', 'Booking has been deleted successfully!');
         }
     }
 }

@@ -61,7 +61,7 @@ class UserController extends Controller {
         $staff -> zipCode = $request -> zipCode;
         $staff -> phone = $request -> phone;
         $staff -> save();
-        return redirect("/admin/staff");
+        return redirect("/admin/staff") -> with('success', 'Staff has been added successfully!');
     }
 
     // Function to update staff in the database
@@ -81,7 +81,7 @@ class UserController extends Controller {
             session() -> flush();
             return redirect("/logout");
         } else {
-            return redirect("/admin/staff");
+            return redirect("/admin/staff") -> with('success', 'Staff details has been updated successfully!');;
         }
     }
 
@@ -89,6 +89,6 @@ class UserController extends Controller {
     function deleteStaff(Request $request){
         $data = User::find($request -> id);
         $data -> delete();
-        return redirect("/admin/staff");
+        return redirect("/admin/staff") -> with('success', 'Staff has been deleted successfully!');;
     }
 }
