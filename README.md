@@ -59,11 +59,12 @@ In order to run the provided solution the following software will need to be ins
 
 1. Fork and clone the repository.
 2. Open the repository folder and install the dependencies using `composer install`.
-3. Set DB configurations in .env file.
+3. Change .env.example to .env file and setup database configurations.
 4. Run `php artisan migrate` to create MySQL database.
-5. Run `php artisan db:seed --class=AuthSeeder` to populate MySQL database for authenticate.
+5. Run `php artisan db:seed --class=AuthSeeder`, `php artisan db:seed --class=BookingSeeder`, and `php artisan db:seed --class=ComplaintSeeder` to populate MySQL database.
 6. Run the development server using `php artisan serve`.
 7. Create a new branch (based on your function name) before making changes.
+8. To use admin or clerk accounts, login using their respective credentials in AuthSeeder file in database/seeders/AuthSeeder.php.
 ​
 The repository contains a resources directory inside the root folder with scripts and view files; this should be the starting point for the application. Please feel free to create more views to structure the app in a logical manner.
 
