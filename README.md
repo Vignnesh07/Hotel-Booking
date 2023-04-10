@@ -59,7 +59,7 @@ In order to run the provided solution the following software will need to be ins
 
 1. Fork and clone the repository.
 2. Open the repository folder and install the dependencies using `composer install`.
-3. Change .env.example to .env file and setup database configurations.
+3. Rename .env.example to .env file and setup database configurations.
 4. Run `php artisan migrate` to create MySQL database.
 5. Run `php artisan db:seed --class=AuthSeeder`, `php artisan db:seed --class=BookingSeeder`, and `php artisan db:seed --class=ComplaintSeeder` to populate MySQL database.
 6. Run the development server using `php artisan serve`.
