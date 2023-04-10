@@ -37,10 +37,14 @@
             </div>
         </nav>
 
+        <!-- To display flash session messages -->
+        <x-flash admin="false"/>
+
         @yield('loginContent')
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="//unpkg.com/alpinejs" defer></script>
         <script src="/assets/js/scrollReveal.js"> </script>
     </body>
 </html>

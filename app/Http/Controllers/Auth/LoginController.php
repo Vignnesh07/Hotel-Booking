@@ -42,9 +42,11 @@ class LoginController extends Controller {
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->intended('/admin/dashboard');
+            return redirect() -> intended('/admin/dashboard');
+        } else {
+            session() -> flash('error', 'Invalid Login Credentials');
+            return back() -> withInput($request->only('email', 'remember'));
         }
-        return back()->withInput($request->only('email', 'remember'));
     }
 
     public function showClerkLoginForm() {
@@ -58,7 +60,10 @@ class LoginController extends Controller {
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->intended('/home');
+            return redirect() -> intended('/home');
+        } else {
+            session() -> flash('error', 'Invalid Login Credentials');
+            return back() -> withInput($request->only('email', 'remember'));
         }
         return back()->withInput($request->only('email', 'remember'));
     }
