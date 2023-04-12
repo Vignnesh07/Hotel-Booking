@@ -39,7 +39,7 @@ Route::post('/login/admin', [LoginController::class, 'adminLogin']);
 Route::get('/login/clerk', [LoginController::class, 'showClerkLoginForm']);
 Route::post('/login/clerk', [LoginController::class, 'clerkLogin']);
 
-/* Clerk route middlewares */
+/* Authenticate middleware routes */
 Route::group(['middleware' => 'auth'], function () {
     /* Clerk home routes */
     Route::view('/home', 'home');
@@ -62,10 +62,8 @@ Route::group(['middleware' => 'auth'], function () {
     /* Clerk complaints routes */
     Route::get('/complaints', [ComplaintController::class, 'viewComplaints']);
     Route::post('/complaints', [ComplaintController::class, 'addComplaint']);
-}); 
 
-/* Admin route middlewares */
-Route::group(['middleware' => 'auth'], function () {
+    /* Admin dashboard route */
     Route::get('/admin/dashboard', [UserController::class, 'viewDashboard'])->middleware('can:isAdmin');
 
     /* Admin profile routes */
