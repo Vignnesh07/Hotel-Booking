@@ -70,7 +70,7 @@
             <hr><br>
 
             <div>
-                <table>
+                <table id="staff-table">
                     <thead>
                         <tr class='first-row'>
                             <th class='column-1'>Staff No</th>
@@ -107,7 +107,7 @@
                     @endforeach
                 </table>
                 
-                {!! $staffs->links('vendor.pagination.custom') !!}
+                {!! $staffs->links('vendor.pagination.custom', ['tableID' => 'staff-table']) !!}
             </div>
 
             <div class="viewStaff-overlay" id='viewStaff-overlay'>
